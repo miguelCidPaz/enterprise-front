@@ -1,6 +1,12 @@
+import BodyHeader from "./components/Header/BodyHeader";
+
 function App() {
   return (
-    <h1>Hola react</h1>
+    <div>
+      <BodyHeader />
+      <h1>Hola react</h1>
+    </div>
+
   );
 }
 

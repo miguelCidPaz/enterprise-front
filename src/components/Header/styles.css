@@ -1,0 +1,96 @@
+
+.bodyheader--main{
+    width: 100%;
+    height: 70px;
+    background-color: transparent;
+    box-shadow: 0 0 3px grey, 
+    0 5px 6px rgb(207, 203, 203);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10%;
+}
+
+.bodyheader--body-search{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 3%;
+    width: 25%;
+    height: 80%;
+}
+
+.bodyheader--icon-enterprise{
+    border: none;
+    outline: none;
+    background-color: rgb(61, 61, 209);
+    box-shadow: 0 0 3px grey, 
+    0 0 4px rgb(104, 82, 247) inset;
+    height: 80%;
+    width: 40px;
+    font-size: 30px;
+    font-weight: bolder;
+    color: whitesmoke;
+    border-radius: 5px;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+
+.bodyheader--icon-enterprise:hover{
+    background-color: rgb(31, 31, 204);
+    box-shadow: 0 0 5px grey, 
+    0 0 2px rgb(104, 82, 247) inset;
+    text-shadow: 0 0 2px white;
+}
+
+.bodyheader--input-text{
+    width: 80%;
+    height: 80%;
+    border: none;
+    outline: none;
+    background-color: rgb(245, 239, 239);
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 5px 20px;
+    box-shadow: 0 0 3px grey;
+    transition: 0.2s;
+}
+
+.bodyheader--input-text:focus{
+    box-shadow: 0 0 6px grey;
+    background-color: white;
+}
+
+.bodyheader--input-text:hover{
+    box-shadow: 0 0 6px grey;
+}
+
+.bodyheader--input-text::placeholder{
+    font-style: italic;
+}
+
+.bodyheader--menu-main{
+    display: flex;
+    flex-direction: row;
+}
+
+.bodyheader--menu-link{
+    color: rgb(24, 23, 23);
+    font-size: 20px;
+    font-weight: bolder;
+    padding: 20px;
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+.bodyheader--menu-link:hover{
+    background-color: rgb(31, 31, 204);
+    box-shadow: 0 0 5px grey, 
+    0 0 2px rgb(104, 82, 247) inset;
+    text-shadow: 0 0 3px white;
+    color: white;
+    font-weight: bolder;
+    box-shadow: 0 0 4px grey;
+}
