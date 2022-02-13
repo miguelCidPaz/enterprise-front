@@ -1,10 +1,11 @@
 import BodyHeader from "./components/Header/BodyHeader";
+import LandPage from "./components/LandPage/LandPage";
 
 function App() {
   return (
-    <div>
+    <div className="general--frame">
       <BodyHeader />
-      <h1>Hola react</h1>
+      <LandPage />
     </div>
 
   );
