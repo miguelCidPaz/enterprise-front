@@ -1,0 +1,19 @@
+.bodyheader--body-search{
+    animation: popLeft 2s forwards;
+}
+
+.bodyheader--menu-links{
+    animation: popRight 2s forwards;
+}
+
+@keyframes popLeft {
+    0%{transform: translateX(-500px);}
+    50%{transform: translateX(-500px);}
+    100%{transform: translateX(100px);}
+}
+
+@keyframes popRight {
+    0%{transform: translateX(600px);}
+    50%{transform: translateX(600px);}
+    100%{transform: translateX(-600px);}
+}

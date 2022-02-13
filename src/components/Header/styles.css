@@ -22,6 +22,7 @@
     width: 25%;
     height: 50%;
     transition-duration: 0.2s;
+    transform: translateX(-500px);
 }
 
 .bodyheader--icon-enterprise{
@@ -89,6 +90,7 @@
     padding: 20px;
     transition-duration: 0.3s;
     cursor: pointer;
+    transform: translateX(600px);
 }
 
 .bodyheader--menu-link:hover{
