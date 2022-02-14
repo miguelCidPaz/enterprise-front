@@ -1,12 +1,16 @@
 import './styles.scss';
-import rocket from '../../assets/img/rocket-landPage.svg'
+import rocket from '../../assets/img/rocket-blue.svg'
+import rocket1 from '../../assets/img/rocket-orange.svg'
 
-const LandPage = () => {
+const LandPage = (props) => {
 
     return (
         <section className='landpage--main'>
             <div className='landpage--img-container'>
-                <img className='landpage--rocket' src={rocket} alt="Rocket" />
+                {props.theme === 'dark'
+                    ? <img className='landpage--rocket' src={rocket1} alt="Rocket" />
+                    : <img className='landpage--rocket' src={rocket} alt="Rocket" />}
+
             </div>
             <div className='landpage--text-container'>
                 <h1 className='landpage--text'>Buy you</h1>

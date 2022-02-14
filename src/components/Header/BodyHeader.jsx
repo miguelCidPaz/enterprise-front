@@ -3,14 +3,13 @@ import Search from './internal-components/Search'
 import './styles.scss'
 
 const BodyHeader = (props) => {
-    const { setTheme } = props;
 
-    console.log(props.setTheme)
+    console.log(props)
     return (
-        <header className='bodyheader--main'>
-            <div className='center-container-limits'>
-                <Search />
-                <MenuLinks />
+        <header className={`bodyheader--main ${props.theme}`}>
+            <div className={`center-container-limits ${props.theme}`}>
+                <Search theme={props.theme} />
+                <MenuLinks theme={props.theme} />
             </div>
         </header>
     )

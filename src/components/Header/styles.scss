@@ -1,11 +1,12 @@
 @import '../../assets/scss/globals.scss';
 
 .bodyheader--main{
+    position: fixed;
     width: 100%;
     height: 0px;
-    background-color: $background-color;
-    box-shadow: 0 0 3px $background-color-deg-1,
-    0 0 5px $background-color-deg-1;
+    background-color: var(--background-color);
+    box-shadow: 0 0 3px var(--background-color-deg-1),
+    0 0 5px var(--background-color-deg-1);
     gap: 4%;
     z-index: 2;
     transition-duration: 0.2s;
@@ -27,24 +28,24 @@
 .bodyheader--icon-enterprise{
     border: none;
     outline: none;
-    background-color: $primary;
-    box-shadow: 0 0 3px $background-color-deg-1, 
+    background-color: var(--primary);
+    box-shadow: 0 0 3px var(--background-color-deg-1), 
     0 0 4px $primary-deg-1 inset;
     height: 35px;
     width: 35px;
     font-size: 20px;
     font-weight: bolder;
-    color: whitesmoke;
+    color: var(--background-color);
     border-radius: 5px;
     cursor: pointer;
     transition-duration: 0.2s;
 }
 
 .bodyheader--icon-enterprise:hover{
-    background-color: $secondary;
-    box-shadow: 0 0 5px $background-color-deg-1 
-    0 0 2px $secondary-deg-1 inset;
-    text-shadow: 0 0 2px white;
+    background-color: var(--secondary);
+    box-shadow: 0 0 5px var(--background-color-deg-1) 
+    0 0 2px var(--secondary-deg-1) inset;
+    text-shadow: 0 0 2px var(--background-color);
 }
 
 .bodyheader--input-text{
@@ -53,22 +54,23 @@
     border: none;
     outline: none;
     margin-top: 2px;
-    background-color: rgb(245, 239, 239);
+    background-color: var(--background-color);
     border-radius: 5px;
     font-size: 15px;
     text-align: center;
     padding: 5px 20px;
-    box-shadow: 0 0 3px grey;
+    box-shadow: 0 0 3px var(--background-color-deg-1);
+    color: var(--text);
     transition: 0.2s;
 }
 
 .bodyheader--input-text:focus{
-    box-shadow: 0 0 6px grey;
-    background-color: white;
+    box-shadow: 0 0 6px var(--background-color-deg-1);
+    background-color: var(--background-color);
 }
 
 .bodyheader--input-text:hover{
-    box-shadow: 0 0 6px grey;
+    box-shadow: 0 0 6px var(--background-color-deg-1);
 }
 
 .bodyheader--input-text::placeholder{
@@ -83,7 +85,7 @@
 }
 
 .bodyheader--menu-link{
-    color: $text;
+    color: var(--text);
     width: 50%;
     font-size: 20px;
     font-weight: bolder;
@@ -125,7 +127,7 @@
     width: 50px;
     height: 5px;
     border-radius: 5px;
-    background-color: $text;
+    background-color: var(--text);
     transition-duration: 0.3s;
     animation: 2s popRight ease forwards;
 }
@@ -139,7 +141,7 @@
     width: 100%;
     height: 5px;
     border-radius: 5px;
-    background-color: rgb(46, 45, 45);
+    background-color: var(--text);
     transition-duration: 0.3s;
     animation: 2.1s popRight ease forwards;
 }
@@ -168,13 +170,13 @@
 .bodyheader--frame-menu-mobile:hover{
 
     .bodyheader--menu-mobile{
-        background-color: red;
+        background-color: var(--secondary);
     }
     .bodyheader--menu-mobile::after{
-        background-color: red;
+        background-color: var(--secondary);
     }
     .bodyheader--menu-mobile::before{
-        background-color: red;
+        background-color: var(--secondary);
     }
 }
 

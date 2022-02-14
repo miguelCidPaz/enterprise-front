@@ -1,12 +1,14 @@
 @import '../../assets/scss/globals.scss';
 
 .landpage--main{
-    background-color: transparent;
+    background-color: var(--background-color);
     width: 100%;
-    height: 91.6vh;
+    height: 100vh;
     padding-top: 20px;
     display: flex;
     flex-direction: row;
+
+    
 
     @media (max-wdith:650px) {
         flex-direction: column-reverse;
@@ -85,7 +87,7 @@
     position: absolute;
     top: 20%;
     font-size: 50px;
-    color: $text;
+    color: var(--text);
 
     @media (max-width:1100px) {
         font-size: 30px;       
@@ -99,7 +101,7 @@
 .landpage--text-1{
     position: absolute;
     top: 30%;
-    color:$primary;
+    color: var(--primary);
     font-size: 100px;
 
     @media (max-width:1100px) {
@@ -117,10 +119,10 @@
     top: 50%;
     width: 65%;
     height: 50px;
-    background-color: $primary;
-    color: $background-color;
-    box-shadow: 0 0 5px $background-color-deg-1,
-    0 0 15px $primary-deg-1 inset;
+    background-color: var(--primary);
+    color: var(--background-color);
+    box-shadow: 0 0 5px var(--background-color-deg-1),
+    0 0 15px var(--primary-deg-1) inset;
     margin-top: 10px;
     font-size: 40px;
     font-weight: bolder;
@@ -131,10 +133,10 @@
     cursor: pointer;
 
     &:hover{
-        background-color: $secondary;
-        text-shadow: 0 0 2px $background-color;
-        box-shadow: 0 0 15px $secondary-deg-1 inset,
-        0 0 15px $background-color-deg-1;
+        background-color: var(--secondary);
+        text-shadow: 0 0 2px var(--background-color);
+        box-shadow: 0 0 15px var(--secondary-deg-1) inset,
+        0 0 15px var(--background-color-deg-1);
     }
 
     @media (max-width:1100px) {
