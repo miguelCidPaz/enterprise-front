@@ -41,9 +41,9 @@
 }
 
 .bodyheader--icon-enterprise:hover{
-    background-color: rgb(31, 31, 204);
-    box-shadow: 0 0 5px grey, 
-    0 0 2px rgb(104, 82, 247) inset;
+    background-color: $secondary;
+    box-shadow: 0 0 5px $background-color-deg-1 
+    0 0 2px $secondary-deg-1 inset;
     text-shadow: 0 0 2px white;
 }
 
@@ -91,7 +91,18 @@
     transition-duration: 0.3s;
     cursor: pointer;
     transform: translateX(600px);
+}
+
+.link-1{
     animation: popRight 2s ease forwards;
+}
+
+.link-2{
+    animation: popRight 2.1s ease forwards;
+}
+
+.link-3{
+    animation: popRight 2.2s ease forwards;
 }
 
 .bodyheader--menu-container{
