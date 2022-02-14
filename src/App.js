@@ -1,10 +1,13 @@
 import BodyHeader from "./components/Header/BodyHeader";
 import LandPage from "./components/LandPage/LandPage";
+import { useState } from "react";
 
-function App() {
+const App = () => {
+  const { theme, setTheme } = useState('light')
+
   return (
     <div className="general--frame">
-      <BodyHeader />
+      <BodyHeader setTheme={setTheme} />
       <LandPage />
     </div>
 
