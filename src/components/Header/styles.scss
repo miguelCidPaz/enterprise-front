@@ -27,12 +27,15 @@
 .bodyheader--icon-enterprise{
     border: none;
     outline: none;
+    text-decoration: none;
+    text-align: center;
+    white-space: normal;
     background-color: var(--primary);
     box-shadow: 0 0 3px var(--background-color-deg-1), 
     0 0 4px var(--primary-deg-1) inset;
     height: 35px;
     width: 35px;
-    font-size: 20px;
+    font-size: 30px;
     font-weight: bolder;
     color: var(--background-color);
     border-radius: 5px;
