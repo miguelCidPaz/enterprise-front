@@ -1,0 +1,25 @@
+.light{
+    --background-color: #FDFCFC ;
+    --background-color-deg-1: #888585;
+    --primary: #1F1FCC;
+    --primary-deg-1:#4C4CC2;
+    --secondary:#1F1FCC;
+    --secondary-deg-1:#4C4CC2;
+    --text: #2E2D2D;
+    --text-deg-1:#706E6E;
+    --opposite:#FF8000;
+    --opposite-deg-1:#E8A45F;
+}
+
+.dark{
+    --background-color: #2E2D2D ;
+    --background-color-deg-1: #706E6E;
+    --primary: #FF8000;
+    --primary-deg-1:#E8A45F;
+    --secondary:#FF8000;
+    --secondary-deg-1:#E8A45F;
+    --text: #FDFCFC;
+    --text-deg-1:#888585;
+    --opposite:#1F1FCC;
+    --opposite-deg-1:#4C4CC2;
+}
