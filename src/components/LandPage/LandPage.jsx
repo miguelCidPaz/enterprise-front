@@ -1,6 +1,7 @@
 import './styles.scss';
 import rocket from '../../assets/img/rocket-blue.svg'
 import rocket1 from '../../assets/img/rocket-orange.svg'
+import { Link } from 'react-router-dom';
 
 const LandPage = (props) => {
 
@@ -15,7 +16,7 @@ const LandPage = (props) => {
             <div className='landpage--text-container'>
                 <h1 className='landpage--text'>Buy you</h1>
                 <h2 className='landpage--text-1'>StartUp</h2>
-                <button className='landpage--button'>BUY</button>
+                <Link to={'/ranking'} className='landpage--button'>BUY</Link>
             </div>
         </section>
     )
