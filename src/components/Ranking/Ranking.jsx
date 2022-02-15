@@ -1,6 +1,13 @@
-const Ranking = () => {
+import Filter from "../Filter/Filter"
+import './styles.scss'
 
-    return (<div>Hola desde Search</div>)
+const Ranking = (props) => {
+
+    return (
+        <section className={`ranking--main ${props.theme}`}>
+            <Filter theme={props.theme} />
+        </section>
+    )
 }
 
 export default Ranking
