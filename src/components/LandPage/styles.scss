@@ -35,13 +35,21 @@
         100%{transform: translateY(100px);}
     }
 
+    @media (max-width:900px) {
+        @keyframes toTop {
+            0%{transform: translateY(1009px);}
+            50%{transform: translateY(1009px);}
+            100%{transform: translateY(200px);}
+        }
+    }
+
     @media (max-width:650px) {
         margin-left: 19.5%;
         
         @keyframes toTop {
             0%{transform: translateY(1009px);}
             50%{transform: translateY(1009px);}
-            100%{transform: translateY(0px);}
+            100%{transform: translateY(190px);}
         }
     }
 }
