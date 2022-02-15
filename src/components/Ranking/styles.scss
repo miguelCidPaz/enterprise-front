@@ -1,12 +1,6 @@
 .ranking--main{
     background-color: var(--background-color);
     width: 100%;
-    margin-top: 6.35%;
-    height: 91.5vh;
+    height: 100vh;
     z-index: 0;
-
-    @media (max-width:815px) {
-        margin-top: 20%;
-        height: 87.2vh;
-    }
 }
