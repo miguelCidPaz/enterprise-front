@@ -9,7 +9,7 @@ const BodyHeader = (props) => {
         <header className={`bodyheader--main ${props.theme}`}>
             <div className={`center-container-limits ${props.theme}`}>
                 <Search theme={props.theme} />
-                <MenuLinks theme={props.theme} />
+                <MenuLinks turnLight={props.turnLight} theme={props.theme} />
             </div>
         </header>
     )

@@ -9,11 +9,19 @@ const App = () => {
 
   useEffect(() => {
 
-  }, theme)
+  }, [theme])
+
+  const turnLight = (light) => {
+    if (light === 'dark') {
+      setTheme('light')
+    } else {
+      setTheme('dark')
+    }
+  }
 
   return (
     <div className={`general--frame ${theme}`}>
-      <BodyHeader theme={theme} setTheme={setTheme} />
+      <BodyHeader theme={theme} turnLight={turnLight} />
       <Routes>
         <Route path='/' element={<LandPage theme={theme} />} />
         <Route path='/ranking' element={<Ranking theme={theme} />} />

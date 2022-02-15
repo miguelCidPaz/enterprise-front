@@ -30,7 +30,7 @@
     outline: none;
     background-color: var(--primary);
     box-shadow: 0 0 3px var(--background-color-deg-1), 
-    0 0 4px $primary-deg-1 inset;
+    0 0 4px var(--primary-deg-1) inset;
     height: 35px;
     width: 35px;
     font-size: 20px;
@@ -154,15 +154,11 @@
 }
 
 .bodyheader--menu-link:hover{
-    text-shadow: 0 0 2px $text-deg-1;
+    text-shadow: 0 0 2px var(--text-deg-1);
 }
 
 .bodyheader--menu-link:first-child{
     border-radius: 5px 0px 0px 0px;
-}
-
-.bodyheader--menu-link:last-child{
-    border-radius: 0px 5px 0px 0px;
 }
 
 .bodyheader--frame-menu-mobile:hover{
@@ -308,3 +304,30 @@
 }
 
 
+#switch-ligths{
+    background-image: url();
+    background-color: var(--background-color);
+    box-shadow: 0 0 3px var(--background-color-deg-1);
+    height: 30px;
+    width: 50px;
+    margin-left: 20px;
+    margin-top: 15px;
+    outline: none;
+    border: none;
+    border-radius: 50%;
+
+    &:hover{
+        .light-up{
+            box-shadow: 0 0 10px var(--opposite-deg-1);
+        }
+    }
+}
+
+.light-up{
+    width: 12.5px;
+    height: 12.5px;
+    background-color: var(--opposite);
+    box-shadow: 0 0 3px var(--opposite-deg-1);
+    border-radius: 50%;
+    margin: auto;
+}
