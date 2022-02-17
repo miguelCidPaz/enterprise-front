@@ -1,7 +1,14 @@
 const ItemCard = () => {
 
     return (
-        <h1>dsmadkjsa</h1>
+        <div className="itemcard--main">
+            <div className="itemcard--body-left">
+
+            </div>
+            <div className="itemcard--body-right">
+
+            </div>
+        </div>
     )
 }
 

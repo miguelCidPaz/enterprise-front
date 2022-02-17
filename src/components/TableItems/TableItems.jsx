@@ -1,3 +1,5 @@
+import './styles.scss';
+
 const TableItems = () => {
 
     const numbers = [1, 2, 3, 4, 5, 6]
