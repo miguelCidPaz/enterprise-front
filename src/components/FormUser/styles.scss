@@ -1,7 +1,14 @@
-.form--register{
+.form--register {
     width: 100%;
     height: 100vh;
-    padding-top: 20px;
-    margin-top: 20px;
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form--register > input {
+    padding: auto;
+    margin: 1px;
 }
