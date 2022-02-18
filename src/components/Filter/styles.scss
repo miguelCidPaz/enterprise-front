@@ -1,33 +1,157 @@
-.filter--main{
+.filter--main, .filter--main-show{
     position: absolute;
-    top: 10%;
-    left:10%;
-    background-color: red;
-    width: 30%;
-    height: 80%;
+    transform: translateX(-100px);
+    top: 35vh;
+    background-color: var(--background-color);
+    box-shadow: 4px -2px 6px var(--background-color-deg-1),
+    -1px 1px 2px var(--background-color-deg-1);
+    border-radius: 10px 0px 10px 10px;
+    width: 300px;
+    height: 300px;
+    transition-duration: 0.2s;
     margin: auto;
+    z-index: 1;
+    animation: aparition 2s ease forwards;
+
+    @keyframes aparition {
+        0%{transform: translateX(-100px);}
+        100%{transform: translateX(0px);}
+    }
+
+    &:hover{
+        background-color: var(--primary);
+        box-shadow: 4px -2px 6px var(--primary-deg-1);
+
+        .filter--button-show{
+            background-color: var(--primary);
+            box-shadow: 3px -2px 4px var(--primary-deg-1);
+        }
+
+        .filter--button-show-label{
+            color: white;
+        }
+
+        .filter--container{
+            box-shadow: -2px 2px 3px var(--primary-deg-1) inset;
+        }
+    }
+}
+
+.filter--main{
+    left:-306px;
+}
+
+.filter--main-show{
+    left: -50px;
 }
 
 .filter--button-show{
     position:absolute;
-    background-color: red;
+    background-color: var(--background-color);
+    box-shadow: 3px -2px 4px var(--background-color-deg-1);
     border: none;
     outline: none;
-    right: -20px;
+    left: 100%;
     height: 50%;
     border-radius: 0px 10px 10px 0px;
+    z-index: 0;
+    cursor: pointer;
+    transition-duration: 0.2s;
 }
 
 .filter--button-show-label{
+    color: var(--text);
+    text-shadow: 0 0 3px var(--text-deg-1);
     height: 12%;
-    font-size: 20px;
+    font-size: 15px;
+    font-weight: bolder;
     transform: rotateZ(90deg);
     text-align: center;
     font-weight: bolder;
+    transition-duration: 0.2s;
 }
 
+.filter--label-button{
+    color: var(--text);
+    font-size: 15px;
+    font-weight: bolder;
+}
 
+.filter--container{
+    background-color: var(--background-color);
+    box-shadow: -2px 2px 3px var(--background-color-deg-1) inset,
+    0 0 3px var(--background-color-deg-1);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    width: 94%;
+    height: 95%;
+    margin-top: 2.5%;
+    border-radius: 10px;
+}
 
+.filter--container-button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 180px;
+    height: 50px;
+    gap: 10px;
+    margin-top: -10px;
+    margin-bottom: -10px;
+    justify-content: center;
+}
+
+.filter--button{
+    background-color: var(--background-color);
+    box-shadow: 0 0 1px var(--background-color-deg-1) inset;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor:pointer;
+    transition-duration: 0.2s;
+}
+
+.filter--button:hover{
+    box-shadow:0 0 5px var(--background-color-deg-1) inset;
+
+    .filter--pilot-enable{
+        box-shadow: 0 0 4px var(--enable);
+    }
+
+    .filter--pilot-disable{
+        box-shadow: 0 0 4px var(--disable);
+    }
+}
+
+.filter--enable:active{
+    box-shadow: 0 0 5px var(--enable) inset;
+}
+
+.filter--disable:active{
+    box-shadow: 0 0 5px var(--disable) inset;
+}
+
+.filter--pilot-enable, .filter--pilot-disable{
+    margin: auto;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    transition-duration: 0.2s;
+}
+
+.filter--pilot-enable{
+    background-color: var(--enable);
+}
+
+.filter--pilot-disable{
+    background-color: var(--disable);
+}
 
 
 
