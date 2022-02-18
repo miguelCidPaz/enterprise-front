@@ -1,0 +1,42 @@
+.itemcard--main{
+    background-color: red;
+    width: 400px;
+    height: 150px;
+    max-height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.itemcard--body-container{
+    display: flex;
+    flex-direction: row;
+    height: 80%;
+}
+
+.itemcard--body-left{
+    width: 80%;
+    p{
+        margin: 5%;
+        font-size: 10px;
+    }
+}
+
+.itemcard--body-right{
+    width: 21%;
+
+    img{
+        object-fit: cover;
+        width: 100%;
+    }
+}
+
+.itemcard--body-button{
+    width: 100%;
+    height: 30%;
+}
+
+.itemcard--button{
+    margin-top: 1%;
+    width: 100%;
+    height: 100%;
+}
