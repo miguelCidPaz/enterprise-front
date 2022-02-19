@@ -11,20 +11,29 @@ import './styles.scss';
  * @returns component react
  */
 export default function FormUser(props) {
-    //const validationOpt = { resolver: yupResolver(formSchema) }
-    const { register, handleSubmit, watch, formState: { errors } } = useForm(); 
-    /* const password = useRef({});
-    console.log(md5(password)); */
-    let pwd = watch("password");
-    console.log(pwd);
-    const onSubmit = async (data) => {console.log(JSON.stringify(data)); alert(JSON.stringify(data));}; 
-    console.log(errors);
+    const { register, handleSubmit, formState: { errors } } = useForm(); 
+    let userData = {username:'', password:'', email:''};
+    const onSubmit = async (data) => {
+        userData.username = data.username; 
+        userData.password = md5(data.password); 
+        userData.email = data.email}
+    //console.log(errors);
+    
 
     return (<>
         <form className='form--register' onSubmit={handleSubmit(onSubmit)}>
-            <input type="text" placeholder="Login" {...register("Login", {required: true, maxLength: 80})} />
-            <input type="password" placeholder="Password" {...register("Password", {required: true, maxLength: 100})} />
-            <input type="text" placeholder="Email" {...register("Email", {required: true, pattern: /^\S+@\S+$/i})} />
+            <input className='form--input' type="text" placeholder="Username" {...register("username", 
+                {required: {value: true, message:'Campo requerido'}, 
+                maxLength: {value: 80, message:'Tamaño maximo 80'}})} />
+            <input className='form--input' type="password" placeholder="Password" {...register("password", 
+                {required: {value: true, message:'Campo requerido'}, 
+                minleg: {value: 6, message:'La contraseña tiene que tener al menos 6 caracteres'},
+                maxLength: {value: 100, message:'Tamaño maximo 80'}})} />
+            {errors.password && <p className='message--errors'>{errors.password.message}</p>}
+            <input className='form--input' type="text" placeholder="Email@gmail.com" {...register("email", 
+                {required: {value: true, message:'Campo requerido'},
+                 pattern: {value: /^\S+@\S+$/i, message: "Formato no correcto"} })} />
+            {errors.email && <p className='message--errors'>{errors.email.message}</p>}
             <input type="submit" />
         </form>
         {/* <form onSubmit={e => e.preventDefault()}>
