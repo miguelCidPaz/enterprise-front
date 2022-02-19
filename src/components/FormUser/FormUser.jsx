@@ -19,6 +19,8 @@ export default function FormUser(props) {
         userData.email = data.email}
     //console.log(errors);
     
+    // get para verificar si existe o no;
+    // post para ingresar el nuevo usario;
 
     return (<>
         <form className='form--register' onSubmit={handleSubmit(onSubmit)}>
