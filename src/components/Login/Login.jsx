@@ -1,5 +1,5 @@
 
-import React, { useRef } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import md5 from 'md5';
 
@@ -34,5 +34,5 @@ import './styles.scss';
 
             <input type="submit" />
         </form>
-    );    
+    );
 }
