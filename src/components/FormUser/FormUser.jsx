@@ -6,7 +6,7 @@ import md5 from 'md5';
 import './styles.scss';
 
 /**
- * Component for loading all products of a category
+ * Component for the registration of new users
  * @params theme
  * @returns component react
  */
