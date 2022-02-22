@@ -32,6 +32,7 @@ export default function FormUser(props) {
                 ...register("username", 
                 {required: {value: true, message:'Campo requerido'}, 
                 maxLength: {value: 80, message:'Tamaño maximo 80'}})} />
+            {errors.username && <p className='message--errors'>{errors.username}</p>}
             {/* Email */}
             <input className='form--input' type="text" placeholder="Email@gmail.com" {
                 ...register("email", 
@@ -48,7 +49,9 @@ export default function FormUser(props) {
             {/* Password Repeat*/}
             <input className='form--input' type="password" placeholder="Password_repeat" {
                 ...register("password_repeat", 
-                { validate: value =>
+                { required: {value: true, message:'Campo requerido'}, 
+                minleg: {value: 6, message:'La contraseña tiene que tener al menos 6 caracteres'},
+                validate: value =>
                     value === password.current || "las contraseñas no coinciden"
                 })} />
             {errors.password_repeat && <p className='message--errors'>
