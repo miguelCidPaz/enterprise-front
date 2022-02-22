@@ -1,3 +1,9 @@
+/**
+ * This is a container for the navigation menu
+ * @param {*} props
+ * @param {String} theme dark and light mode 
+ * @returns 
+ */
 const MenuLinks = (props) => {
 
     return (

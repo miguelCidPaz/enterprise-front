@@ -1,5 +1,11 @@
 import { Link } from 'react-router-dom';
 
+/**
+ * This is the search box and it contains the icon and an input text
+ * @param {*} props
+ * @param {String} theme dark and light mode 
+ * @returns 
+ */
 const Search = (props) => {
 
     return (
