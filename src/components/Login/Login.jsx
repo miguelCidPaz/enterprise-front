@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 import md5 from 'md5';
 
 import './styles.scss';
@@ -17,7 +18,7 @@ import './styles.scss';
         userData.username = data.username; 
         userData.password = md5(data.password)};
 
-    return (
+    return (<div className='div--register'>
         <form className='form--register' onSubmit={handleSubmit(onSubmit)} >
             {/* User Name */}
             <input className='form--input' type="text" placeholder="Username" {
@@ -29,10 +30,12 @@ import './styles.scss';
                 ...register("password", 
                 {required: {value: true, message:'Campo requerido'}, 
                 minleg: {value: 6, message:'La contraseña tiene que tener al menos 6 caracteres'},
-                maxLength: {value: 100, message:'Tamaño maximo 80'}})} />
+                maxLength: {value: 20, message:'Tamaño maximo 20'}})} />
             {errors.password && <p className='message--errors'>{errors.password.message}</p>}
 
             <input type="submit" />
         </form>
+        <Link to={'/login/register'} className='button--register'>Registrar Usario</Link>
+    </div>
     );
 }
