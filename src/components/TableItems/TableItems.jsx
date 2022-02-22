@@ -14,13 +14,23 @@ const TableItems = (props) => {
                 })}
             </div>
             <div className="tableitems--pagination">
-                {numbers.map(e => {
-                    return (
-                        <div className="tableitems--pagination-container">
-                            <p>{e}</p>
+                <p className={`tableitems--pagination-control ${props.theme}`}>{"<"}</p>
+                {numbers.map((e, i) => {
+                    return (i < 6 ?
+                        <div className={`tableitems--pagination-container ${props.theme}`}>
+                            <p className={`tableitems--pagination-control ${props.theme}`}>{e}</p>
                         </div>
+                        : null
                     )
                 })}
+                {numbers.length > 6 ?
+                    <div className={`tableitems--pagination-container ${props.theme}`}>
+                        <p className={`tableitems--pagination-control ${props.theme}`}>...</p>
+                    </div>
+                    : null}
+                <div className={`tableitems--pagination-container ${props.theme}`}>
+                    <p className={`tableitems--pagination-control ${props.theme}`}>{">"}</p>
+                </div>
             </div>
         </section>
     )

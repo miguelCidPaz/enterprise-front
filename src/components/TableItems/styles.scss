@@ -1,13 +1,13 @@
 .tableitems--main{
     background-color: var(--background-color);
-    box-shadow: 0 0 3px var(--background-color-deg-1);
     position: absolute;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     border-radius: 10px;
     top: 12%;
-    right: -4%;
+    right: 10%;
     padding: 2%;
     width: 75%;
     height: 85%;
@@ -15,14 +15,32 @@
 
 .tableitems--interior-body{
     background-color: var(--background-color);
-    box-shadow: 0 0 3px var(--background-color-deg-1);
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     gap: 8%;
     padding: 10px;
     width: 100%;
     height: 100%;
     border-radius: 10px;
+}
+
+.tableitems--pagination{
+    display: flex;
+    flex-direction: row;
+    background-color: aqua;
+    border-radius: 5px;
+    gap: 10%;
+    padding: 1%;
+    width: 30%;
+    justify-content: center;
+}
+
+.tableitems--pagination-container{
+    background-color: var(--primary);
+    padding: 1%;
+    font-size: 20px;
+    color: var(--text);
 }
