@@ -26,7 +26,7 @@ export default function FormUser(props) {
     // post para ingresar el nuevo usario;
 
     return (
-        <form className='form--register' onSubmit={handleSubmit(onSubmit)} >
+        <form className='form--login' onSubmit={handleSubmit(onSubmit)} >
             {/* User Name */}
             <input className='form--input' type="text" placeholder="Username" {
                 ...register("username", 
