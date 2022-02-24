@@ -1,16 +1,18 @@
 
-import React, { useRef } from 'react';
+import React, { useRef, useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { LoginContext } from "../Login";
 import md5 from 'md5';
 
-import './styles.scss';
 
 /**
  * Component for the registration of new users
  * @params theme
  * @returns component react
  */
-export default function FormUser(props) {
+export default function FormRegister(props) {
+    // login or new user discriminator
+    const { setLogin } = useContext(LoginContext);
     const { register, handleSubmit, watch, formState: { errors } } = useForm(); 
     const password = useRef({}); // to compare and confirm the password
     password.current = watch("password", "");
@@ -20,13 +22,10 @@ export default function FormUser(props) {
         userData.password = md5(data.password); 
         userData.email = data.email};
 
-    //console.log(errors);
-    // Se verifica en from o en back?
-    // get para verificar si existe o no;
     // post para ingresar el nuevo usario;
 
-    return (
-        <form className='form--register' onSubmit={handleSubmit(onSubmit)} >
+    return (<div>
+        <form className='form--login' onSubmit={handleSubmit(onSubmit)} >
             {/* User Name */}
             <input className='form--input' type="text" placeholder="Username" {
                 ...register("username", 
@@ -59,5 +58,7 @@ export default function FormUser(props) {
             
             <input type="submit" />
         </form>
+        <button onClick={() => setLogin(true)}>Volver a Login</button>
+    </div>
     );
 }
