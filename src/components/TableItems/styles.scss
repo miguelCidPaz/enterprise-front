@@ -80,7 +80,7 @@
     }
     
     .tableitems--animation-toright{
-        animation: toright 3s;
+        animation: toright 3.5s;
         @keyframes toright {
             0%{transform: translateX(1600px);}
             50%{transform: translateX(1600px);}
