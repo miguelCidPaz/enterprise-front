@@ -11,7 +11,7 @@ const TableItems = (props) => {
 
     const numbers = [1, 2, 3, 4, 5, 6]
     const halfNumbers = Math.round(numbers.length / 2);
-    console.log(halfNumbers)
+
     return (
         <section className="tableitems--main">
             <div className="tableitems--interior-body">
