@@ -2,9 +2,14 @@ import MenuLinks from './internal-components/MenuLinks'
 import Search from './internal-components/Search'
 import './styles.scss'
 
+/**
+ * This is a container for the header
+ * @param {*} props
+ * @param {String} theme dark and light mode 
+ * @returns 
+ */
 const BodyHeader = (props) => {
 
-    console.log(props)
     return (
         <header className={`bodyheader--main ${props.theme}`}>
             <div className={`center-container-limits ${props.theme}`}>
