@@ -39,13 +39,27 @@
 
     @media (max-width:980px) {
         flex-direction: column;
+        overflow-x: hidden;
         overflow-y: scroll;
         flex-wrap: nowrap;
+        padding-top: 220px;
+        gap: 8%;
+    }
+
+    @media (max-width: 815px) {
+        padding-top: 250px;
     }
 }
 
-.tableitems--interior-body::-webkit-scrollbar-track-piece{
-    color: red;
+.tableitems--interior-body::-webkit-scrollbar{
+    background-color: var(--background-color-deg-1);
+    border-radius: 5px;
+    width: 10px;
+}
+
+.tableitems--interior-body::-webkit-scrollbar-thumb{
+    background-color: var(--text);
+    border-radius: 5px;
 }
 
 .tableitems--pagination{

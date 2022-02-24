@@ -15,7 +15,7 @@ const TableItems = (props) => {
             <div className="tableitems--interior-body">
                 {numbers.map((e, i) => {
                     return (
-                        <ItemCard theme={props.theme} index={i} />
+                        <ItemCard key={i} theme={props.theme} index={i} />
                     )
                 })}
             </div>
@@ -25,7 +25,7 @@ const TableItems = (props) => {
                 </div>
                 {numbers.map((e, i) => {
                     return (i < 6 ?
-                        <div className={`tableitems--pagination-container ${props.theme}`}>
+                        <div key={i} className={`tableitems--pagination-container ${props.theme}`}>
                             <p className={`tableitems--pagination-control ${props.theme}`}>{e}</p>
                         </div>
                         : null

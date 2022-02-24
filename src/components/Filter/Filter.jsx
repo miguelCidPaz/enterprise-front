@@ -36,9 +36,9 @@ const Filter = (props) => {
 
             <div className={`filter--container`}>
 
-                {options.map(element => {
+                {options.map((element, index) => {
                     return (
-                        <div className={`filter--container-button`}>
+                        <div key={index} className={`filter--container-button`}>
                             <button onClick={e => changeFilter(element.value)} className={`${filter[element.value] ? 'filter--enable' : 'filter--disable'} filter--button ${props.theme}`}>
                                 <div className={`${filter[element.value] ? 'filter--pilot-enable' : 'filter--pilot-disable'}`}></div>
                             </button>

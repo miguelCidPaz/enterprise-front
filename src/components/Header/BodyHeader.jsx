@@ -10,7 +10,6 @@ import './styles.scss'
  */
 const BodyHeader = (props) => {
 
-    console.log(props)
     return (
         <header className={`bodyheader--main ${props.theme}`}>
             <div className={`center-container-limits ${props.theme}`}>
