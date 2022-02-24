@@ -1,0 +1,111 @@
+.itemcard--main{
+    background-color: var(--background-color);
+    box-shadow: 0 0 3px var(--background-color-deg-1);
+    color: var(--text);
+    font-size: 15px;
+    width: 400px;
+    height: 150px;
+    max-height: auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px 5px 0px 0px;
+
+    &:hover{
+        box-shadow: 0 0 6px var(--background-color-deg-1);
+    }
+
+    @media (max-width:1280px) {
+        width: 300px;
+        height: 150px;
+        font-size: 12px;
+    }
+
+    @media (max-width:980p) {
+        font-size: 15px;
+        width: 400px;
+        height: 150px;
+    }
+
+    @media (max-width: 350px) {
+        width: 250px;
+        height: 150px;
+        font-size: 12px;
+    }
+    
+}
+
+$j:1;
+@for $i from 1 to 7 {
+    $time:2.0 + $i;
+
+    @if $i > 3 {
+    $time:2.0 + $j;
+        .itemcard--item-#{$i}{
+            animation: toRight #{$time}s;
+        }
+        $j: $j +1
+    }@else{
+        .itemcard--item-#{$i}{
+            animation: toRight #{$time}s;
+        }
+    }
+}
+
+@keyframes toRight {
+    0%{transform: translateX(1600px);}
+    50%{transform: translateX(1600px);}
+    80%{transform: translateX(-50px);}
+    100%{transform: translateX(0px);}
+}
+
+.itemcard--body-container{
+    display: flex;
+    flex-direction: row;
+    height: 80%;
+    padding-left: 3%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.itemcard--body-left{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5%;
+}
+
+.itemcard--body-right{
+    width: 21%;
+
+    img{
+        object-fit: cover;
+        width: 100%;
+    }
+}
+
+.itemcard--body-button{
+    width: 100%;
+    height: 30%;
+}
+
+.itemcard--button{
+    border: 0px;
+    outline: none;
+    font-weight: bolder;
+    background-color: var(--background-color);
+    box-shadow: 0 0 3px var(--background-color-deg-1);
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    border-radius: 0px 0px 5px 5px;
+    transition-duration: 0.3s;
+    color: var(--text);
+
+    &:hover{
+        background-color: var(--primary);
+        box-shadow: 0 0 6px(--primary-deg-1);
+        color: var(--text);
+    }
+}

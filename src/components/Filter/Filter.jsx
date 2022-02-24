@@ -28,7 +28,7 @@ const Filter = (props) => {
     ]
 
     return (
-        <section className={`filter--main ${props.theme}`} className={show ? `filter--main-show ${props.theme}` : `filter--main ${props.theme}`}>
+        <section className={show ? `filter--main-show ${props.theme}` : `filter--main ${props.theme}`}>
 
             <button onClick={e => setShow(!show)} className={`filter--button-show`}>
                 <p className={`filter--button-show-label`}>Filter</p>
@@ -36,9 +36,9 @@ const Filter = (props) => {
 
             <div className={`filter--container`}>
 
-                {options.map(element => {
+                {options.map((element, index) => {
                     return (
-                        <div className={`filter--container-button`}>
+                        <div key={index} className={`filter--container-button`}>
                             <button onClick={e => changeFilter(element.value)} className={`${filter[element.value] ? 'filter--enable' : 'filter--disable'} filter--button ${props.theme}`}>
                                 <div className={`${filter[element.value] ? 'filter--pilot-enable' : 'filter--pilot-disable'}`}></div>
                             </button>
