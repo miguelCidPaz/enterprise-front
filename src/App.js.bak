@@ -1,11 +1,7 @@
 import BodyHeader from "./components/Header/BodyHeader";
 import LandPage from "./components/LandPage/LandPage";
 import Ranking from './components/Ranking/Ranking';
-<<<<<<< HEAD
 import Login from './components/Login/Login';
-=======
-import FormUser from './components/FormUser/FormUser';
->>>>>>> des
 import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 
