@@ -5,6 +5,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
     border-radius: 10px;
     top: 12%;
     right: 10%;
@@ -29,13 +30,15 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     flex-wrap: wrap;
+    overflow: hidden;
     gap: 8%;
     padding: 10px;
     width: 100%;
     height: 100%;
     border-radius: 10px;
+
+    
 
     @media (max-width:980px) {
         flex-direction: column;
@@ -66,26 +69,59 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    padding-top: 20px;
     width: 100%;
+
+    .tableitems--animation-toleft{
+        animation: toleft 3s;
+        @keyframes toleft {
+            0%{transform: translateX(-1600px);}
+            50%{transform: translateX(-1600px);}
+            80%{transform: translateX(30px);}
+            100%{transform: translateX(0px);}
+        }
+    }
     
+    .tableitems--animation-toright{
+        animation: toright 3s;
+        @keyframes toright {
+            0%{transform: translateX(1600px);}
+            50%{transform: translateX(1600px);}
+            80%{transform: translateX(-30px);}
+            100%{transform: translateX(0px);}
+        }
+    }
+
 }
 
 .tableitems--pagination-container{
-    background-color: var(--primary);
+    background-color: var(--background-color);
+    box-shadow: 0 0 3px inset var(--primary);
     margin: 10px;
     width: 30px;
     height:30px;
     border-radius: 50%;
     font-size: 20px;
     text-align: center;
+    transition-duration: 0.3s;
     cursor: pointer;    
     
     @media (max-width:815px) {
         margin-top: 20px;
     }
+
+    &:hover{
+        box-shadow: 0 0 10px inset var(--primary);
+    }
 }
 
 .tableitems--pagination-control{
-    color: white;
+    color: var(--text);
     cursor: pointer;
 }
+
+
+
+
+
+

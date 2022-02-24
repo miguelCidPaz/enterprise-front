@@ -10,6 +10,8 @@ import './styles.scss';
 const TableItems = (props) => {
 
     const numbers = [1, 2, 3, 4, 5, 6]
+    const halfNumbers = Math.round(numbers.length / 2);
+    console.log(halfNumbers)
     return (
         <section className="tableitems--main">
             <div className="tableitems--interior-body">
@@ -20,23 +22,25 @@ const TableItems = (props) => {
                 })}
             </div>
             <div className="tableitems--pagination">
-                <div className={`tableitems--pagination-container ${props.theme}`}>
+                <div className={`tableitems--animation-toleft tableitems--pagination-container ${props.theme}`}>
                     <p className={`tableitems--pagination-control ${props.theme}`}>{"<"}</p>
                 </div>
                 {numbers.map((e, i) => {
                     return (i < 6 ?
-                        <div key={i} className={`tableitems--pagination-container ${props.theme}`}>
+                        <div key={i} className={halfNumbers > i
+                            ? `tableitems--animation-toleft tableitems--pagination-container ${props.theme}`
+                            : `tableitems--animation-toright tableitems--pagination-container ${props.theme}`}>
                             <p className={`tableitems--pagination-control ${props.theme}`}>{e}</p>
                         </div>
                         : null
                     )
                 })}
                 {numbers.length > 6 ?
-                    <div className={`tableitems--pagination-container ${props.theme}`}>
+                    <div className={`tableitems--animation-toright tableitems--pagination-container ${props.theme}`}>
                         <p className={`tableitems--pagination-control ${props.theme}`}>...</p>
                     </div>
                     : null}
-                <div className={`tableitems--pagination-container ${props.theme}`}>
+                <div className={`tableitems--animation-toright tableitems--pagination-container ${props.theme}`}>
                     <p className={`tableitems--pagination-control ${props.theme}`}>{">"}</p>
                 </div>
             </div>

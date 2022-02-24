@@ -28,7 +28,7 @@ const Filter = (props) => {
     ]
 
     return (
-        <section className={`filter--main ${props.theme}`} className={show ? `filter--main-show ${props.theme}` : `filter--main ${props.theme}`}>
+        <section className={show ? `filter--main-show ${props.theme}` : `filter--main ${props.theme}`}>
 
             <button onClick={e => setShow(!show)} className={`filter--button-show`}>
                 <p className={`filter--button-show-label`}>Filter</p>

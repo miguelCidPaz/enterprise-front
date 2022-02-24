@@ -101,11 +101,11 @@ $j:1;
     height: 100%;
     border-radius: 0px 0px 5px 5px;
     transition-duration: 0.3s;
-    color: white;
+    color: var(--text);
 
     &:hover{
         background-color: var(--primary);
         box-shadow: 0 0 6px(--primary-deg-1);
-        color: white;
+        color: var(--text);
     }
 }
