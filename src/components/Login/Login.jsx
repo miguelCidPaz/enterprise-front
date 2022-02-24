@@ -20,6 +20,6 @@ export default function Login(props) {
         <LoginContext.Provider value={{login, setLogin}}>
             {login ? <FormLogin theme={props.theme} /> : <FormRegister theme={props.theme} />}
         </LoginContext.Provider>
-        </div>
+    </div>
     );
 }

@@ -4,10 +4,9 @@ import { useForm } from 'react-hook-form';
 import { LoginContext } from "../Login";
 import md5 from 'md5';
 
-//import './styles.scss';
 
 /**
- * Component login
+ * Component form login
  * @params theme
  * @returns component react
  */
@@ -20,6 +19,8 @@ import md5 from 'md5';
     const onSubmit = async (data) => {
         userData.username = data.username; 
         userData.password = md5(data.password)};
+
+    // get para recuperar el usario;
 
     return (<div>
         <form className='form--login' onSubmit={handleSubmit(onSubmit)} >

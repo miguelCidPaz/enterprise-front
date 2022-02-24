@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form';
 import { LoginContext } from "../Login";
 import md5 from 'md5';
 
-//import './styles.scss';
 
 /**
  * Component for the registration of new users
@@ -23,9 +22,6 @@ export default function FormRegister(props) {
         userData.password = md5(data.password); 
         userData.email = data.email};
 
-    //console.log(errors);
-    // Se verifica en from o en back?
-    // get para verificar si existe o no;
     // post para ingresar el nuevo usario;
 
     return (<div>
