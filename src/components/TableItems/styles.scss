@@ -27,30 +27,27 @@
 
 .tableitems--interior-body{
     background-color: var(--background-color);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     overflow: hidden;
     gap: 8%;
     padding: 10px;
     width: 100%;
     height: 100%;
     border-radius: 10px;
-
+    margin-left: 20px;
     
 
     @media (max-width:980px) {
-        flex-direction: column;
         overflow-x: hidden;
         overflow-y: scroll;
-        flex-wrap: nowrap;
-        padding-top: 220px;
-        gap: 8%;
+        grid-template-columns: 1fr;
+        padding-left: 20%;
     }
 
     @media (max-width: 815px) {
-        padding-top: 250px;
+        padding: 10px;
+        padding-top: 50px;
     }
 }
 
