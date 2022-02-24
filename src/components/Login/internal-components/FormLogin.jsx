@@ -40,7 +40,6 @@ import md5 from 'md5';
             <input type="submit" />
         </form>
         <button onClick={() => setLogin(false)}>Registrarse</button>
-       {/*  <button onClick={() => setLogin(null)}>Cambiar Contraseña</button> */}
     </div>
     );
 }

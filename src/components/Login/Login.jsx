@@ -15,8 +15,7 @@ export const LoginContext = createContext(true);
  */
 export default function Login(props) {
     const [login, setLogin] = useState(true);
-    console.log(login);
-    console.log(LoginContext);
+
     return (<div className='div--login'>
         <LoginContext.Provider value={{login, setLogin}}>
             {login ? <FormLogin theme={props.theme} /> : <FormRegister theme={props.theme} />}
