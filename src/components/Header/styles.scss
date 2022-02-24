@@ -29,11 +29,10 @@
     outline: none;
     text-decoration: none;
     text-align: center;
-    white-space: normal;
     background-color: var(--primary);
     box-shadow: 0 0 3px var(--background-color-deg-1), 
     0 0 4px var(--primary-deg-1) inset;
-    height: 35px;
+    height: 15px;
     width: 35px;
     font-size: 30px;
     font-weight: bolder;
@@ -41,6 +40,7 @@
     border-radius: 5px;
     cursor: pointer;
     transition-duration: 0.2s;
+    padding-bottom: 40px;
 }
 
 .bodyheader--icon-enterprise:hover{
