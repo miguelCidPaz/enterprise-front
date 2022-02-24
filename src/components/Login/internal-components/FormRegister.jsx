@@ -3,14 +3,14 @@ import React, { useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import md5 from 'md5';
 
-import './styles.scss';
+//import './styles.scss';
 
 /**
  * Component for the registration of new users
  * @params theme
  * @returns component react
  */
-export default function FormUser(props) {
+export default function FormRegister(props) {
     const { register, handleSubmit, watch, formState: { errors } } = useForm(); 
     const password = useRef({}); // to compare and confirm the password
     password.current = watch("password", "");

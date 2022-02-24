@@ -1,23 +1,27 @@
 
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { LoginContext } from "../Login";
 import md5 from 'md5';
 
-import './styles.scss';
+//import './styles.scss';
 
 /**
  * Component login
  * @params theme
  * @returns component react
  */
- export default function FormUser(props) {
+ export default function FormLogin(props) {
+    // login or new user discriminator
+    const { setLogin } = useContext(LoginContext);
+
     const { register, handleSubmit, formState: { errors } } = useForm(); 
     let userData = {username:'', password:''};
     const onSubmit = async (data) => {
         userData.username = data.username; 
         userData.password = md5(data.password)};
 
-    return (
+    return (<div>
         <form className='form--login' onSubmit={handleSubmit(onSubmit)} >
             {/* User Name */}
             <input className='form--input' type="text" placeholder="Username" {
@@ -35,5 +39,8 @@ import './styles.scss';
 
             <input type="submit" />
         </form>
+        <button onClick={() => setLogin(false)}>Registrarse</button>
+       {/*  <button onClick={() => setLogin(null)}>Cambiar Contraseña</button> */}
+    </div>
     );
 }

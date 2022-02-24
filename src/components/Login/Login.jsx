@@ -1,19 +1,26 @@
 
-import React from 'react';
-import FormUser from './internal-components/FormUser'
+import React, { createContext, useState } from 'react';
+import FormLogin from './internal-components/FormLogin'
 import FormRegister from './internal-components/FormRegister'
 
 import './styles.scss';
+
+// login or new user discriminator
+export const LoginContext = createContext(true);  
 
 /**
  * Component login
  * @params theme
  * @returns component react
  */
- export default function FormUser(props) {
-    let login = true;
-
-    return (
-        {login ? <FormUser theme={props.theme}> : <FormRegister theme={props.theme}>}
+export default function Login(props) {
+    const [login, setLogin] = useState(true);
+    console.log(login);
+    console.log(LoginContext);
+    return (<div className='div--login'>
+        <LoginContext.Provider value={{login, setLogin}}>
+            {login ? <FormLogin theme={props.theme} /> : <FormRegister theme={props.theme} />}
+        </LoginContext.Provider>
+        </div>
     );
 }
