@@ -1,7 +1,7 @@
 import BodyHeader from "./components/Header/BodyHeader";
 import LandPage from "./components/LandPage/LandPage";
 import Ranking from './components/Ranking/Ranking';
-import FormUser from './components/FormUser/FormUser';
+import Login from './components/Login/Login';
 import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 
@@ -26,7 +26,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<LandPage theme={theme} />} />
         <Route path='/ranking' element={<Ranking theme={theme} />} />
-        <Route path='/login/register' element={<FormUser theme={theme} />} />
+        <Route path='/login' element={<Login theme={theme} />} />
       </Routes>
     </div>
 
