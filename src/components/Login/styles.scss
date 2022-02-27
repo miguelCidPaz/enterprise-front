@@ -20,6 +20,10 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
+
+    @media (max-height:700px) {
+        padding-top: 100px;
+    }
 }
 
 .form--main{
