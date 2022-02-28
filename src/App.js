@@ -4,6 +4,7 @@ import Ranking from './components/Ranking/Ranking';
 import Login from './components/Login/Login';
 import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
+import Perfil from "./components/Perfil/Perfil";
 
 const App = () => {
   const [theme, setTheme] = useState('dark');
@@ -27,6 +28,7 @@ const App = () => {
         <Route path='/' element={<LandPage theme={theme} />} />
         <Route path='/ranking' element={<Ranking theme={theme} />} />
         <Route path='/login' element={<Login theme={theme} />} />
+        <Route path='/perfil' element={<Perfil theme={theme} />} />
       </Routes>
     </div>
 
