@@ -83,7 +83,7 @@
     width: 100%;
 
     .tableitems--animation-toleft{
-        animation: toleft 3s;
+        animation: toleft 1s;
         @keyframes toleft {
             0%{transform: translateX(-1600px);}
             50%{transform: translateX(-1600px);}
@@ -93,7 +93,7 @@
     }
     
     .tableitems--animation-toright{
-        animation: toright 3.5s;
+        animation: toright 1.5s;
         @keyframes toright {
             0%{transform: translateX(1600px);}
             50%{transform: translateX(1600px);}

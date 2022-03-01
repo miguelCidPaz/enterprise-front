@@ -9,7 +9,7 @@
     gap: 4%;
     z-index: 2;
     transition-duration: 0.2s;
-    animation: deployMenu 1.2s ease forwards;
+    animation: deployMenu 1.0s ease forwards;
 }
 
 .bodyheader--body-search{
@@ -21,7 +21,7 @@
     width: 50%;
     transition-duration: 0.2s;
     transform: translateX(-500px);
-    animation: popLeft 2s ease forwards;
+    animation: popLeft 1s ease forwards;
 }
 
 .bodyheader--icon-enterprise{
@@ -88,6 +88,7 @@
 
 .bodyheader--menu-link{
     color: var(--text);
+    text-decoration: none;
     width: 50%;
     font-size: 20px;
     font-weight: bolder;
@@ -98,15 +99,15 @@
 }
 
 .link-1{
-    animation: popRight 2s ease forwards;
+    animation: popRight 1s ease forwards;
 }
 
 .link-2{
-    animation: popRight 2.1s ease forwards;
+    animation: popRight 1.1s ease forwards;
 }
 
 .link-3{
-    animation: popRight 2.2s ease forwards;
+    animation: popRight 1.2s ease forwards;
 }
 
 .bodyheader--menu-container{
@@ -129,7 +130,7 @@
     border-radius: 5px;
     background-color: var(--text);
     transition-duration: 0.3s;
-    animation: 2s popRight ease forwards;
+    animation: 1s popRight ease forwards;
 }
 
 .bodyheader--menu-mobile::after,
@@ -143,16 +144,16 @@
     border-radius: 5px;
     background-color: var(--text);
     transition-duration: 0.3s;
-    animation: 2.1s popRight ease forwards;
+    animation: 1.1s popRight ease forwards;
 }
 
 .bodyheader--body-search::after{
-    animation: 2.1s popRight ease forwards;
+    animation: 1.1s popRight ease forwards;
 }
 
 .bodyheader--menu-mobile::before{
     top: 20px;
-    animation: 2.2s popRight ease forwards;
+    animation: 1.2s popRight ease forwards;
 }
 
 .bodyheader--menu-link:hover{
