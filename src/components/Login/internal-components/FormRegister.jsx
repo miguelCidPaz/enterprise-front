@@ -28,7 +28,7 @@ export default function FormRegister(props) {
     return (<div className='form--main'>
         <form className='form--login' onSubmit={handleSubmit(onSubmit)} >
             {/* User Name */}
-            <input spellcheck="false" className='form--input' type="text" placeholder="Username" {
+            <input spellCheck="false" className='form--input' type="text" placeholder="Username" {
                 ...register("username",
                     {
                         required: { value: true, message: 'Campo requerido' },
@@ -36,7 +36,7 @@ export default function FormRegister(props) {
                     })} />
             {errors.username && <p className='login--message-errors'>{errors.username}</p>}
             {/* Email */}
-            <input spellcheck="false" className='form--input' type="text" placeholder="Email@gmail.com" {
+            <input spellCheck="false" className='form--input' type="text" placeholder="Email@gmail.com" {
                 ...register("email",
                     {
                         required: { value: true, message: 'Campo requerido' },
@@ -44,7 +44,7 @@ export default function FormRegister(props) {
                     })} />
             {errors.email && <p className='login--message-errors'>{errors.email.message}</p>}
             {/* Password */}
-            <input spellcheck="false" className='form--input' type="password" placeholder="Password" {
+            <input spellCheck="false" className='form--input' type="password" placeholder="Password" {
                 ...register("password",
                     {
                         required: { value: true, message: 'Campo requerido' },
@@ -53,7 +53,7 @@ export default function FormRegister(props) {
                     })} />
             {errors.password && <p className='login--message-errors'>{errors.password.message}</p>}
             {/* Password Repeat*/}
-            <input spellcheck="false" className='form--input' type="password" placeholder="Password_repeat" {
+            <input spellCheck="false" className='form--input' type="password" placeholder="Password_repeat" {
                 ...register("password_repeat",
                     {
                         required: { value: true, message: 'Campo requerido' },

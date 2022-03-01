@@ -26,7 +26,7 @@ export default function FormLogin(props) {
     return (<div className='form--main'>
         <form className='form--login' onSubmit={handleSubmit(onSubmit)} >
             {/* User Name */}
-            <input spellcheck="false" className='form--input' type="text" placeholder="Username" {
+            <input spellCheck="false" className='form--input' type="text" placeholder="Username" {
                 ...register("username",
                     {
                         required: { value: true, message: 'Campo requerido' },
@@ -34,7 +34,7 @@ export default function FormLogin(props) {
                     })} />
             {errors.username && <p className='login--message-errors'>{errors.username.message}</p>}
             {/* Password */}
-            <input spellcheck="false" className='form--input' type="password" placeholder="Password" {
+            <input spellCheck="false" className='form--input' type="password" placeholder="Password" {
                 ...register("password",
                     {
                         required: { value: true, message: 'Campo requerido' },

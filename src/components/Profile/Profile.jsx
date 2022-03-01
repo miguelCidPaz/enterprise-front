@@ -1,6 +1,6 @@
 import './styles.scss';
 
-const Perfil = () => {
+const Profile = () => {
 
     return (
         <section className='perfil--main'>
@@ -24,4 +24,4 @@ const Perfil = () => {
     )
 }
 
-export default Perfil;
+export default Profile;
