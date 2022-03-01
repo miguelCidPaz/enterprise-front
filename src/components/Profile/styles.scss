@@ -13,7 +13,7 @@
     100%{transform: translateX(0px);}
 }
 
-.perfil--main{
+.profile--main{
     width: 100%;
     height: 100vh;
     padding-top: 5%;
@@ -36,7 +36,7 @@
     }
 }
 
-.perfil--main-container{
+.profile--main-container{
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -60,14 +60,14 @@
     }
 }
 
-.perfil--slot{
+.profile--slot{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     width: 100%;
 }
 
-.perfil--label{
+.profile--label{
     font-weight: bolder;
     color: var(--primary);
     text-shadow: 0 0 4px var(--primary-deg-1);
@@ -83,7 +83,7 @@
     }
 }
 
-.perfil--text{
+.profile--text{
     font-size: 35px;
     font-weight: bolder;
     color: var(--text);
@@ -99,7 +99,7 @@
     }
 }
 
-.perfil--title{
+.profile--title{
     font-size: 35px;
     margin-top: 10%;
     text-transform: uppercase;
@@ -114,7 +114,7 @@
     }
 }
 
-.perfil--button, .perfil--button-left{
+.profile--button, .profile--button-left{
     border: none;
     outline: none;
     width: 60%;
@@ -145,11 +145,11 @@
     }
 }
 
-.perfil--button-left{
+.profile--button-left{
     animation: popLeft 1s forwards;
 }
 
-.perfil--button{
+.profile--button{
     color: var(--text);
     box-shadow: 0 0 3px red;
     animation: popRight 1s forwards;

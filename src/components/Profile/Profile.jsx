@@ -3,22 +3,22 @@ import './styles.scss';
 const Profile = () => {
 
     return (
-        <section className='perfil--main'>
-            <div className='perfil--main-container'>
-                <div className='perfil--slot'>
-                    <p className='perfil--label'>Your Name: </p>
-                    <p className='perfil--text'>MyName</p>
+        <section className='profile--main'>
+            <div className='profile--main-container'>
+                <div className='profile--slot'>
+                    <p className='profile--label'>Your Name: </p>
+                    <p className='profile--text'>MyName</p>
                 </div>
-                <div className='perfil--slot'>
-                    <p className='perfil--label'>Your Email: </p>
-                    <p className='perfil--text'>MyEmail</p>
+                <div className='profile--slot'>
+                    <p className='profile--label'>Your Email: </p>
+                    <p className='profile--text'>MyEmail</p>
                 </div>
 
 
-                <p className='perfil--text perfil--title'>Acciones</p>
+                <p className='profile--text profile--title'>Acciones</p>
 
-                <button className='perfil--button-left'>Ver tus empresas</button>
-                <button className='perfil--button'>Log Out</button>
+                <button className='profile--button-left'>Ver tus empresas</button>
+                <button className='profile--button'>Log Out</button>
             </div>
         </section>
     )
