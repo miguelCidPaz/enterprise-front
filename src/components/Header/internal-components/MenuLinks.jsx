@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 /**
  * This is a container for the navigation menu
  * @param {*} props
@@ -9,8 +11,8 @@ const MenuLinks = (props) => {
     return (
         <nav className="bodyheader--menu-main">
             <div className="bodyheader--menu-container">
-                <p className="bodyheader--menu-link link-1">Registro</p>
-                <p className="bodyheader--menu-link link-2">Ranking</p>
+                <Link to={'/Login'} className="bodyheader--menu-link link-1">Registro</Link>
+                <Link to={'/Ranking'} className="bodyheader--menu-link link-2">Ranking</Link>
                 <button id="switch-ligths"
                     className="bodyheader--menu-link link-3"
                     onClick={e => props.turnLight(props.theme)}>
