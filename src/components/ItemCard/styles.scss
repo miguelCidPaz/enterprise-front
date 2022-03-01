@@ -36,10 +36,10 @@
 
 $j:1;
 @for $i from 1 to 7 {
-    $time:2.0 + $i;
+    $time:1.0 + $i;
 
     @if $i > 3 {
-    $time:2.0 + $j;
+    $time:1.0 + $j;
         .itemcard--item-#{$i}{
             animation: toRight #{$time}s;
         }
