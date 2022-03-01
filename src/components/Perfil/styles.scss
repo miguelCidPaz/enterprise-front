@@ -1,0 +1,155 @@
+
+@keyframes popRight {
+    0%{transform: translateX(1600px);}
+    50%{transform: translateX(1600px);}
+    80%{transform: translateX(-110px);}
+    100%{transform: translateX(0px);}
+}
+
+@keyframes popLeft {
+    0%{transform: translateX(-1600px);}
+    50%{transform: translateX(-1600px);}
+    80%{transform: translateX(110px);}
+    100%{transform: translateX(0px);}
+}
+
+.perfil--main{
+    width: 100%;
+    height: 100vh;
+    padding-top: 5%;
+    background-color: var(--background-color);
+        
+    @media (max-width:900px) {
+        padding-top: 15%;
+    }
+
+    @media (max-width:815px) {
+        padding-top: 30%;
+    }
+
+    @media (max-width:425px) {
+        padding-top: 50%;
+    }
+
+    @media (max-width:385px) {
+        padding-top: 60%;
+    }
+}
+
+.perfil--main-container{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 6%;
+    width: 50%;
+
+    @media (max-height:565px) {
+        gap: 0px;
+    }   
+    @media (max-width:400px) {
+        height: 400px;
+    }
+    
+    @media (max-width:900px) {
+        margin-top: 1%;
+        width: 100%;
+        height: 300px;
+    }
+}
+
+.perfil--slot{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.perfil--label{
+    font-weight: bolder;
+    color: var(--primary);
+    text-shadow: 0 0 4px var(--primary-deg-1);
+    font-size: 35px;
+    animation: popLeft 1s forwards;
+
+    @media (max-height:565px) {
+        font-size: 15px;
+    }
+
+    @media (max-width:565px) {
+        font-size: 15px;
+    }
+}
+
+.perfil--text{
+    font-size: 35px;
+    font-weight: bolder;
+    color: var(--text);
+    text-shadow: 0 0 4px var(--text-deg-1);
+    animation: popRight 1s forwards;
+
+    @media (max-height:565px) {
+        font-size: 15px;
+    }
+
+    @media (max-width:565px) {
+        font-size: 15px;
+    }
+}
+
+.perfil--title{
+    font-size: 35px;
+    margin-top: 10%;
+    text-transform: uppercase;
+    animation: popLeft 1s forwards;
+
+    @media (max-height:565px) {
+        margin-top: 5%;
+    }
+
+    @media (max-width:400px) {
+        font-size: 25px;
+    }
+}
+
+.perfil--button, .perfil--button-left{
+    border: none;
+    outline: none;
+    width: 60%;
+    height: 50px;
+    margin-top: 10px;
+    background-color: transparent;
+    color: var(--text);
+    box-shadow: 0 0 3px var(--primary);
+    font-size: 30px;
+    padding-bottom: 15px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition-duration: 0.2s;
+
+    &:hover{
+        background-color: var(--primary);
+        box-shadow: 0 0 13px var(--primary);
+    }
+
+    @media (max-width:900px) {
+        font-size: 15px;
+        height: 30px;
+    }
+
+    @media (max-width:400px) {
+        width: 100%;
+    }
+}
+
+.perfil--button-left{
+    animation: popLeft 1s forwards;
+}
+
+.perfil--button{
+    
+    animation: popRight 1s forwards;
+}
