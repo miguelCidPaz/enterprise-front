@@ -35,10 +35,16 @@
 }
 
 $j:0.1;
+$o:1;
 @for $i from 1 to 7 {
-    $time:0.5 + $i;
+    $time:$o;
 
-    @if $i > 3 {
+    .itemcard--item-#{$i}{
+        animation: toRight #{$time}s;
+    }
+
+    $o:$o + 0.2;
+/*     @if $i > 3 {
     $time:1.0 + $j;
         .itemcard--item-#{$i}{
             animation: toRight #{$time}s;
@@ -48,7 +54,7 @@ $j:0.1;
         .itemcard--item-#{$i}{
             animation: toRight #{$time}s;
         }
-    }
+    } */
 }
 
 @keyframes toRight {
