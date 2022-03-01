@@ -17,9 +17,8 @@ const Perfil = () => {
 
                 <p className='perfil--text perfil--title'>Acciones</p>
 
-                <button className='perfil--button'>Crear una Empresa</button>
-                <button className='perfil--button-left'>Ver tus Empresa</button>
-                <button className='perfil--button'>Borrar Empresa</button>
+                <button className='perfil--button-left'>Ver tus empresas</button>
+                <button className='perfil--button'>Log Out</button>
             </div>
         </section>
     )

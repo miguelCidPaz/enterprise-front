@@ -150,6 +150,13 @@
 }
 
 .perfil--button{
-    
+    color: var(--text);
+    box-shadow: 0 0 3px red;
     animation: popRight 1s forwards;
+
+    &:hover{
+        background-color: red;
+        color: white;
+        box-shadow: 0 0 13px red;
+    }
 }
