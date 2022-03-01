@@ -24,6 +24,10 @@
     @media (max-height:700px) {
         padding-top: 100px;
     }
+    
+    @media (max-height:550px) {
+        padding-top: 150px;
+    }
 }
 
 .form--main{
@@ -81,7 +85,7 @@
 .login--button{
     border: none;
     outline: none;
-    width: 10%;
+    width: 15%;
     height: 45px;
     font-size: 30px;
     font-weight: bolder;
