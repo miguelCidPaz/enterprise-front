@@ -34,15 +34,15 @@ export default function FormRegister(props) {
                         required: { value: true, message: 'Campo requerido' },
                         maxLength: { value: 80, message: 'Tamaño maximo 80' }
                     })} />
-            {errors.username && <p className='login--message-errors'>{errors.username}</p>}
+            {errors.username && <div className='login--message-errors'><p >{errors.username.message}</p></div>}
             {/* Email */}
             <input spellCheck="false" className='form--input' type="text" placeholder="Email@gmail.com" {
                 ...register("email",
                     {
                         required: { value: true, message: 'Campo requerido' },
-                        pattern: { value: /^\S+@\S+$/i, message: "Formato no correcto" }
+                        pattern: { value: /^\S+@\S+$/i, message: 'Formato no correcto' }
                     })} />
-            {errors.email && <p className='login--message-errors'>{errors.email.message}</p>}
+            {errors.email && <div className='login--message-errors'><p >{errors.email.message}</p></div>}
             {/* Password */}
             <input spellCheck="false" className='form--input' type="password" placeholder="Password" {
                 ...register("password",
@@ -51,18 +51,18 @@ export default function FormRegister(props) {
                         minleg: { value: 6, message: 'La contraseña tiene que tener al menos 6 caracteres' },
                         maxLength: { value: 100, message: 'Tamaño maximo 80' }
                     })} />
-            {errors.password && <p className='login--message-errors'>{errors.password.message}</p>}
+            {errors.password && <div className='login--message-errors'><p >{errors.password.message}</p></div>}
             {/* Password Repeat*/}
-            <input spellCheck="false" className='form--input' type="password" placeholder="Password_repeat" {
-                ...register("password_repeat",
+
+            <input spellCheck="false" className='form--input' type="password" placeholder="Password_Repeat" {
+                ...register("passwordRepeat",
                     {
                         required: { value: true, message: 'Campo requerido' },
                         minleg: { value: 6, message: 'La contraseña tiene que tener al menos 6 caracteres' },
                         validate: value =>
                             value === password.current || "las contraseñas no coinciden"
                     })} />
-            {errors.password_repeat && <p className='login--message-errors'>
-                {errors.password_repeat.message}</p>}
+            {errors.passwordRepeat && <div className='login--message-errors'><p >{errors.passwordRepeat.message}</p></div>}
 
             <input type="submit" className='login--button' />
         </form>
