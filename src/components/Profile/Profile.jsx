@@ -10,10 +10,10 @@ const Profile = () => {
         <section className='profile--main'>
             {viewItems ? <div className='profile--main-enterprises'>
                 <div className="profile--main-center">
+                    <button className='profile--button-left profile--button-center' onClick={e => setViewItems(!viewItems)}>Volver a perfil</button>
                     {arr.map((e, i) => {
                         return <ItemCard key={i} index={i} />
                     })}
-                    <button className='profile--button-left profile--button-center' onClick={e => setViewItems(!viewItems)}>Volver a perfil</button>
                 </div>
             </div> : <div className={viewItems ? 'profile--main-container profile--main-container-toright' : 'profile--main-container'}>
                 <div className='profile--slot'>
