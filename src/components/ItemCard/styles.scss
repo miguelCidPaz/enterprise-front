@@ -5,6 +5,7 @@
     font-size: 15px;
     width: 400px;
     height: 150px;
+    margin: auto;
     max-height: auto;
     display: flex;
     flex-direction: column;
@@ -112,6 +113,6 @@ $o:1;
     &:hover{
         background-color: var(--primary);
         box-shadow: 0 0 6px(--primary-deg-1);
-        color: var(--text);
+        color: white;
     }
 }

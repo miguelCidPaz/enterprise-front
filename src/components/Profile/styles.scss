@@ -34,16 +34,19 @@
     @media (max-width:385px) {
         padding-top: 60%;
     }
+
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
-.profile--main-container{
+.profile--main-container, .profile--main-container-toright{
     margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
-    margin-top: 6%;
+    gap: 50px;
+    margin-top: 25%;
     width: 50%;
 
     @media (max-height:565px) {
@@ -60,10 +63,67 @@
     }
 }
 
+.profile--main-enterprises{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+    background-color: red;
+}
+
+.profile--main-container-toright{
+    animation: 1s pop forwards;
+
+    @keyframes pop {
+        0%{transform: translateX(0px);}
+        100%{transform: translateX(2000px);}
+    }
+}
+
+.profile--main-center{
+    position: absolute;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    top: 19%;
+    left: 20%;
+    width: 50%;
+    height: 70%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    @media (max-width:900px) {
+        top: 20%;
+        align-items: baseline;
+    }
+    @media (max-width:760px) {
+        top: 30%;
+        width: 99%;
+        left: 1%;
+        align-items: baseline;
+    }
+}
+
+.profile--main-center::-webkit-scrollbar{
+    background-color: var(--background-color-deg-1);
+    border-radius: 5px;
+    width: 10px;
+}
+
+.profile--main-center::-webkit-scrollbar-thumb{
+    background-color: var(--text);
+    border-radius: 5px;
+}
+
 .profile--slot{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    margin-top: -200px;
+    margin-left: 10%;
     width: 100%;
 }
 
@@ -147,6 +207,10 @@
 
 .profile--button-left{
     animation: popLeft 1s forwards;
+    
+    &:hover{
+        color: white;
+    }
 }
 
 .profile--button{
@@ -159,4 +223,10 @@
         color: white;
         box-shadow: 0 0 13px red;
     }
+}
+
+.profile--button-center{
+    width: 50%;
+    margin-left: 30%;
+    margin-top: -10px;
 }
