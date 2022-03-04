@@ -1,7 +1,6 @@
 
 import React, { useRef, useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { LoginContext } from "../Login";
 import md5 from 'md5';
 
 
@@ -12,7 +11,6 @@ import md5 from 'md5';
  */
 export default function FormRegister(props) {
     // login or new user discriminator
-    const { setLogin } = useContext(LoginContext);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const password = useRef({}); // to compare and confirm the password
     password.current = watch("password", "");
@@ -66,7 +64,7 @@ export default function FormRegister(props) {
 
             <input type="submit" className='login--button' />
         </form>
-        <button className='login--button login--navigation' onClick={() => setLogin(true)}>Volver a Login</button>
+        <button className='login--button login--navigation' onClick={() => props.setView(true)}>Volver a Login</button>
     </div>
     );
 }

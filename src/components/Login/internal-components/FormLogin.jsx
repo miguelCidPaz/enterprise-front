@@ -1,7 +1,6 @@
-
-import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { LoginContext } from "../Login";
+import { useContext, useState } from 'react'
+import { Context } from '../ProviderLogin'
 import md5 from 'md5';
 
 
@@ -12,9 +11,8 @@ import md5 from 'md5';
  */
 export default function FormLogin(props) {
     // login or new user discriminator
-    const { setLogin } = useContext(LoginContext);
-
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const { user, setUser } = useContext(Context);
     let userData = { username: '', password: '' };
     const onSubmit = async (data) => {
         userData.username = data.username;
@@ -45,7 +43,7 @@ export default function FormLogin(props) {
 
             <input className='login--button' type="submit" />
         </form>
-        <button className='login--button login--navigation' onClick={() => setLogin(false)}>Registrarse</button>
+        <button className='login--button login--navigation' onClick={() => props.setView(false)}>Registrarse</button>
     </div>
     );
 }
