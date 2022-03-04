@@ -11,6 +11,11 @@ class Company {
     #num_employees
     #images
 
+    #logete = "https://www.weeky.es/wp-content/uploads/2016/08/circo-quiros-entrada.jpg";
+    #web = "https://www.google.es/";
+    #media = "https://twitter.com";
+    #employees = Math.round(Math.random() * 100);
+
     constructor(props) {
         this.#name_description = props.name_description;
         this.#sector = props.sector;
@@ -29,13 +34,13 @@ class Company {
         this.#name_description = this.#generateRandomNameDescription();
         this.#sector = this.#generateRandomSector();
         this.#creation_date = this.#generateRandomCreationDate();
-        this.#logo = "https://www.weeky.es/wp-content/uploads/2016/08/circo-quiros-entrada.jpg";
-        this.#webpage = "https://www.google.es/";
+        this.#logo = this.#logete;
+        this.#webpage = this.#web;
         this.#phone_number = this.#generateRandomPhoneNum();
-        this.#social_media = "https://twitter.com";
+        this.#social_media = this.#media;
         this.#company_description = this.#generateRandomCompanyDescription();
         this.#company_value = this.#generateRandomCompanyValue();
-        this.#num_employees = Math.round(Math.random() * 100);
+        this.#num_employees = this.#employees;
         this.#images = this.#generateRandomImages();
     }
 
@@ -148,19 +153,19 @@ class Company {
     }
 
     #generateRandomCreationDate() {
-        return Math.round(Math.random() * 30)
-            + "/"
-            + Math.round(Math.random() * 12)
-            + "/"
-            + Math.round(Math.random() * (2022 - 2012)) + 2012;
+        const year = Math.round(Math.random() * (2022 - 2012))
+        const month = Math.round(Math.random() * 12);
+        const day = Math.round(Math.random() * month === 2 ? 28 : 30)
+
+        return day + "/" + month + "/" + year
     }
 
     #generateRandomPhoneNum() {
-        return Math.round(Math.random() * 9999)
+        return Math.round(Math.random() * 999)
             + "-"
-            + Math.round(Math.random() * 9999)
+            + Math.round(Math.random() * 999)
             + "-"
-            + Math.round(Math.random() * 9999)
+            + Math.round(Math.random() * 999)
     }
 
     #generateRandomCompanyDescription() {
@@ -190,3 +195,5 @@ class Company {
         ]
     }
 }
+
+export default Company
