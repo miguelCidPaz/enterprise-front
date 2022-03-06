@@ -9,13 +9,13 @@ class User {
     #text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.";
     #image = "https://www.latercera.com/resizer/ZwYtLBDucTx2GhRF45twlp7Ikxs=/375x250/smart/arc-anglerfish-arc2-prod-copesa.s3.amazonaws.com/public/IWE35XK3SFCNBGJYGC65NCEONA.jpg";
 
-    constructor(props) {
-        this.#userName = props.userName || this.#generateRandomName();
-        this.#userPass = props.userPass || this.#generateRandomPass();
-        this.#userEmail = props.userEmail || this.#generateRandomEmail();
-        this.#name_description = props.name_description || this.#text;
-        this.#avatar = props.avatar || this.#image;
-    }
+    /*     constructor(props) {
+            this.#userName = props.userName || this.#generateRandomName();
+            this.#userPass = props.userPass || this.#generateRandomPass();
+            this.#userEmail = props.userEmail || this.#generateRandomEmail();
+            this.#name_description = props.name_description || this.#text;
+            this.#avatar = props.avatar || this.#image;
+        } */
 
     constructor() {
         this.#userName = this.#generateRandomName();
@@ -67,26 +67,24 @@ class User {
 
     #generateRandomName() {
         const arr = ["Mohamed", "Mary", "Santiago", "Sophie", "Emma", "John", "Ali", "Anna", "Lily", "William"];
-        return arr[Math.round(Math.random() * arr.length)]
+        return arr[Math.floor(Math.random() * arr.length)]
     }
 
     #generateRandomPass() {
-        const arr = [];
-        for (let i = 0; i < 10; i++) {
-            for (let j = 0; j < 9; j++) {
-                arr[i] += (Math.round(Math.random * 9))
-            }
-            arr[i] = toString(arr[i]);
+        let result = "";
+        for (let j = 0; j < 9; j++) {
+            result += Math.floor(Math.random() * 9)
         }
-        return arr[Math.round(Math.random() * arr.length)]
+        result = result.toString();
+        return result
     }
 
     #generateRandomEmail() {
         const arr = ["Mohamed", "Mary", "Santiago", "Sophie", "Emma", "John", "Ali", "Anna", "Lily", "William"];
 
-        return arr[Math.round(Math.random() * arr.length)]
+        return arr[Math.floor(Math.random() * arr.length)]
             + "_"
-            + [Math.round(Math.random() * arr.length)]
+            + [Math.floor(Math.random() * arr.length)]
             + "@gmail.com"
     }
 }

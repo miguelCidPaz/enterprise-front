@@ -1,5 +1,8 @@
 import ItemCard from '../ItemCard/ItemCard';
+import Company from '../CustomTools/Company';
 import './styles.scss';
+import { useState, useEffect } from 'react';
+import { uploadItems, generateNumPags, generatePags } from './LogicTableItems';
 
 /**
  * This is a container to display companies
@@ -8,40 +11,51 @@ import './styles.scss';
  * @returns 
  */
 const TableItems = (props) => {
+    const [index, setIndex] = useState(0);
+    const [items, setItems] = useState([]);
+    const [numsPag, setNumPags] = useState(generateNumPags());
+    const [halfNumbers, setHalfNumbers] = useState([]);
 
-    const numbers = [1, 2, 3, 4, 5, 6]
-    const halfNumbers = Math.round(numbers.length / 2);
+    useEffect(() => {
+        if (items !== undefined && items !== null) {
+            setHalfNumbers(generatePags(index, items.length))
+        }
+    }, [items, index]);
 
+    useEffect(() => {
+        setNumPags(generateNumPags(items))
+        setItems(uploadItems());
+    }, [])
+
+    //const halfNumbers = items.length / 2;;
     return (
+
         <section className="tableitems--main">
             <div className="tableitems--interior-body">
-                {numbers.map((e, i) => {
-                    return (
-                        <ItemCard key={i} theme={props.theme} index={i} />
-                    )
-                })}
+                {items[index] !== undefined && items[index] !== null ?
+                    items[index].map((e, i) => {
+                        return (
+                            <ItemCard key={i} item={e} theme={props.theme} index={i} />
+                        )
+                    }) : null}
             </div>
             <div className="tableitems--pagination">
                 <div className={`tableitems--animation-toleft tableitems--pagination-container ${props.theme}`}>
-                    <p className={`tableitems--pagination-control ${props.theme}`}>{"<"}</p>
+                    <p onClick={e => { index > 0 ? setIndex(index - 1) : setIndex(items.length - 1) }} className={`tableitems--pagination-control ${props.theme}`}>{"<"}</p>
                 </div>
-                {numbers.map((e, i) => {
-                    return (i < 6 ?
-                        <div key={i} className={halfNumbers > i
-                            ? `tableitems--animation-toleft tableitems--pagination-container ${props.theme}`
-                            : `tableitems--animation-toright tableitems--pagination-container ${props.theme}`}>
-                            <p className={`tableitems--pagination-control ${props.theme}`}>{e}</p>
-                        </div>
-                        : null
-                    )
-                })}
-                {numbers.length > 6 ?
-                    <div className={`tableitems--animation-toright tableitems--pagination-container ${props.theme}`}>
-                        <p className={`tableitems--pagination-control ${props.theme}`}>...</p>
-                    </div>
-                    : null}
+                {halfNumbers !== undefined && halfNumbers !== null ?
+                    halfNumbers.map((e, i) => {
+                        return (e >= 0 ?
+                            <div key={i} className={halfNumbers > i
+                                ? `tableitems--animation-toleft tableitems--pagination-container ${props.theme}`
+                                : `tableitems--animation-toright tableitems--pagination-container ${props.theme}`}>
+                                <p onClick={click => setIndex(e)} className={`${e === index ? 'tableitems--pag-selected ' : null} tableitems--pagination-control ${props.theme}`}>{e + 1}</p>
+                            </div>
+                            : null
+                        )
+                    }) : null}
                 <div className={`tableitems--animation-toright tableitems--pagination-container ${props.theme}`}>
-                    <p className={`tableitems--pagination-control ${props.theme}`}>{">"}</p>
+                    <p onClick={e => index === items.length - 1 ? setIndex(0) : setIndex(index + 1)} className={`tableitems--pagination-control ${props.theme}`}>{">"}</p>
                 </div>
             </div>
         </section>

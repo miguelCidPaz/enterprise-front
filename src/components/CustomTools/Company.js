@@ -1,4 +1,7 @@
+import { v4 as uuidv4 } from 'uuid';
+
 class Company {
+    #id_enterprise
     #name_description
     #sector
     #creation_date
@@ -14,23 +17,25 @@ class Company {
     #logete = "https://www.weeky.es/wp-content/uploads/2016/08/circo-quiros-entrada.jpg";
     #web = "https://www.google.es/";
     #media = "https://twitter.com";
-    #employees = Math.round(Math.random() * 100);
+    #employees = Math.floor(Math.random() * 100);
 
-    constructor(props) {
-        this.#name_description = props.name_description;
-        this.#sector = props.sector;
-        this.#creation_date = props.creation_date;
-        this.#logo = props.logo;
-        this.#webpage = props.webpage;
-        this.#phone_number = props.phone_number;
-        this.#social_media = props.social_media;
-        this.#company_description = props.company_description;
-        this.#company_value = props.company_description;
-        this.#num_employees = props.num_employees;
-        this.#images = props.images;
-    }
+    /*     constructor(props) {
+            this.#id_enterprise = uuidv4();
+            this.#name_description = props.name_description || this.#generateRandomNameDescription();
+            this.#sector = props.sector || this.#generateRandomSector();
+            this.#creation_date = props.creation_date || this.#generateRandomCreationDate();;
+            this.#logo = props.logo || this.#generateRandomNameDescription();;
+            this.#webpage = props.webpage || this.#web;
+            this.#phone_number = props.phone_number || this.#logete;;
+            this.#social_media = props.social_media || this.#generateRandomPhoneNum();;
+            this.#company_description = props.company_description || this.#media;
+            this.#company_value = props.company_description || this.#generateRandomCompanyValue();;
+            this.#num_employees = props.num_employees || this.#employees;
+            this.#images = props.images || this.#generateRandomImages();
+        } */
 
     constructor() {
+        this.#id_enterprise = uuidv4();
         this.#name_description = this.#generateRandomNameDescription();
         this.#sector = this.#generateRandomSector();
         this.#creation_date = this.#generateRandomCreationDate();
@@ -42,6 +47,10 @@ class Company {
         this.#company_value = this.#generateRandomCompanyValue();
         this.#num_employees = this.#employees;
         this.#images = this.#generateRandomImages();
+    }
+
+    get id_enterprise() {
+        return this.#id_enterprise;
     }
 
     get name_description() {
@@ -135,11 +144,11 @@ class Company {
     #generateRandomNameDescription() {
         const arr = [];
         for (let i = 0; i < 10; i++) {
-            const name = "Empresa" + (Math.round(Math.random() * 100));
+            const name = "Empresa" + (Math.floor(Math.random() * 100));
             arr.push(name);
         }
 
-        return arr[Math.round(Math.random() * arr.length)]
+        return arr[Math.floor(Math.random() * arr.length)]
     }
 
     #generateRandomSector() {
@@ -149,23 +158,23 @@ class Company {
             arr.push(name);
         }
 
-        return arr[Math.round(Math.random() * arr.length)]
+        return arr[Math.floor(Math.random() * arr.length)]
     }
 
     #generateRandomCreationDate() {
-        const year = Math.round(Math.random() * (2022 - 2012))
-        const month = Math.round(Math.random() * 12);
-        const day = Math.round(Math.random() * month === 2 ? 28 : 30)
+        const year = Math.floor(Math.random() * (2022 - 2012))
+        const month = Math.floor(Math.random() * 12);
+        const day = Math.floor(Math.random() * month === 2 ? 28 : 30)
 
         return day + "/" + month + "/" + year
     }
 
     #generateRandomPhoneNum() {
-        return Math.round(Math.random() * 999)
+        return Math.floor(Math.random() * 999)
             + "-"
-            + Math.round(Math.random() * 999)
+            + Math.floor(Math.random() * 999)
             + "-"
-            + Math.round(Math.random() * 999)
+            + Math.floor(Math.random() * 999)
     }
 
     #generateRandomCompanyDescription() {
@@ -174,7 +183,7 @@ class Company {
     }
 
     #generateRandomCompanyValue() {
-        return Math.round(Math.random() * 100) + " millones";
+        return Math.floor(Math.random() * 100) + " millones";
     }
 
     #generateRandomImages() {
@@ -190,8 +199,8 @@ class Company {
         ]
 
         return [
-            memes[Math.round(Math.random() * memes.length)],
-            memes[Math.round(Math.random() * memes.length)]
+            memes[Math.floor(Math.random() * memes.length)],
+            memes[Math.floor(Math.random() * memes.length)]
         ]
     }
 }
