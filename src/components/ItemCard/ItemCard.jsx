@@ -8,17 +8,19 @@ import './styles.scss';
  * @returns 
  */
 const ItemCard = (props) => {
+    const item = props.item
 
     return (
         <div className={`itemcard--main ${props.theme} itemcard--item-${props.index + 1}`}>
             <div className={`itemcard--body-container ${props.theme}`}>
                 <div className={`itemcard--body-left ${props.theme}`}>
-                    <p className={`itemcard--item-name ${props.theme}`}>Soy un nombre medio largo{props.index + 1}</p>
-                    <p className={`itemcard--item-site ${props.theme}`}>https://www.ascodevida-enterprise.com/</p>
-                    <p className={`itemcard--item-employeds ${props.theme}`}>Numero de empleados: 259</p>
+                    <p className={`itemcard--item-name ${props.theme}`}>{item.name_description}</p>
+                    <p className={`itemcard--item-site ${props.theme}`}>{item.social_media}</p>
+                    <p className={`itemcard--item-employeds ${props.theme}`}>Numero de empleados: {item.num_employees}</p>
+                    <p className={`itemcard--item-employeds ${props.theme}`}>{item.sector}</p>
                 </div>
                 <div className={`itemcard--body-right ${props.theme}`}>
-                    <img src="https://www.raccoongames.es/med/img/productos/2017/08/15/tp%20POP_17.jpg" alt="Brand" />
+                    <img src={item.logo} alt="Brand" />
                 </div>
             </div>
             <div className={`itemcard--body-button ${props.theme}`}>
