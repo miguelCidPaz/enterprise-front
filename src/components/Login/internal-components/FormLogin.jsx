@@ -1,7 +1,7 @@
-
-import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { LoginContext } from "../Login";
+import { useContext, useState } from 'react'
+import { UserContext } from '../ProviderLogin'
+import { useNavigate } from 'react-router-dom';
 import md5 from 'md5';
 
 
@@ -12,13 +12,18 @@ import md5 from 'md5';
  */
 export default function FormLogin(props) {
     // login or new user discriminator
-    const { setLogin } = useContext(LoginContext);
-
     const { register, handleSubmit, formState: { errors } } = useForm();
     let userData = { username: '', password: '' };
+    const { session, connectSession } = useContext(UserContext);
+    const navigate = useNavigate();
     const onSubmit = async (data) => {
         userData.username = data.username;
         userData.password = md5(data.password)
+
+        //Una vez conectada a la base de datos debe a pasar a leer la pass pasada por md5
+        if (connectSession(userData.username, data.password)) {
+            navigate("/Profile");
+        }
     };
 
     // get para recuperar el usario;
@@ -45,7 +50,7 @@ export default function FormLogin(props) {
 
             <input className='login--button' type="submit" />
         </form>
-        <button className='login--button login--navigation' onClick={() => setLogin(false)}>Registrarse</button>
+        <button className='login--button login--navigation' onClick={() => props.setView(false)}>Registrarse</button>
     </div>
     );
 }

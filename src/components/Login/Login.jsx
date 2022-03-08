@@ -1,12 +1,8 @@
 
-import React, { createContext, useState } from 'react';
 import FormLogin from './internal-components/FormLogin'
 import FormRegister from './internal-components/FormRegister'
-
+import { useState } from 'react';
 import './styles.scss';
-
-// login or new user discriminator
-export const LoginContext = createContext(true);  
 
 /**
  * Component login
@@ -14,12 +10,11 @@ export const LoginContext = createContext(true);
  * @returns component react
  */
 export default function Login(props) {
-    const [login, setLogin] = useState(true);
+    const [view, setView] = useState(true)
 
     return (<div className='div--login'>
-        <LoginContext.Provider value={{login, setLogin}}>
-            {login ? <FormLogin theme={props.theme} /> : <FormRegister theme={props.theme} />}
-        </LoginContext.Provider>
+        {view ? <FormLogin theme={props.theme} setView={setView} />
+            : <FormRegister theme={props.theme} setView={setView} />}
     </div>
     );
 }
