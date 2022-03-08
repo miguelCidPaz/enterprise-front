@@ -10,7 +10,7 @@ import './styles.scss';
  * @returns component react
  */
 export default function Login(props) {
-    const [view, setView] = useState(false)
+    const [view, setView] = useState(true)
 
     return (<div className='div--login'>
         {view ? <FormLogin theme={props.theme} setView={setView} />
