@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react';
 import { UserContext } from '../Login/ProviderLogin';
+import Company from '../CustomTools/Company';
 import ItemCard from '../ItemCard/ItemCard';
 import './styles.scss';
 import { Link } from 'react-router-dom';
@@ -15,7 +16,8 @@ const Profile = () => {
                 <div className="profile--main-center">
                     <button className='profile--button-left profile--button-center' onClick={e => setViewItems(!viewItems)}>Volver a perfil</button>
                     {arr.map((e, i) => {
-                        return <ItemCard key={i} index={i} />
+                        const company = new Company();
+                        return <ItemCard item={company} key={i} index={i} />
                     })}
                 </div>
             </div> : <div className={viewItems ? 'profile--main-container profile--main-container-toright' : 'profile--main-container'}>
