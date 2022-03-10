@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { NavLink } from "react-router-dom"
 
 const BodyDetail = (props) => {
     const [viewDelete, setViewDelete] = useState(props.propierty || false)
@@ -21,7 +22,7 @@ const BodyDetail = (props) => {
             </div>
             <div className="details--container-buttons">
                 <a target="_blank" href={props.item.social_media} className="details--link">+info</a>
-                <button className="details--button">Comprar</button>
+                <NavLink to={`/Purchase/${props.item.id_enterprise}`} className="details--button details--button-link">Comprar</NavLink>
                 {props.viewSecondary
                     ? <button onClick={e => props.selectNewPrincipalItem(props.item)} className="details--button">Escoger este</button>
                     : <button onClick={e => props.setViewSelect(!props.viewSelect)} className="details--button">Comparar</button>}

@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import Profile from "./components/Profile/Profile";
 import { ProviderLogin } from "./components/Login/ProviderLogin";
+import FormLogin from "./components/PurchaseForm/PurchaseForm";
 
 const App = () => {
   const [theme, setTheme] = useState('dark');
@@ -35,6 +36,8 @@ const App = () => {
           <Route path='/login' element={<Login theme={theme} />} />
           <Route path='/profile' element={<Profile theme={theme} />} />
           <Route path='/FormEnterprise/:idUser' element={<FormEnterprise theme={theme} />} />
+          <Route path='/Purchase/:idCompany' element={<FormLogin theme={theme} />} />
+          <Route path='*' element={<LandPage theme={theme} />} />
         </Routes>
       </ProviderLogin>
     </div>
