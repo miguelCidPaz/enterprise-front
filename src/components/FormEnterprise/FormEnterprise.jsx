@@ -28,14 +28,14 @@ export default function FormEnterprise(props) {
                             required: { value: true, message: 'Campo requerido' },
                             maxLength: { value: 80, message: 'Tamaño maximo 80' }
                         })} />
-                {errors.Nombre && <p className='message--errors'>{errors.Nombre.message}</p>}
+                {errors.Nombre && <p className='login--message-errors'>{errors.Nombre.message}</p>}
                 {/* Sector */}
                 <input className='form--input' type="text" placeholder="Sector" {
                     ...register("Sector", {
                         required: false,
                         maxLength: { value: 100, message: 'Tamaño maximo 100' }
                     })} />
-                {errors.Nombre && <p className='message--errors'>{errors.Nombre.message}</p>}
+                {errors.Nombre && <p className='login--message-errors'>{errors.Nombre.message}</p>}
                 {/* Fecha creacion */}
                 {/* Es posible q la fecha solo incluya mes/año o solo año o q me toquen las pelotas con otros formatos? */}
                 <input className='form--input' type="datetime" placeholder="Fecha Creacion" {
