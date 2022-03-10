@@ -46,9 +46,6 @@ import { useForm } from 'react-hook-form';
             {/* Social Media */}
             <input type="text" placeholder="Social Media" {
                 ...register("Social Media", {required: false})} />
-            {/* Descripcion */}
-            <textarea {
-                ...register("Descripcion", {required: false})} />
             {/* Valoracion */}
             <input type="number" placeholder="Valoracion" {
                 ...register("Valoracion", {required: false})} />
@@ -58,6 +55,9 @@ import { useForm } from 'react-hook-form';
             {/* imagen */}
             <input type="url" placeholder="Imagen" {
                 ...register("Imagen", {required: false})} />
+            {/* Descripcion */}
+            <textarea placeholder="Descripcion" {
+                ...register("Descripcion", {required: false})} />
 
             <input type="submit" />
         </form>
