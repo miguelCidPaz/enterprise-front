@@ -5,31 +5,31 @@ export const UserContext = createContext(false)
 
 const comprobateUser = (userName, userPass) => {
     const result = Object.values(users).filter(e => e.userName === userName && e.userPass === userPass)
-    return !result.length < 1 ? [true, result[0].userName, result[0].userMail]
+    return !result.length < 1 ? [true, result[0].id, result[0].userName, result[0].userMail]
         : [false, undefined, undefined]
 }
 
 export const ProviderLogin = ({ children }) => {
     const [session, setSession] = useState(false);
+    const [id, setID] = useState(undefined)
     const [name, setName] = useState(undefined);
     const [email, setEmail] = useState(undefined);
 
     const value = {
         session,
+        id,
         name,
         email,
         connectSession: (userName, userPassword) => {
-            console.log(userName + " " + userPassword)
             let sesion = comprobateUser(userName, userPassword);
             setSession(sesion[0])
-            setName(sesion[1])
-            setEmail(sesion[2])
+            setID(sesion[1])
+            setName(sesion[2])
+            setEmail(sesion[3])
 
             return sesion[0]
         }
     }
-
-    console.log(value)
 
     return (
         <UserContext.Provider value={value}>

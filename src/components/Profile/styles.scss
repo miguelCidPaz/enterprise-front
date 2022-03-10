@@ -1,37 +1,52 @@
-
 @keyframes popRight {
-    0%{transform: translateX(1600px);}
-    50%{transform: translateX(1600px);}
-    80%{transform: translateX(-110px);}
-    100%{transform: translateX(0px);}
+    0% {
+        transform: translateX(1600px);
+    }
+    50% {
+        transform: translateX(1600px);
+    }
+    80% {
+        transform: translateX(-110px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
 }
 
 @keyframes popLeft {
-    0%{transform: translateX(-1600px);}
-    50%{transform: translateX(-1600px);}
-    80%{transform: translateX(110px);}
-    100%{transform: translateX(0px);}
+    0% {
+        transform: translateX(-1600px);
+    }
+    50% {
+        transform: translateX(-1600px);
+    }
+    80% {
+        transform: translateX(110px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
 }
 
-.profile--main{
+.profile--main {
     width: 100%;
     height: 100vh;
     padding-top: 5%;
     background-color: var(--background-color);
-        
-    @media (max-width:900px) {
+
+    @media (max-width: 900px) {
         padding-top: 15%;
     }
 
-    @media (max-width:815px) {
+    @media (max-width: 815px) {
         padding-top: 30%;
     }
 
-    @media (max-width:425px) {
+    @media (max-width: 425px) {
         padding-top: 50%;
     }
 
-    @media (max-width:385px) {
+    @media (max-width: 385px) {
         padding-top: 60%;
     }
 
@@ -39,7 +54,8 @@
     overflow-y: hidden;
 }
 
-.profile--main-container, .profile--main-container-toright{
+.profile--main-container,
+.profile--main-container-toright {
     position: absolute;
     margin: auto;
     display: flex;
@@ -54,7 +70,7 @@
     padding: 50px;
     overflow: hidden;
 
-    @media (max-width:1400px) {
+    @media (max-width: 1400px) {
         top: -150px;
         left: 15%;
         width: 70%;
@@ -62,8 +78,7 @@
         height: 500px;
     }
 
-
-    @media (max-width:900px) {
+    @media (max-width: 900px) {
         top: -50px;
         left: 15%;
         width: 70%;
@@ -71,28 +86,27 @@
         height: 500px;
     }
 
-    @media (max-height:630px) {
+    @media (max-height: 630px) {
         gap: 0px;
-        top:-220px;
-    }  
-    @media (max-width:815px) {
-        top:0px;
-        height: 400px;
-    } 
-    @media (max-width:400px) {
-        top:-320px;
-        margin-top:115%;
+        top: -220px;
+    }
+    @media (max-width: 815px) {
+        top: 0px;
         height: 400px;
     }
-    @media (max-width:350px) {
-        top:-220px;
-        margin-top:115%;
+    @media (max-width: 400px) {
+        top: -320px;
+        margin-top: 115%;
         height: 400px;
     }
-    
+    @media (max-width: 350px) {
+        top: -220px;
+        margin-top: 115%;
+        height: 400px;
+    }
 }
 
-.profile--main-enterprises{
+.profile--main-enterprises {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -102,16 +116,20 @@
     background-color: red;
 }
 
-.profile--main-container-toright{
+.profile--main-container-toright {
     animation: 1s pop forwards;
 
     @keyframes pop {
-        0%{transform: translateX(0px);}
-        100%{transform: translateX(2000px);}
+        0% {
+            transform: translateX(0px);
+        }
+        100% {
+            transform: translateX(2000px);
+        }
     }
 }
 
-.profile--main-center{
+.profile--main-center {
     position: absolute;
     background-color: transparent;
     display: flex;
@@ -126,11 +144,11 @@
     overflow-x: hidden;
     overflow-y: scroll;
 
-    @media (max-width:900px) {
+    @media (max-width: 900px) {
         top: 20%;
         align-items: baseline;
     }
-    @media (max-width:760px) {
+    @media (max-width: 760px) {
         top: 30%;
         width: 99%;
         height: 60%;
@@ -139,41 +157,41 @@
     }
 }
 
-.profile--main-center::-webkit-scrollbar{
+.profile--main-center::-webkit-scrollbar {
     background-color: var(--background-color-deg-1);
     border-radius: 5px;
     width: 10px;
 }
 
-.profile--main-center::-webkit-scrollbar-thumb{
+.profile--main-center::-webkit-scrollbar-thumb {
     background-color: var(--text);
     border-radius: 5px;
 }
 
-.profile--slot{
+.profile--slot {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
 }
 
-.profile--label{
+.profile--label {
     font-weight: bolder;
     color: var(--primary);
     text-shadow: 0 0 4px var(--primary-deg-1);
     font-size: 25px;
     animation: popLeft 1s forwards;
 
-    @media (max-height:565px) {
+    @media (max-height: 565px) {
         font-size: 15px;
     }
 
-    @media (max-width:565px) {
+    @media (max-width: 565px) {
         font-size: 15px;
     }
 }
 
-.profile--text{
+.profile--text {
     padding-top: 10px;
     font-size: 15px;
     font-weight: bolder;
@@ -181,31 +199,32 @@
     text-shadow: 0 0 4px var(--text-deg-1);
     animation: popRight 1s forwards;
 
-    @media (max-height:565px) {
+    @media (max-height: 565px) {
         font-size: 15px;
     }
 
-    @media (max-width:565px) {
+    @media (max-width: 565px) {
         font-size: 15px;
     }
 }
 
-.profile--title{
+.profile--title {
     font-size: 35px;
     margin-top: 10%;
     text-transform: uppercase;
     animation: popLeft 1s forwards;
 
-    @media (max-height:565px) {
+    @media (max-height: 565px) {
         margin-top: 5%;
     }
 
-    @media (max-width:400px) {
+    @media (max-width: 400px) {
         font-size: 25px;
     }
 }
 
-.profile--button, .profile--button-left{
+.profile--button,
+.profile--button-left {
     text-decoration: none;
     border: none;
     outline: none;
@@ -222,44 +241,88 @@
     cursor: pointer;
     transition-duration: 0.2s;
 
-    &:hover{
+    &:hover {
         background-color: var(--primary);
         box-shadow: 0 0 13px var(--primary);
     }
 
-    @media (max-width:900px) {
+    @media (max-width: 900px) {
         font-size: 15px;
         height: 30px;
     }
 
-    @media (max-width:400px) {
+    @media (max-width: 400px) {
         width: 100%;
     }
 }
 
-.profile--button-left{
+.profile--button-left {
     animation: popLeft 1s forwards;
-    
-    &:hover{
+
+    &:hover {
         color: white;
     }
 }
 
-.profile--button{
+.profile--button {
     color: var(--text);
     box-shadow: 0 0 3px red;
     animation: popRight 1s forwards;
 
-    &:hover{
+    &:hover {
         background-color: red;
         color: white;
         box-shadow: 0 0 13px red;
     }
 }
 
-.profile--button-center{
+.profile--button-center {
     width: 50%;
     margin-top: 510px;
     margin: auto;
     margin-bottom: 15px;
+}
+
+.profile--modal-help {
+    display: none;
+    font-size: 15px;
+    border-radius: 10px;
+    position: absolute;
+    top: 70px;
+    right: -15px;
+    border: 2px solid var(--primary-deg-1);
+    cursor: default;
+    padding: 5px;
+    transition-duration: 0.2s;
+
+    p {
+        color: var(--text);
+    }
+}
+
+.profile--button-create-company {
+    position: absolute;
+    text-align: center;
+    width: 70px;
+    padding-bottom: 10px;
+    border-radius: 100%;
+    font-size: 40px;
+    border: 5px solid var(--primary);
+    color: var(--primary);
+    cursor: pointer;
+    outline: none;
+    font-weight: bolder;
+    text-decoration: none;
+    background-color: transparent;
+    transition-duration: 0.2s;
+    animation: popLeft 1s forwards;
+
+    &:hover {
+        .profile--modal-help {
+            display: block;
+        }
+        box-shadow: 0 0 50px inset var(--primary);
+        color: white;
+        text-shadow: 0 0 10px white;
+    }
 }
