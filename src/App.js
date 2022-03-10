@@ -34,7 +34,7 @@ const App = () => {
           <Route path='/ranking' element={<Ranking theme={theme} />} />
           <Route path='/login' element={<Login theme={theme} />} />
           <Route path='/profile' element={<Profile theme={theme} />} />
-          <Route path='/FormEnterprise' element={<FormEnterprise theme={theme} />} />
+          <Route path='/FormEnterprise/:idUser' element={<FormEnterprise theme={theme} />} />
         </Routes>
       </ProviderLogin>
     </div>
