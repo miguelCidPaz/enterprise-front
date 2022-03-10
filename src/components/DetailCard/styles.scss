@@ -69,6 +69,11 @@
     margin-left: -40px;
     width: 200px;
     height: 150px;
+
+    @media (max-width: 800px) {
+        width: 100px;
+        height: 50px;
+    }
 }
 
 .details--photo {
@@ -150,7 +155,6 @@
     width: 100%;
     overflow-x: hidden;
     overflow-y: scroll;
-    scroll-behavior: smooth;
 
     @media (max-width: 900px) {
         /* align-items: baseline; */
