@@ -33,7 +33,7 @@ const TableItems = (props) => {
     return (
 
         <section className="tableitems--main">
-            {detail !== undefined ? <DetailCard item={detail} setDetail={setDetail} />
+            {detail !== undefined ? <DetailCard item={detail} setDetail={setDetail} groupItems={items} />
                 : <><div className="tableitems--interior-body">
                     {items[index] !== undefined && items[index] !== null ?
                         items[index].map((e, i) => {
