@@ -1,4 +1,4 @@
-
+import './styles.scss';
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 //import { UserContext } from "../Login";
@@ -8,12 +8,13 @@ import { useForm } from 'react-hook-form';
  * @params theme
  * @returns component react
  */
- export default function FormEnterprise(props) {
+export default function FormEnterprise(props) {
     //const { user } = useContext(UserContext);
-    const { register, handleSubmit, formState: { errors } } = useForm(); 
+    const { register, handleSubmit, formState: { errors } } = useForm();
     //let dataInsert = {iduser: user }
     const onSubmit = async (data) => {
-        console.log(data)};
+        console.log(data)
+    };
 
     //post companies/create
 
@@ -59,7 +60,8 @@ import { useForm } from 'react-hook-form';
             <textarea placeholder="Descripcion" {
                 ...register("Descripcion", {required: false})} />
 
-            <input type="submit" />
-        </form>
+                <input className='login--button' type="submit" />
+            </form>
+        </div>
     );
 }

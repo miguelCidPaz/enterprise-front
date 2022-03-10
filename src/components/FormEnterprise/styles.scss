@@ -1,0 +1,26 @@
+.form--tobottom {
+    position: absolute;
+    padding-top: 10px;
+    top: 110px;
+    gap: 10px;
+    overflow: hidden;
+
+    @media (max-width: 815px) {
+        top: 200px;
+        input {
+            width: 90%;
+        }
+        textarea {
+            width: 90%;
+        }
+    }
+}
+
+textarea {
+    resize: none;
+}
+
+.form--main {
+    background-color: var(--background-color);
+    height: 100vh;
+}
