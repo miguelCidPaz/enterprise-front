@@ -1,6 +1,7 @@
 import './styles.scss';
 import React, { useContext } from 'react';
 import { UserContext } from '../Login/ProviderLogin';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 //import { UserContext } from "../Login";
@@ -14,12 +15,13 @@ export default function FormEnterprise(props) {
     //const { user } = useContext(UserContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { session, id, name, email, connectSession } = useContext(UserContext);
+    const navigate = useNavigate();
     //let dataInsert = {iduser: user }
     const onSubmit = async (resultForm) => {
-        console.log(resultForm.FechaCreacion)
+        console.log(resultForm)
         console.log(id)
 
-        /* await axios({
+        await axios({
             method: 'post',
             url: 'http://localhost:3000/v1/companies/create',
             headers: {
@@ -31,20 +33,20 @@ export default function FormEnterprise(props) {
                 iduser: id,
                 name_description: resultForm.Descripcion,
                 sector: resultForm.Sector,
-                creation_date: resultForm.,
-                logo: "https://www.latercera.com/resizer/ZwYtLBDucTx2GhRF45twlp7Ikxs=/375x250/smart/arc-anglerfish-arc2-prod-copesa.s3.amazonaws.com/public/IWE35XK3SFCNBGJYGC65NCEONA.jpg",
-                webpage: "https://www.latercera.com/resizer/ZwYtLBDucTx2GhRF45twlp7Ikxs=/375x250/smart/arc-anglerfish-arc2-prod-copesa.s3.amazonaws.com/public/IWE35XK3SFCNBGJYGC65NCEONA.jpg",
-                phone_number: "644788466",
-                social_media: "Que coño va aki???!!!",
-                company_value: "233",
-                num_employees: "12221",
-                images: "https://imagenes.20minutos.es/files/image_656_370/uploads/imagenes/2022/02/04/meme-sobre-la-surrealista-votacion-de-alberto-casero.jpeg"
+                creation_date: resultForm.FechaDeCreacion,
+                logo: resultForm.Logotipo,
+                webpage: resultForm.PaginaWeb,
+                phone_number: resultForm.NumerodeTelefono,
+                social_media: resultForm.SocialMedia,
+                company_value: resultForm.Valoracion,
+                num_employees: resultForm.NumerodeEmpleados,
+                images: resultForm.Imagen
             }
         }).then((res) => {
             if (res.status === 201) {
-
+                navigate('/Profile');
             }
-        }) */
+        })
     };
 
     //post companies/create
