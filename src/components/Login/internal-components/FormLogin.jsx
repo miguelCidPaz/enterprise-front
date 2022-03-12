@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { useContext, useState } from 'react'
 import { UserContext } from '../ProviderLogin'
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import md5 from 'md5';
 
 
@@ -13,17 +14,37 @@ import md5 from 'md5';
 export default function FormLogin(props) {
     // login or new user discriminator
     const { register, handleSubmit, formState: { errors } } = useForm();
-    let userData = { username: '', password: '' };
+    let userData = { email: '', password: '' };
     const { session, connectSession } = useContext(UserContext);
     const navigate = useNavigate();
     const onSubmit = async (data) => {
-        userData.username = data.username;
+        userData.email = data.username;
         userData.password = md5(data.password)
 
-        //Una vez conectada a la base de datos debe a pasar a leer la pass pasada por md5
-        if (connectSession(userData.username, data.password)) {
-            navigate("/Profile");
-        }
+        await axios({
+            method: 'post',
+            url: 'http://localhost:3000/v1/users/',
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            data: {
+                email: userData.email,
+                userpass: userData.password
+            },
+        }).then((res) => {
+            console.log(res)
+            if (res.status === 200) {
+                if (connectSession(true, res.data.id, res.data.username, res.data.email)) {
+                    navigate("/Profile");
+                }
+            } else {
+                connectSession(false, undefined, undefined, undefined)
+            }
+        })
+
+
     };
 
     // get para recuperar el usario;

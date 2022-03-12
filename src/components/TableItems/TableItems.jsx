@@ -2,7 +2,8 @@ import ItemCard from '../ItemCard/ItemCard';
 import Company from '../CustomTools/Company';
 import './styles.scss';
 import { useState, useEffect } from 'react';
-import { uploadItems, generateNumPags, generatePags } from './LogicTableItems';
+import axios from 'axios';
+import { generateNumPags, generatePags } from './LogicTableItems';
 import DetailCard from '../DetailCard/DetailCard';
 
 /**
@@ -26,10 +27,32 @@ const TableItems = (props) => {
 
     useEffect(() => {
         setNumPags(generateNumPags(items))
-        setItems(uploadItems());
+        uploadItems();
     }, [])
 
-    //const halfNumbers = items.length / 2;;
+    const uploadItems = async () => {
+        const result = []; //Result donde cargamos los recortes para crear el arr bidi
+
+        await axios({
+            method: 'get',
+            url: 'http://localhost:3000/v1/companies/',
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+        }).then((res) => {
+            if (res.status === 200) {
+                while (res.data.length > 0) {
+                    result.push(res.data.splice(0, 6));
+                }
+                if (result.length > 0) {
+                    setItems(result)
+                }
+            }
+        })
+    }
+
     return (
 
         <section className="tableitems--main">
