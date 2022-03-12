@@ -5,9 +5,25 @@
     color: var(--text);
     background-color: var(--background-color);
     box-shadow: -1px -1px 13px var(--background-color-deg-1), 1px 1px 13px var(--background-color-deg-1);
+    animation: popTop 0.5s;
 
     @media (max-width: 820px) {
         width: 100%;
+    }
+
+    @keyframes popTop {
+        0% {
+            transform: translateY(-1500px);
+        }
+        50% {
+            transform: translateY(-1500px);
+        }
+        80% {
+            transform: translateY(50px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
     }
 }
 
