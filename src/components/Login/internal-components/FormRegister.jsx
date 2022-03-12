@@ -1,6 +1,8 @@
 
 import React, { useRef, useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { UserContext } from '../ProviderLogin';
+import { useNavigate } from 'react-router-dom';
 import md5 from 'md5';
 import axios from "axios";
 
@@ -12,6 +14,8 @@ import axios from "axios";
 export default function FormRegister(props) {
     // login or new user discriminator
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { session, connectSession } = useContext(UserContext);
+    const navigate = useNavigate();
     const password = useRef({}); // to compare and confirm the password
     password.current = watch("password", "");
     let userData = { username: '', password: '', email: '' };
@@ -30,21 +34,18 @@ export default function FormRegister(props) {
             },
             data: {
                 username: userData.username,
-                email: userData.password,
-                userpass: userData.email
+                email: userData.email,
+                userpass: userData.password
             }
         }).then((res) => {
-            console.log(res)
+            if (res.status === 201) {
+                if (connectSession(true, res.data.iduser, res.data.userName, res.data.userEmail)) {
+                    navigate("/Profile");
+                }
+            } else {
+                connectSession(false, undefined, undefined, undefined)
+            }
         })
-
-        /* axios.post('http://localhost:3000/v1/users/create', {
-            username: userData.username,
-            email: userData.password,
-            userpass: userData.email
-        }).then(res => {
-            console.log(res)
-        }) */
-
     };
 
     // post para ingresar el nuevo usario;

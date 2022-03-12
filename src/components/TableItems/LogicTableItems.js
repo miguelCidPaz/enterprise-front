@@ -1,17 +1,6 @@
 import Company from "../CustomTools/Company";
 
-export const uploadItems = () => {
-    const prelib = []; //Prelib donde cargamos los items a lo bestia
-    const result = []; //Result donde cargamos los recortes para crear el arr bidi
-    for (let i = 0; i < 100; i++) {
-        const company = new Company();
-        prelib.push(company)
-    }
-    while (prelib.length > 0) {
-        result.push(prelib.splice(0, 6));
-    }
-    return result
-}
+
 
 export const reviserArrs = (arr1, arr2, max) => {
     let countLess = 0; //Contador arr de menores
