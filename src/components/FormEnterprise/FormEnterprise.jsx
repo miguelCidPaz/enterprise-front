@@ -18,8 +18,6 @@ export default function FormEnterprise(props) {
     const navigate = useNavigate();
     //let dataInsert = {iduser: user }
     const onSubmit = async (resultForm) => {
-        console.log(resultForm)
-        console.log(id)
 
         await axios({
             method: 'post',
