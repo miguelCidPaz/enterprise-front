@@ -35,8 +35,6 @@ const Profile = () => {
         })
     }
 
-    console.log(items)
-
     return (
         <section className='profile--main'>
             {viewItems ? <div className='profile--main-enterprises'>
