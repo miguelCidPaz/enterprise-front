@@ -39,7 +39,7 @@ export default function FormEnterprise(props) {
                 phone_number: resultForm.NumerodeTelefono,
                 social_media: resultForm.SocialMedia,
                 company_value: resultForm.Valoracion,
-                num_employees: resultForm.NumerodeEmpleados,
+                num_employees: resultForm.Numerodeempleados,
                 images: resultForm.Imagen
             }
         }).then((res) => {

@@ -34,6 +34,7 @@ export default function FormLogin(props) {
                 userpass: userData.password
             },
         }).then((res) => {
+            console.log(res)
             if (res.status === 200) {
                 if (connectSession(true, res.data.id, res.data.username, res.data.email)) {
                     navigate("/Profile");
