@@ -2,7 +2,7 @@
 import React, { useRef, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import md5 from 'md5';
-
+import axios from "axios";
 
 /**
  * Component for the registration of new users
@@ -19,6 +19,32 @@ export default function FormRegister(props) {
         userData.username = data.username;
         userData.password = md5(data.password);
         userData.email = data.email
+
+        await axios({
+            method: 'post',
+            url: 'http://localhost:3000/v1/users/create',
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            data: {
+                username: userData.username,
+                email: userData.password,
+                userpass: userData.email
+            }
+        }).then((res) => {
+            console.log(res)
+        })
+
+        /* axios.post('http://localhost:3000/v1/users/create', {
+            username: userData.username,
+            email: userData.password,
+            userpass: userData.email
+        }).then(res => {
+            console.log(res)
+        }) */
+
     };
 
     // post para ingresar el nuevo usario;
