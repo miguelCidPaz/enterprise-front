@@ -7,9 +7,9 @@ import { Link, NavLink } from 'react-router-dom';
 
 const Profile = () => {
     const [viewItems, setViewItems] = useState(false);
+    const [items, setItems] = useState(undefined);
     const { session, id, name, email, connectSession } = useContext(UserContext);
 
-    const arr = [1, 2, 3, 4, 5]
     return (
         <section className='profile--main'>
             {viewItems ? <div className='profile--main-enterprises'>
@@ -18,10 +18,10 @@ const Profile = () => {
                         <div className='profile--modal-help'><p>Crear nueva empresa</p></div>
                     </NavLink>
                     <button className='profile--button-left profile--button-center' onClick={e => setViewItems(!viewItems)}>Volver a perfil </button>
-                    {arr.map((e, i) => {
+                    {items !== undefined && items !== null ? items.map((e, i) => {
                         const company = new Company();
                         return <ItemCard item={company} key={i} index={i} />
-                    })}
+                    }) : null}
                 </div>
             </div> : <div className={viewItems ? 'profile--main-container profile--main-container-toright' : 'profile--main-container'}>
                 <div className='profile--slot'>
