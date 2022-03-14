@@ -17,7 +17,9 @@
 }
 
 textarea {
-    resize: none;
+    resize:vertical;
+    overflow: hidden;
+    min-height: fit-content;
 }
 
 .form--main {

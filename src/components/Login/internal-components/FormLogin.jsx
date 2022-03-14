@@ -20,7 +20,7 @@ export default function FormLogin(props) {
     const onSubmit = async (data) => {
         userData.email = data.username;
         userData.password = md5(data.password)
-
+        console.log(userData.email, userData.password)
         await axios({
             method: 'post',
             url: 'http://localhost:3000/v1/users/',
@@ -36,10 +36,11 @@ export default function FormLogin(props) {
         }).then((res) => {
             console.log(res)
             if (res.status === 200) {
-                if (connectSession(true, res.data.id, res.data.username, res.data.email)) {
-                    navigate("/Profile");
+                connectSession(true, res.data.id, res.data.username, res.data.email); 
+                window.localStorage.setItem('userlogged',JSON.stringify({session:true, id:res.data.id, username:res.data.username, email:res.data.email}));  
+                navigate("/Profile");
                 }
-            } else {
+            else {
                 connectSession(false, undefined, undefined, undefined)
             }
         })
