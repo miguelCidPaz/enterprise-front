@@ -8,7 +8,7 @@ import { Route, Routes } from "react-router-dom";
 import Profile from "./components/Profile/Profile";
 import { ProviderLogin } from "./components/Login/ProviderLogin";
 import FormLogin from "./components/PurchaseForm/PurchaseForm";
-
+import SearchPage from "./components/SearchPage/SearchPage";
 const App = () => {
   const [theme, setTheme] = useState('dark');
   useEffect(() => {
@@ -41,6 +41,7 @@ const App = () => {
           <Route path='/FormEnterprise/:idUser' element={<FormEnterprise theme={theme} />} />
           <Route path='/Purchase/:idCompany' element={<FormLogin theme={theme} />} />
           <Route path='*' element={<LandPage theme={theme} />} />
+          <Route path='search/:enterpriseName' element={<SearchPage theme={theme}/>}/>
         </Routes>
       </ProviderLogin>
     </div>
