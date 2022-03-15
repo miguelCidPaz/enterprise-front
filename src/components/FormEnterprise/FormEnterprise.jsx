@@ -29,13 +29,14 @@ export default function FormEnterprise(props) {
             },
             data: {
                 iduser: id,
-                name_description: resultForm.Descripcion,
+                name_description: resultForm.Nombre,
                 sector: resultForm.Sector,
                 creation_date: resultForm.FechaDeCreacion,
                 logo: resultForm.Logotipo,
                 webpage: resultForm.PaginaWeb,
                 phone_number: resultForm.NumerodeTelefono,
                 social_media: resultForm.SocialMedia,
+                company_description: resultForm.Descripcion,
                 company_value: resultForm.Valoracion,
                 num_employees: resultForm.Numerodeempleados,
                 images: resultForm.Imagen
@@ -69,7 +70,7 @@ export default function FormEnterprise(props) {
                 {errors.Nombre && <p className='login--message-errors'>{errors.Nombre.message}</p>}
                 {/* Fecha creacion */}
                 {/* Es posible q la fecha solo incluya mes/año o solo año o q me toquen las pelotas con otros formatos? */}
-                <input className='form--input' type="datetime" placeholder="Fecha Creacion" {
+                <input className='form--input' type="date" placeholder="Fecha Creacion" {
                     ...register("FechaCreacion", { required: false })} />
                 {/* Logotipo */}
                 <input className='form--input' type="url" placeholder="Logotipo" {
@@ -83,9 +84,6 @@ export default function FormEnterprise(props) {
                 {/* Social Media */}
                 <input className='form--input' type="text" placeholder="Social Media" {
                     ...register("SocialMedia", { required: false })} />
-                {/* Descripcion */}
-                <textarea className='form--input' {
-                    ...register("Descripcion", { required: false })} />
                 {/* Valoracion */}
                 <input className='form--input' type="number" placeholder="Valoracion" {
                     ...register("Valoracion", { required: false })} />
@@ -95,7 +93,9 @@ export default function FormEnterprise(props) {
                 {/* imagen */}
                 <input className='form--input' type="url" placeholder="Imagen" {
                     ...register("Imagen", { required: false })} />
-
+                {/* Descripcion */}
+                <textarea className='form--input' type="text" placeholder="Descripcion"{
+                    ...register("Descripcion", { required: false })} />
                 <input className='login--button' type="submit" />
             </form>
         </div>

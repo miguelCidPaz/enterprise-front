@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext , useState } from 'react';
 import { UserContext } from '../../Login/ProviderLogin';
 
 /**
@@ -10,6 +10,15 @@ import { UserContext } from '../../Login/ProviderLogin';
  */
 const MenuLinks = (props) => {
     const { session } = useContext(UserContext)
+    const [active, setActive] = useState(false);
+    const handleTheme = ()=> {
+        props.turnLight(props.theme);
+        const loggedUserJSON = window.localStorage.getItem('userlogged');
+        if (loggedUserJSON) {
+            const themeStoraged = props.theme === 'dark'? 'light' : 'dark';
+            window.localStorage.setItem('theme',JSON.stringify(themeStoraged));
+        }
+    }
     return (
         <nav className="bodyheader--menu-main">
             <div className="bodyheader--menu-container">
@@ -21,12 +30,12 @@ const MenuLinks = (props) => {
                 <Link to={'/Ranking'} className="bodyheader--menu-link link-2">Ranking</Link>
                 <button id="switch-ligths"
                     className="bodyheader--menu-link link-3"
-                    onClick={e => props.turnLight(props.theme)}>
+                    onClick={handleTheme/*e =>  props.turnLight(props.theme) */}>
                     <div className="light-up"></div>
                 </button>
             </div>
             <div className='bodyheader--frame-menu-mobile'>
-                <div className='bodyheader--menu-mobile'></div>
+                <div className='bodyheader--menu-mobile' onClick={e => setActive(!active)}>{active? <h1>Hola</h1>:null}{/* este es el div del menu  hambuger */}</div>
             </div>
         </nav>
     )

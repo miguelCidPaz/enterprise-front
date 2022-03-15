@@ -11,9 +11,12 @@ import FormLogin from "./components/PurchaseForm/PurchaseForm";
 
 const App = () => {
   const [theme, setTheme] = useState('dark');
-
   useEffect(() => {
-
+    const loggedUserThemeJSON = window.localStorage.getItem('theme');
+    if (loggedUserThemeJSON) {
+        const loggedUserTheme= JSON.parse(loggedUserThemeJSON);
+        setTheme(loggedUserTheme);
+    }
   }, [theme])
 
   const turnLight = (light) => {
