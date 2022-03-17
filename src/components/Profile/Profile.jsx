@@ -43,7 +43,8 @@ const Profile = () => {
     const handleLogout = () => {
         connectSession(false, undefined, undefined); 
         window.localStorage.removeItem('userlogged');
-        window.localStorage.removeItem('theme')
+        window.localStorage.removeItem('theme');
+        window.localStorage.removeItem('order');
     }
 
     return (

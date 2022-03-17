@@ -28,15 +28,28 @@ const MenuLinks = (props) => {
                     : <Link to={'/Login'} className="bodyheader--menu-link link-1">Registro</Link>}
 
                 <Link to={'/Ranking'} className="bodyheader--menu-link link-2">Ranking</Link>
-                <button id="switch-ligths"
+                {/* <button id="switch-ligths"
                     className="bodyheader--menu-link link-3"
+                    onClick={handleTheme}>
+                    <div className="light-up"></div>
+                </button> */}
+            </div>
+            <div className='bodyheader--frame-menu-mobile'>
+                <div className='bodyheader--menu-mobile' onClick={e => setActive(!active)}>{/* este es el div del menu  hambuger */}</div>
+                {active? <div className='bodyheader--menu-mobile-options'>                
+                    {session ?
+                        <Link onClick={e => setActive(!active)} to={'/Profile'} className="bodyheader--menu-mobile-link link-1">Perfil</Link>
+                        : <Link onClick={e => setActive(!active)} to={'/Login'} className="bodyheader--menu-mobile-link link-1">Registro</Link>}
+
+                    <Link onClick={e => setActive(!active)} to={'/Ranking'} className="bodyheader--menu-mobile-link link-2">Ranking</Link>
+
+                </div>:null}                    
+            </div>
+                <button id="switch-ligths"
+                    className="bodyheader--menu-mobile-link link-3"
                     onClick={handleTheme/*e =>  props.turnLight(props.theme) */}>
                     <div className="light-up"></div>
                 </button>
-            </div>
-            <div className='bodyheader--frame-menu-mobile'>
-                <div className='bodyheader--menu-mobile' onClick={e => setActive(!active)}>{active? <h1>Hola</h1>:null}{/* este es el div del menu  hambuger */}</div>
-            </div>
         </nav>
     )
 }
