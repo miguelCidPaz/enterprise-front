@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useContext , useState } from 'react';
+import { useContext , useState , useEffect } from 'react';
 import { UserContext } from '../../Login/ProviderLogin';
 
 /**
@@ -9,7 +9,7 @@ import { UserContext } from '../../Login/ProviderLogin';
  * @returns 
  */
 const MenuLinks = (props) => {
-    const { session } = useContext(UserContext)
+    const { session, id, name, email, connectSession } = useContext(UserContext);
     const [active, setActive] = useState(false);
     const handleTheme = ()=> {
         props.turnLight(props.theme);
@@ -19,6 +19,14 @@ const MenuLinks = (props) => {
             window.localStorage.setItem('theme',JSON.stringify(themeStoraged));
         }
     }
+    useEffect(() => {
+        const loggedUserJSON = window.localStorage.getItem('userlogged');
+        if (loggedUserJSON) {
+            const loggedUser= JSON.parse(loggedUserJSON);
+            connectSession(true, loggedUser.id,loggedUser.username,loggedUser.email);
+            setActive(true);
+        }
+    },[])
     return (
         <nav className="bodyheader--menu-main">
             <div className="bodyheader--menu-container">
