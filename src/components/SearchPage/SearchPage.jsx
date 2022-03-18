@@ -6,15 +6,21 @@ import './style.scss';
 import ItemCard from "../ItemCard/ItemCard";
 import DetailCard from "../DetailCard/DetailCard";
 
+
 const SearchPage = (props) => {
     let {enterpriseName} = useParams()
     const [enterprise,setEnterprise] = useState([])
     const [detail, setDetail] = useState(undefined);
+    const [globalItems,setGlobalItems] = useState([])
+    
 
     useEffect(()=> {
-       
+        const globalItemsJSON = window.localStorage.getItem('globalItems')
+        const items = JSON.parse(globalItemsJSON)
+        setGlobalItems(items)
+      
         recoverCompanies()
-        console.log(enterprise)
+        console.log(globalItems)
     },[])
 
     const recoverCompanies = async () => {
@@ -34,7 +40,7 @@ const SearchPage = (props) => {
         })
     }
     
-    return (<div className="results--main">{detail !== undefined ? <DetailCard item={detail} setDetail={setDetail} groupItems={enterprise} />
+    return (<div className="results--main">{detail !== undefined ? <DetailCard item={detail} setDetail={setDetail} groupItems={globalItems} />
     : <div className="tableitems--interior-body-results">
         
            {enterprise.map((e, i) =>  <ItemCard

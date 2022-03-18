@@ -6,6 +6,7 @@ import axios from 'axios';
 import { generateNumPags, generatePags } from './LogicTableItems';
 import DetailCard from '../DetailCard/DetailCard';
 
+
 /**
  * This is a container to display companies
  * @param {*} props 
@@ -18,6 +19,7 @@ const TableItems = (props) => {
     const [detail, setDetail] = useState(undefined);
     const [numsPag, setNumPags] = useState(generateNumPags());
     const [halfNumbers, setHalfNumbers] = useState([]);
+    
 
     useEffect(() => {
         if (items !== undefined && items !== null) {
@@ -28,6 +30,7 @@ const TableItems = (props) => {
     useEffect(() => {
         setNumPags(generateNumPags(items))
         uploadItems();
+        
     }, [])
 
     const uploadItems = async () => {
@@ -48,6 +51,8 @@ const TableItems = (props) => {
                 }
                 if (result.length > 0) {
                     setItems(result)
+                    window.localStorage.setItem('globalItems',JSON.stringify(result))
+                    
                 }
             }
         })

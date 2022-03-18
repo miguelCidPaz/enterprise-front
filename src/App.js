@@ -9,8 +9,14 @@ import Profile from "./components/Profile/Profile";
 import { ProviderLogin } from "./components/Login/ProviderLogin";
 import FormLogin from "./components/PurchaseForm/PurchaseForm";
 import SearchPage from "./components/SearchPage/SearchPage";
+
+
+
 const App = () => {
   const [theme, setTheme] = useState('dark');
+  
+  
+
   useEffect(() => {
     const loggedUserThemeJSON = window.localStorage.getItem('theme');
     if (loggedUserThemeJSON) {
@@ -33,6 +39,7 @@ const App = () => {
     <div className={`general--frame ${theme}`}>
       <ProviderLogin>
         <BodyHeader theme={theme} turnLight={turnLight} />
+        
         <Routes>
           <Route path='/' element={<LandPage theme={theme} />} />
           <Route path='/ranking' element={<Ranking theme={theme} />} />
@@ -43,6 +50,7 @@ const App = () => {
           <Route path='*' element={<LandPage theme={theme} />} />
           <Route path='search/:enterpriseName' element={<SearchPage theme={theme}/>}/>
         </Routes>
+       
       </ProviderLogin>
     </div>
   );
