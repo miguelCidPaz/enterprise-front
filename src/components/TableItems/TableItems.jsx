@@ -1,10 +1,13 @@
 import ItemCard from '../ItemCard/ItemCard';
 import Company from '../CustomTools/Company';
 import './styles.scss';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { generateNumPags, generatePags } from './LogicTableItems';
 import DetailCard from '../DetailCard/DetailCard';
+import { OrderContext } from '../Ranking/Ranking';
+/* export const forceRendering = (orderpassed) =>setCompaniesOrder(orderpassed); */
+
 
 /**
  * This is a container to display companies
@@ -15,20 +18,35 @@ import DetailCard from '../DetailCard/DetailCard';
 const TableItems = (props) => {
     const [index, setIndex] = useState(0);
     const [items, setItems] = useState([]);
+    /* const [companiesOrder, setCompaniesOrder] = useState(""); */
     const [detail, setDetail] = useState(undefined);
     const [numsPag, setNumPags] = useState(generateNumPags());
     const [halfNumbers, setHalfNumbers] = useState([]);
+    const orderprovided = useContext(OrderContext);
 
+    
     useEffect(() => {
         if (items !== undefined && items !== null) {
             setHalfNumbers(generatePags(index, items.length))
         }
     }, [items, index]);
 
+    /* window.onstorage = (event) => {
+        console.log('antes del if del onstorage');
+        if (event.key === "order") {
+            console.log('dentro del onstorage')
+            const isOrder = window.localStorage.getItem('order');
+            if (isOrder) {
+                const orderValue= JSON.parse(isOrder);
+                setCompaniesOrder(orderValue);
+            }        
+        }
+    } */
+
     useEffect(() => {
         setNumPags(generateNumPags(items))
         uploadItems();
-    }, [])
+    }, [orderprovided])
 
     const uploadItems = async () => {
         const result = []; //Result donde cargamos los recortes para crear el arr bidi
@@ -43,6 +61,13 @@ const TableItems = (props) => {
             },
         }).then((res) => {
             if (res.status === 200) {
+                const savedorderStorage = window.localStorage.getItem('order');
+                if (savedorderStorage) {
+                    const orderby= JSON.parse(savedorderStorage);
+                    orderby === 'values'? res.data.sort((a,b)=> a.company_value > b.company_value ? -1 : 1):
+                    orderby === 'employeds'? res.data.sort((a,b)=> a.num_employees > b.num_employees ? -1 : 1) : 
+                    res.data.sort((a,b)=> a.time_modification > b.time_modification ? -1 : 1);
+                }
                 while (res.data.length > 0) {
                     result.push(res.data.splice(0, 6));
                 }
