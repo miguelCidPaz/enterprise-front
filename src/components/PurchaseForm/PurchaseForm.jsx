@@ -97,7 +97,7 @@ export default function FormLogin(props) {
                         })} />
                 {errors.email && <div className='login--message-errors'><p>{errors.email.message}</p></div>}
                 {/* Note */}
-                <input className='form--input' spellCheck="true" type="text" placeholder="Password" {
+                <input className='form--input' spellCheck="true" type="password" placeholder="Password" {
                     ...register("password",
                         { required: { value: true, message: 'Campo requerido' } })} />
                 {errors.note && <div className='login--message-errors'><p>{errors.note.message}</p></div>}
