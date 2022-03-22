@@ -6,6 +6,7 @@ import getUserByEmail from '../helpers/getUserByEmail';
 import buyCompany from '../helpers/buyCompany';
 import axios from "axios";
 import md5 from "md5";
+import './purchase.scss';
 
 /**
  * Component purchase form
@@ -14,6 +15,8 @@ import md5 from "md5";
  */
 export default function FormLogin(props) {
     const [companyToBuy , setCompanyToBuy] = useState({});
+    const [accepted, setAccepted] = useState(false);
+    const [openmodal, setOpenmodal] = useState(false);
     const companydataparams = useParams();
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -62,11 +65,12 @@ export default function FormLogin(props) {
     };
 
     const handleBuy = async ()=> {
+        if (accepted) {
         const buyeridJson = window.localStorage.getItem('userlogged');
         const buyerid = JSON.parse(buyeridJson);
-        buyCompany(buyerid.id, companydataparams.idCompany); 
-        alert('offer accepted');
-        navigate(`/Profile`)
+        await buyCompany(buyerid.id, companydataparams.idCompany); 
+        navigate(`/Profile`)            
+        }
     };
 
     const onSubmit = async (data) => {
@@ -76,18 +80,21 @@ export default function FormLogin(props) {
         const aux = aux2.replace(/,/gi,'');
         const companyValue = parseInt(aux);
         const minPriceAccepted = companyValue - (companyValue * margin / 100);
-        data.offer >= minPriceAccepted? handleBuy() : alert('offer refussed');
+        setOpenmodal(true);
+        data.offer >= minPriceAccepted? setAccepted(true) : setAccepted(false);
         /* navigate('/') */
     };
 
     useEffect(() => {
         setData();
     },[]);
-
-    return (
+    useEffect(() => {
+        handleBuy();
+    },[openmodal])
+    return (<>
         <div className='form--main'>
-            <h3>Introduce tu email y contraseña para validar tu oferta</h3>
-            <form className='form--login' onSubmit={handleSubmit(onSubmit)} >
+            <h3 className='purchase--form'>Introduce tu email y contraseña para validar tu oferta</h3>
+            <form className={`form--login ${props.theme}`} onSubmit={handleSubmit(onSubmit)} >
                 {/* Email */}
                 <input className='form--input' spellCheck="false" type="text" placeholder="Email@gmail.com" {
                     ...register("email",
@@ -102,7 +109,7 @@ export default function FormLogin(props) {
                         { required: { value: true, message: 'Campo requerido' } })} />
                 {errors.note && <div className='login--message-errors'><p>{errors.note.message}</p></div>}
                 {/* Vid */}
-                <p>Tu oferta</p>
+                <p className='purchase--form'>Tu oferta</p>
                 <input className='form--input' spellCheck="false" type="number" placeholder="Tu Oferta" {
                     ...register("offer",
                         { required: { value: true, message: 'Campo requerido' } })} />
@@ -111,5 +118,9 @@ export default function FormLogin(props) {
                 <input className='login--button' type="submit" />
             </form>
         </div>
+        {openmodal && <div className='modal'>
+            {accepted? <p>Oferta Aceptada</p> : <p>Oferta Rechazada</p>}
+            <button type='button' onClick={()=> setOpenmodal(false)}>Aceptar</button>
+        </div>}</>
     );
 }

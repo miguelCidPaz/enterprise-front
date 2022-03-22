@@ -46,7 +46,7 @@ const TableItems = (props) => {
     useEffect(() => {
         setNumPags(generateNumPags(items))
         uploadItems();
-    }, [orderprovided])
+    }, [orderprovided, detail])
 
     const uploadItems = async () => {
         const result = []; //Result donde cargamos los recortes para crear el arr bidi
