@@ -5,11 +5,16 @@ import ItemCard from '../ItemCard/ItemCard';
 import './styles.scss';
 import { Link, NavLink } from 'react-router-dom';
 import axios from 'axios';
+import DetailCard from '../DetailCard/DetailCard';
 
 const Profile = () => {
     const [viewItems, setViewItems] = useState(false);
     const [items, setItems] = useState(undefined);
     const { session, id, name, email, connectSession } = useContext(UserContext);
+    const [detail, setDetail] = useState(undefined);
+    const [isProfile, setProfile] = useState(true)
+
+    
    /*  este contexto guarda además  de los datos del usuario un boolean para ver si está conectado y una función para setear ese estado */
     useEffect(() => {
         recoverCompanies();
@@ -49,7 +54,8 @@ const Profile = () => {
     console.log(items);
     return (
         <section className='profile--main'>
-            {viewItems ? <div className='profile--main-enterprises'> {/* esto se renderiza al clickar en ver tus empresas */}
+           {detail !== undefined  ? <DetailCard item={detail} setDetail={setDetail} groupItems={items} isProfile={isProfile}/>
+            : viewItems ? <div className='profile--main-enterprises'> {/* esto se renderiza al clickar en ver tus empresas */}
                 <div className="profile--main-center">
                     <NavLink to={`/FormEnterprise/${id}`} className='profile--button-create-company'>+{/*  botòn de crear nueva empresa */}
                         <div className='profile--modal-help'><p>Crear nueva empresa</p></div>
@@ -57,7 +63,7 @@ const Profile = () => {
                     <button className='profile--button-left profile--button-center' onClick={e => setViewItems(!viewItems)}>
                         Volver a perfil </button>
                     {items !== undefined && items !== null ? items.map((e, i) => { /* si la petición ha devuelto empresas las renderizamos */
-                        return <ItemCard item={e} key={i} index={i} /> 
+                        return <ItemCard item={e} key={i} index={i} setDetail={setDetail} /> 
                         /* aqui tendríamos que crear un pop-up de detalles nuevo, el del ranking no vale porque tiene comprar y comparar*/
                     }) : null}
                 </div> {/* a partir de aquí renderiza al hacer login */}

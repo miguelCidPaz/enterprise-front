@@ -1,9 +1,11 @@
 import './styles.scss';
 import React, { useContext } from 'react';
 import { UserContext } from '../Login/ProviderLogin';
+import { CompanyContext } from '../DetailCard/BodyDetail';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
+
 //import { UserContext } from "../Login";
 
 /**
@@ -11,7 +13,14 @@ import axios from 'axios';
  * @params theme
  * @returns component react
  */
-export default function FormEnterprise(props) {
+
+
+
+
+export default function Modifyenterprise(props) {
+
+
+ 
     //const { user } = useContext(UserContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { session, id, name, email, connectSession } = useContext(UserContext);
@@ -20,8 +29,8 @@ export default function FormEnterprise(props) {
     const onSubmit = async (resultForm) => {
 
         await axios({
-            method: 'post',
-            url: 'http://localhost:3000/v1/companies/create', 
+            method: 'patch',
+            url: 'http://localhost:3000/v1/companies/modCompany',
             headers: {
                 'Access-Control-Allow-Origin': '*',
                 'Accept': 'application/json',
@@ -54,6 +63,7 @@ export default function FormEnterprise(props) {
         <div className='form--main'>
             <form className='form--login form--tobottom' onSubmit={handleSubmit(onSubmit)} >
                 {/* Nombre */}
+                <h3>Modificar empresa</h3>
                 <input className='form--input' type="text" placeholder="Nombre" {
                     ...register("Nombre",
                         {
