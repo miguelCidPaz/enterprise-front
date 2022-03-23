@@ -1,6 +1,5 @@
 import { useState, useContext, useEffect } from 'react';
 import { UserContext } from '../Login/ProviderLogin';
-import Company from '../CustomTools/Company';
 import ItemCard from '../ItemCard/ItemCard';
 import './styles.scss';
 import { Link, NavLink } from 'react-router-dom';
@@ -46,7 +45,6 @@ const Profile = () => {
         window.localStorage.removeItem('theme');
         window.localStorage.removeItem('order');
     }
-    console.log(items);
     return (
         <section className='profile--main'>
             {viewItems ? <div className='profile--main-enterprises'> {/* esto se renderiza al clickar en ver tus empresas */}
@@ -63,17 +61,14 @@ const Profile = () => {
                 </div> {/* a partir de aquí renderiza al hacer login */}
             </div> : <div className={viewItems ? 'profile--main-container profile--main-container-toright' : 'profile--main-container'}>
                 <div className='profile--slot'>
-                    <p className='profile--label'>Your Name: </p>
+                    <p className='profile--label'>Tu Nombre: </p>
                     <p className='profile--text'>{session ? name : undefined}</p>
                 </div>
                 <div className='profile--slot'>
-                    <p className='profile--label'>Your Email: </p>
+                    <p className='profile--label'>Tu Email: </p>
                     <p className='profile--text'>{session ? email : undefined}</p>
                 </div>
-
-
                 <p className='profile--text profile--title'>Acciones</p>
-
                 <button className='profile--button-left' onClick={e => setViewItems(!viewItems)}>Ver tus empresas</button>
                 <Link to={"/"} onClick={handleLogout} className='profile--button'>Log Out</Link>
             </div>}

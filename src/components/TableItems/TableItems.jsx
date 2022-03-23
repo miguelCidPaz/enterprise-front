@@ -6,7 +6,6 @@ import axios from 'axios';
 import { generateNumPags, generatePags } from './LogicTableItems';
 import DetailCard from '../DetailCard/DetailCard';
 import { OrderContext } from '../Ranking/Ranking';
-/* export const forceRendering = (orderpassed) =>setCompaniesOrder(orderpassed); */
 
 
 /**
@@ -18,30 +17,16 @@ import { OrderContext } from '../Ranking/Ranking';
 const TableItems = (props) => {
     const [index, setIndex] = useState(0);
     const [items, setItems] = useState([]);
-    /* const [companiesOrder, setCompaniesOrder] = useState(""); */
     const [detail, setDetail] = useState(undefined);
     const [numsPag, setNumPags] = useState(generateNumPags());
     const [halfNumbers, setHalfNumbers] = useState([]);
     const orderprovided = useContext(OrderContext);
 
-    
     useEffect(() => {
         if (items !== undefined && items !== null) {
             setHalfNumbers(generatePags(index, items.length))
         }
     }, [items, index]);
-
-    /* window.onstorage = (event) => {
-        console.log('antes del if del onstorage');
-        if (event.key === "order") {
-            console.log('dentro del onstorage')
-            const isOrder = window.localStorage.getItem('order');
-            if (isOrder) {
-                const orderValue= JSON.parse(isOrder);
-                setCompaniesOrder(orderValue);
-            }        
-        }
-    } */
 
     useEffect(() => {
         setNumPags(generateNumPags(items))

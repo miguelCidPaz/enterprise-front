@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { UserContext } from '../ProviderLogin'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -20,7 +20,6 @@ export default function FormLogin(props) {
     const onSubmit = async (data) => {
         userData.email = data.username;
         userData.password = md5(data.password)
-        console.log(userData.email, userData.password)
         await axios({
             method: 'post',
             url: 'http://localhost:3000/v1/users/',
@@ -34,7 +33,6 @@ export default function FormLogin(props) {
                 userpass: userData.password
             },
         }).then((res) => {
-            console.log(res)
             if (res.status === 200) {
                 connectSession(true, res.data.id, res.data.username, res.data.email); 
                 window.localStorage.setItem('userlogged',JSON.stringify({session:true, id:res.data.id, username:res.data.username, email:res.data.email}));  
@@ -44,8 +42,6 @@ export default function FormLogin(props) {
                 connectSession(false, undefined, undefined, undefined)
             }
         })
-
-
     };
 
     // get para recuperar el usario;

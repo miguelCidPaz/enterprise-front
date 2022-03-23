@@ -30,18 +30,7 @@ export default function FormLogin(props) {
             console.log('error');
         })});
   
-
-/*     const setUser = useCallback(async (a) => {
-        console.log('dentro usecallback user');
-        await getUserByEmail(a)
-           .then ((newData) => {
-               console.log(newData.data[0]);
-           })
-        .catch((err) => {
-            console.log('error');
-        })
-   },[companydata]); */
-   
+ 
    const getUserByEmail = async (datas) => {
     let codedpassword = md5(datas.password)
     await axios({
@@ -88,9 +77,11 @@ export default function FormLogin(props) {
     useEffect(() => {
         setData();
     },[]);
+
     useEffect(() => {
         handleBuy();
     },[openmodal])
+
     return (<>
         <div className='form--main'>
             <h3 className='purchase--form'>Introduce tu email y contraseña para validar tu oferta</h3>

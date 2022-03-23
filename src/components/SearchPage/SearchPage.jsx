@@ -20,14 +20,11 @@ const SearchPage = (props) => {
     useEffect(async ()=> {
         const globalItemsJSON = window.localStorage.getItem('globalItems')
         items = JSON.parse(globalItemsJSON)
-        console.log(items)
         await updateitems(items);
-        console.log(globalItems)
        /*  await recoverCompanies() */
     },[])
 
     const recoverCompanies = async () => {
-        console.log(globalItems);
         await axios({
             method: 'get',
             url: `http://localhost:3000/v1/companies/search/${enterpriseName}`,//esta peticion donde va????
