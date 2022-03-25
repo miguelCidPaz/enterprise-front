@@ -1,4 +1,4 @@
-import React, { useCallback , useState , useEffect } from 'react';
+import React, { useState , useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate , useParams } from 'react-router-dom';
 import getCompanyData from '../helpers/getCompany';
@@ -17,6 +17,8 @@ export default function FormLogin(props) {
     const [companyToBuy , setCompanyToBuy] = useState({});
     const [accepted, setAccepted] = useState(false);
     const [openmodal, setOpenmodal] = useState(false);
+    const [errorModal, setErrorModal] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
     const companydataparams = useParams();
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -46,7 +48,18 @@ export default function FormLogin(props) {
             userpass: codedpassword
         },
     }).then((res) => {
-        return res.data;
+        
+        if (res.status === 200 && res.data.username) {
+            onSubmit(datas);
+        }
+        else if (res.status === 200) {
+            setErrorMessage("Contraseña equivocada");
+            setErrorModal(true);
+        }
+        else {
+            setErrorMessage("Usuario no encontrado");
+            setErrorModal(true);
+        }
         
         }).catch((err) => {
             console.log(err);
@@ -63,7 +76,6 @@ export default function FormLogin(props) {
     };
 
     const onSubmit = async (data) => {
-        await getUserByEmail(data);
         const margin = Math.floor(Math.random() * (20 - 1)) + 1;
         const aux2 = companyToBuy.company_value.replace('$','');
         const aux = aux2.replace(/,/gi,'');
@@ -71,7 +83,6 @@ export default function FormLogin(props) {
         const minPriceAccepted = companyValue - (companyValue * margin / 100);
         setOpenmodal(true);
         data.offer >= minPriceAccepted? setAccepted(true) : setAccepted(false);
-        /* navigate('/') */
     };
 
     useEffect(() => {
@@ -84,8 +95,12 @@ export default function FormLogin(props) {
 
     return (<>
         <div className='form--main'>
+        {errorModal && <div className='form--error-modal'>
+                <p className='form--error-modal-text'>{errorMessage}</p>
+                <button className='form--error-modal-button' onClick={()=>setErrorModal(false)}>Aceptar</button>
+            </div>}            
             <h3 className='purchase--form'>Introduce tu email y contraseña para validar tu oferta</h3>
-            <form className={`form--login ${props.theme}`} onSubmit={handleSubmit(onSubmit)} >
+            <form className={`form--login ${props.theme}`} onSubmit={handleSubmit(getUserByEmail)} >
                 {/* Email */}
                 <input className='form--input' spellCheck="false" type="text" placeholder="Email@gmail.com" {
                     ...register("email",

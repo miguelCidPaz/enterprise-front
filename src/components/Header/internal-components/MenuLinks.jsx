@@ -39,7 +39,7 @@ const MenuLinks = (props) => {
             <div className='bodyheader--frame-menu-mobile'>
                 <div className='bodyheader--menu-mobile' onClick={e => setActive(!active)}></div>
                 {active? <div className='bodyheader--menu-mobile-options'>                
-                    {session ?
+                    {session ? /*  conditional render if user is logged */
                         <Link onClick={e => setActive(!active)} to={'/Profile'} className="bodyheader--menu-mobile-link link-1">Perfil</Link>
                         : <Link onClick={e => setActive(!active)} to={'/Login'} className="bodyheader--menu-mobile-link link-1">Registro</Link>}
 

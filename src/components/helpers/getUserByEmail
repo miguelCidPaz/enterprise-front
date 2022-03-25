@@ -15,7 +15,6 @@ import md5 from "md5";
                 userpass: codedpassword
             },
         }).then((res) => {
-            console.log(res);
             return res;
             
             }).catch((err) => {

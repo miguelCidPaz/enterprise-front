@@ -47,17 +47,16 @@ const Profile = () => {
     }
     return (
         <section className='profile--main'>
-            {viewItems ? <div className='profile--main-enterprises'> {/* esto se renderiza al clickar en ver tus empresas */}
+            {viewItems ? <div className='profile--main-enterprises'> {/* viewItems allow user to view their companies*/}
                 <div className="profile--main-center">
                     <NavLink to={`/FormEnterprise/${id}`} className='profile--button-create-company'>+{/*  botòn de crear nueva empresa */}
                         <div className='profile--modal-help'><p>Crear nueva empresa</p></div>
-                    </NavLink>
+                    </NavLink> 
                     <button className='profile--button-left profile--button-center' onClick={e => setViewItems(!viewItems)}>
                         Volver a perfil </button>
                     {items !== undefined && items !== null ? items.map((e, i) => { /* si la petición ha devuelto empresas las renderizamos */
                         return <ItemCard item={e} key={i} index={i} /> 
-                        /* aqui tendríamos que crear un pop-up de detalles nuevo, el del ranking no vale porque tiene comprar y comparar*/
-                    }) : null}
+                    }) : <div className='no-companies-message'><p className="profile--label center">Todavía no posees empresa alguna</p></div>}
                 </div> {/* a partir de aquí renderiza al hacer login */}
             </div> : <div className={viewItems ? 'profile--main-container profile--main-container-toright' : 'profile--main-container'}>
                 <div className='profile--slot'>
