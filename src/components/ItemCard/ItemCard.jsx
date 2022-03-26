@@ -9,6 +9,7 @@ import './styles.scss';
  */
 const ItemCard = (props) => {
     const item = props.item
+       
 
     return (
         <div className={`itemcard--main ${props.theme} itemcard--item-${props.index + 1}`}>

@@ -31,7 +31,7 @@ const BodyDetail = (props) => {
                 <a target="_blank" href={props.item.social_media} className="details--link">+info</a>
                 {loggedUser && loggedUser.id !== props.item.iduser ? 
                     <NavLink to={`/Purchase/${props.item.idcompany}`} className="details--button details--button-link">
-                        Comprar</NavLink> : loggedUser? <NavLink to={`/Purchase/${props.item.idcompany}`} className="details--button details--button-link">
+                        Comprar</NavLink> : loggedUser? <NavLink to={`/Purchase/${props.item.idcompany}`} onClick ={window.localStorage.setItem('companyToModify',JSON.stringify(props.item))} className="details--button details--button-link">
                     Modificar</NavLink> : null } {/* comprar button only rendered if user is logged, and in user's company is rendered a modificar button */}
                
                 {props.viewSecondary
