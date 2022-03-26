@@ -1,7 +1,6 @@
 import './styles.scss';
 import React, { useContext } from 'react';
 import { UserContext } from '../Login/ProviderLogin';
-import { CompanyContext } from '../DetailCard/BodyDetail';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
@@ -18,18 +17,24 @@ import axios from 'axios';
 
 
 export default function Modifyenterprise(props) {
+    const companyToModifyJSON = window.localStorage.getItem('companyToModify')
+    let companyToModify = JSON.parse(companyToModifyJSON);
+        console.log(companyToModify)
+    
+    let dateString = companyToModify.creation_date
+    
+    console.log(dateString)
+    
 
-
- 
-    //const { user } = useContext(UserContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { session, id, name, email, connectSession } = useContext(UserContext);
+
     const navigate = useNavigate();
     //let dataInsert = {iduser: user }
     const onSubmit = async (resultForm) => {
 
         await axios({
-            method: 'patch',
+            method: 'put',
             url: 'http://localhost:3000/v1/companies/modCompany',
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -57,27 +62,27 @@ export default function Modifyenterprise(props) {
         })
     };
 
-    //post companies/create
+    //crear condicional para que los inputs muestren los datos antiguos en caso de que no se modifique ningún input
+    function handleChange(e){
+        e.preventDefault();
+    }
+    
 
     return (
         <div className='form--main'>
             <form className='form--login form--tobottom' onSubmit={handleSubmit(onSubmit)} >
-                {/* Nombre */}
-                <h3>Modificar empresa</h3>
-                <input className='form--input' type="text" placeholder="Nombre" {
+                <h3>Modificar {companyToModify.name_description}</h3>
+                <div className='section--inputs'>
+                <label>Nombre</label>
+                <input className='form--input' onChange={handleChange} placeholder={companyToModify.name_description} type="text" {
                     ...register("Nombre",
                         {
                             required: { value: true, message: 'Campo requerido' },
                             maxLength: { value: 80, message: 'Tamaño maximo 80' }
                         })} />
                 {errors.Nombre && <p className='login--message-errors'>{errors.Nombre.message}</p>}
-                {/* Sector */}
-                {/* <input className='form--input' type="select" placeholder="Sector" {
-                    ...register("Sector", {
-                        required: false,
-                        maxLength: { value: 100, message: 'Tamaño maximo 100' }
-                    })} /> */}
-                <select className='form--input' placeholder="Sector" {
+                <label>Sector</label>
+                <select className='form--input' value={companyToModify.sector} {
                     ...register("Sector", {
                         required: false,
                         maxLength: { value: 100, message: 'Tamaño maximo 100' }
@@ -90,34 +95,45 @@ export default function Modifyenterprise(props) {
     
                 </select> 
                 {errors.Nombre && <p className='login--message-errors'>{errors.Nombre.message}</p>}
-                {/* Fecha creacion */}
-                {/* Es posible q la fecha solo incluya mes/año o solo año o q me toquen las pelotas con otros formatos? */}
-                <input className='form--input' type="date" placeholder="Fecha Creacion" {
+
+                {/* ¿Cómo poner una fecha (por ahora, hasta conseguir pasar date a localstorage) por defecto. Esta fecha tendrá que estar bloqueada. Buscar en la aplicación de Mensajería */}
+
+                <label>Fecha de creación</label>
+                <input className='form--input' type="date" {
                     ...register("FechaCreacion", { required: false })} />
                 {/* Logotipo */}
-                <input className='form--input' type="url" placeholder="Logotipo" {
+                <label>Logotipo</label>
+                <input className='form--input' type="url" placeholder={companyToModify.logo} {
                     ...register("Logotipo", { required: false })} />
                 {/* Pagina Web */}
-                <input className='form--input' type="url" placeholder="Pagina Web" {
+                <label>Página web</label>
+                <input className='form--input' type="url" placeholder={companyToModify.webpage}{
                     ...register("PaginaWeb", { required: false })} />
                 {/* Numero de Telefono */}
-                <input className='form--input' type="number" placeholder="Numero de Telefono" {
+                <label>Número de empleados</label>
+                <input className='form--input' type="number" placeholder={companyToModify.num_employees} {
                     ...register("NumerodeTelefono", { required: false })} />
                 {/* Social Media */}
-                <input className='form--input' type="text" placeholder="Social Media" {
+                <label>Social Media</label>
+                <input className='form--input' type="text" placeholder={companyToModify.social_media} {
                     ...register("SocialMedia", { required: false })} />
                 {/* Valoracion */}
-                <input className='form--input' type="number" placeholder="Valoracion" {
+                <label>Valoración</label>
+                <input className='form--input' type="number" placeholder={companyToModify.company_value} {
                     ...register("Valoracion", { required: false })} />
                 {/* Numero de empleados */}
-                <input className='form--input' type="number" placeholder="Numero de empleados" {
+                <label>Número de empleados</label>
+                <input className='form--input' type="number" placeholder={companyToModify.num_employees}{
                     ...register("Numerodeempleados", { required: false })} />
                 {/* imagen */}
-                <input className='form--input' type="url" placeholder="Imagen" {
+                <label>Imagen</label>
+                <input className='form--input' type="url" placeholder={companyToModify.images} {
                     ...register("Imagen", { required: false })} />
                 {/* Descripcion */}
-                <textarea className='form--input' type="text" placeholder="Descripcion"{
+                <label>Descripcion</label>
+                <textarea className='form--input' type="text" placeholder={companyToModify.company_description}{
                     ...register("Descripcion", { required: false })} />
+                </div>
                 <input className='login--button' type="submit" />
             </form>
         </div>
