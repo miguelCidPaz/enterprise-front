@@ -1,4 +1,4 @@
-import React, { useCallback , useState , useEffect } from 'react';
+import React, { useState , useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate , useParams } from 'react-router-dom';
 import getCompanyData from '../helpers/getCompany';
@@ -6,6 +6,7 @@ import getUserByEmail from '../helpers/getUserByEmail';
 import buyCompany from '../helpers/buyCompany';
 import axios from "axios";
 import md5 from "md5";
+import './purchase.scss';
 
 /**
  * Component purchase form
@@ -14,6 +15,10 @@ import md5 from "md5";
  */
 export default function FormLogin(props) {
     const [companyToBuy , setCompanyToBuy] = useState({});
+    const [accepted, setAccepted] = useState(false);
+    const [openmodal, setOpenmodal] = useState(false);
+    const [errorModal, setErrorModal] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
     const companydataparams = useParams();
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -27,18 +32,7 @@ export default function FormLogin(props) {
             console.log('error');
         })});
   
-
-/*     const setUser = useCallback(async (a) => {
-        console.log('dentro usecallback user');
-        await getUserByEmail(a)
-           .then ((newData) => {
-               console.log(newData.data[0]);
-           })
-        .catch((err) => {
-            console.log('error');
-        })
-   },[companydata]); */
-   
+ 
    const getUserByEmail = async (datas) => {
     let codedpassword = md5(datas.password)
     await axios({
@@ -54,7 +48,18 @@ export default function FormLogin(props) {
             userpass: codedpassword
         },
     }).then((res) => {
-        return res.data;
+        
+        if (res.status === 200 && res.data.username) {
+            onSubmit(datas);
+        }
+        else if (res.status === 200) {
+            setErrorMessage("Contraseña equivocada");
+            setErrorModal(true);
+        }
+        else {
+            setErrorMessage("Usuario no encontrado");
+            setErrorModal(true);
+        }
         
         }).catch((err) => {
             console.log(err);
@@ -62,32 +67,40 @@ export default function FormLogin(props) {
     };
 
     const handleBuy = async ()=> {
+        if (accepted) {
         const buyeridJson = window.localStorage.getItem('userlogged');
         const buyerid = JSON.parse(buyeridJson);
-        buyCompany(buyerid.id, companydataparams.idCompany); 
-        alert('offer accepted');
-        navigate(`/Profile`)
+        await buyCompany(buyerid.id, companydataparams.idCompany); 
+        navigate(`/Profile`)            
+        }
     };
 
     const onSubmit = async (data) => {
-        await getUserByEmail(data);
         const margin = Math.floor(Math.random() * (20 - 1)) + 1;
         const aux2 = companyToBuy.company_value.replace('$','');
         const aux = aux2.replace(/,/gi,'');
         const companyValue = parseInt(aux);
         const minPriceAccepted = companyValue - (companyValue * margin / 100);
-        data.offer >= minPriceAccepted? handleBuy() : alert('offer refussed');
-        /* navigate('/') */
+        setOpenmodal(true);
+        data.offer >= minPriceAccepted? setAccepted(true) : setAccepted(false);
     };
 
     useEffect(() => {
         setData();
     },[]);
 
-    return (
+    useEffect(() => {
+        handleBuy();
+    },[openmodal])
+
+    return (<>
         <div className='form--main'>
-            <h3>Introduce tu email y contraseña para validar tu oferta</h3>
-            <form className='form--login' onSubmit={handleSubmit(onSubmit)} >
+        {errorModal && <div className='form--error-modal'>
+                <p className='form--error-modal-text'>{errorMessage}</p>
+                <button className='form--error-modal-button' onClick={()=>setErrorModal(false)}>Aceptar</button>
+            </div>}            
+            <h3 className='purchase--form'>Introduce tu email y contraseña para validar tu oferta</h3>
+            <form className={`form--login ${props.theme}`} onSubmit={handleSubmit(getUserByEmail)} >
                 {/* Email */}
                 <input className='form--input' spellCheck="false" type="text" placeholder="Email@gmail.com" {
                     ...register("email",
@@ -102,7 +115,7 @@ export default function FormLogin(props) {
                         { required: { value: true, message: 'Campo requerido' } })} />
                 {errors.note && <div className='login--message-errors'><p>{errors.note.message}</p></div>}
                 {/* Vid */}
-                <p>Tu oferta</p>
+                <p className='purchase--form'>Tu oferta</p>
                 <input className='form--input' spellCheck="false" type="number" placeholder="Tu Oferta" {
                     ...register("offer",
                         { required: { value: true, message: 'Campo requerido' } })} />
@@ -111,5 +124,9 @@ export default function FormLogin(props) {
                 <input className='login--button' type="submit" />
             </form>
         </div>
+        {openmodal && <div className='modal'>
+            {accepted? <p>Oferta Aceptada</p> : <p>Oferta Rechazada</p>}
+            <button type='button' onClick={()=> setOpenmodal(false)}>Aceptar</button>
+        </div>}</>
     );
 }
