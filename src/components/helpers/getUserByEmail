@@ -1,0 +1,35 @@
+import axios from "axios";
+import md5 from "md5";
+    const getUserByEmail = async (datas) => {
+        let codedpassword = md5(datas.password)
+        await axios({
+            method: 'post',
+            url: 'http://localhost:3000/v1/users/email',
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            data: {
+                email: datas.email,
+                userpass: codedpassword
+            },
+        }).then((res) => {
+            console.log(res);
+            return res;
+            
+            }).catch((err) => {
+                console.log(err);
+/*             if (res.status === 200) {
+                connectSession(true, res.data.id, res.data.username, res.data.email); 
+                window.localStorage.setItem('userlogged',JSON.stringify({session:true, id:res.data.id, username:res.data.username, email:res.data.email}));  
+                navigate("/Profile");
+                }
+            else {
+                connectSession(false, undefined, undefined, undefined)
+            } */
+        })
+
+
+    };
+    export default getUserByEmail;

@@ -43,9 +43,10 @@ const Profile = () => {
     const handleLogout = () => {
         connectSession(false, undefined, undefined); 
         window.localStorage.removeItem('userlogged');
-        window.localStorage.removeItem('theme')
+        window.localStorage.removeItem('theme');
+        window.localStorage.removeItem('order');
     }
-
+    console.log(items);
     return (
         <section className='profile--main'>
             {viewItems ? <div className='profile--main-enterprises'> {/* esto se renderiza al clickar en ver tus empresas */}
