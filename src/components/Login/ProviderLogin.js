@@ -1,4 +1,3 @@
-import axios from "axios";
 import { createContext, useState } from "react"
 import { users } from './mock';
 
@@ -20,7 +19,6 @@ export const ProviderLogin = ({ children }) => {
             setID(iduser)
             setName(userName)
             setEmail(userEmail)
-
             return sesion
         }
     }

@@ -83,8 +83,6 @@ export default function FormEnterprise(props) {
     
                 </select> 
                 {errors.Nombre && <p className='login--message-errors'>{errors.Nombre.message}</p>}
-                {/* Fecha creacion */}
-                {/* Es posible q la fecha solo incluya mes/año o solo año o q me toquen las pelotas con otros formatos? */}
                 <input className='form--input' type="date" placeholder="Fecha Creacion" {
                     ...register("FechaCreacion", { required: false })} />
                 {/* Logotipo */}

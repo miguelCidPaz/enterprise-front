@@ -15,21 +15,10 @@ import md5 from "md5";
                 userpass: codedpassword
             },
         }).then((res) => {
-            console.log(res);
             return res;
             
             }).catch((err) => {
                 console.log(err);
-/*             if (res.status === 200) {
-                connectSession(true, res.data.id, res.data.username, res.data.email); 
-                window.localStorage.setItem('userlogged',JSON.stringify({session:true, id:res.data.id, username:res.data.username, email:res.data.email}));  
-                navigate("/Profile");
-                }
-            else {
-                connectSession(false, undefined, undefined, undefined)
-            } */
         })
-
-
     };
     export default getUserByEmail;

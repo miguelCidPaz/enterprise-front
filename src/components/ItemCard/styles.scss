@@ -43,17 +43,6 @@ $o: 1;
     }
 
     $o: $o + 0.2;
-    /*     @if $i > 3 {
-    $time:1.0 + $j;
-        .itemcard--item-#{$i}{
-            animation: toRight #{$time}s;
-        }
-        $j: $j +1
-    }@else{
-        .itemcard--item-#{$i}{
-            animation: toRight #{$time}s;
-        }
-    } */
 }
 
 @keyframes toRight {
