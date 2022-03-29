@@ -16,7 +16,6 @@ export default function FormEnterprise(props) {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { session, id, name, email, connectSession } = useContext(UserContext);
     const navigate = useNavigate();
-    //let dataInsert = {iduser: user }
     const onSubmit = async (resultForm) => {
 
         await axios({
@@ -68,8 +67,6 @@ export default function FormEnterprise(props) {
                         maxLength: { value: 100, message: 'Tamaño maximo 100' }
                     })} />
                 {errors.Nombre && <p className='login--message-errors'>{errors.Nombre.message}</p>}
-                {/* Fecha creacion */}
-                {/* Es posible q la fecha solo incluya mes/año o solo año o q me toquen las pelotas con otros formatos? */}
                 <input className='form--input' type="date" placeholder="Fecha Creacion" {
                     ...register("FechaCreacion", { required: false })} />
                 {/* Logotipo */}

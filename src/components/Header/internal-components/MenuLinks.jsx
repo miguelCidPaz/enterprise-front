@@ -30,12 +30,12 @@ const MenuLinks = (props) => {
     return (
         <nav className="bodyheader--menu-main">
             <div className="bodyheader--menu-container">
-
                 {session ?
                     <Link to={'/Profile'} className="bodyheader--menu-link link-1">Perfil</Link>
                     : <Link to={'/Login'} className="bodyheader--menu-link link-1">Registro</Link>}
 
                 <Link to={'/Ranking'} className="bodyheader--menu-link link-2">Ranking</Link>
+<<<<<<< HEAD
                 {/* <button id="switch-ligths"
                     className="bodyheader--menu-link link-3"
                     onClick={handleTheme}>
@@ -46,6 +46,13 @@ const MenuLinks = (props) => {
                 <div className='bodyheader--menu-mobile' onClick={e => setActive(!active)}>{/* este es el div del menu  hambuger */}</div>
                 {active? <div className='bodyheader--menu-mobile-options'>                
                     {session ?
+=======
+            </div>
+            <div className='bodyheader--frame-menu-mobile'>
+                <div className='bodyheader--menu-mobile' onClick={e => setActive(!active)}></div>
+                {active? <div className='bodyheader--menu-mobile-options'>                
+                    {session ? /*  conditional render if user is logged */
+>>>>>>> 6ccd820f44b86df807c44e161e7ddf4e465e452b
                         <Link onClick={e => setActive(!active)} to={'/Profile'} className="bodyheader--menu-mobile-link link-1">Perfil</Link>
                         : <Link onClick={e => setActive(!active)} to={'/Login'} className="bodyheader--menu-mobile-link link-1">Registro</Link>}
 
@@ -55,7 +62,11 @@ const MenuLinks = (props) => {
             </div>
                 <button id="switch-ligths"
                     className="bodyheader--menu-mobile-link link-3"
+<<<<<<< HEAD
                     onClick={handleTheme/*e =>  props.turnLight(props.theme) */}>
+=======
+                    onClick={handleTheme}>
+>>>>>>> 6ccd820f44b86df807c44e161e7ddf4e465e452b
                     <div className="light-up"></div>
                 </button>
         </nav>

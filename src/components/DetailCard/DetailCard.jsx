@@ -55,11 +55,6 @@ const DetailCard = (props) => {
                     />
                     : null}
             </div>
-
-
-
-
-
         </section>
     )
 }

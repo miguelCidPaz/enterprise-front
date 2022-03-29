@@ -6,8 +6,11 @@ import axios from 'axios';
 import { generateNumPags, generatePags } from './LogicTableItems';
 import DetailCard from '../DetailCard/DetailCard';
 import { OrderContext } from '../Ranking/Ranking';
+<<<<<<< HEAD
 /* export const forceRendering = (orderpassed) =>setCompaniesOrder(orderpassed); */
 
+=======
+>>>>>>> 6ccd820f44b86df807c44e161e7ddf4e465e452b
 
 
 /**
@@ -47,7 +50,11 @@ const TableItems = (props) => {
     useEffect(() => {
         setNumPags(generateNumPags(items))
         uploadItems();
+<<<<<<< HEAD
     }, [orderprovided])
+=======
+    }, [orderprovided, detail])
+>>>>>>> 6ccd820f44b86df807c44e161e7ddf4e465e452b
 
     const uploadItems = async () => {
         const result = []; //Result donde cargamos los recortes para crear el arr bidi

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './styles.scss';
 
 /**
@@ -10,6 +9,7 @@ import './styles.scss';
  */
 const ItemCard = (props) => {
     const item = props.item
+       
 
     return (
         <div className={`itemcard--main ${props.theme} itemcard--item-${props.index + 1}`}>
@@ -25,7 +25,7 @@ const ItemCard = (props) => {
                 </div>
             </div>
             <div className={`itemcard--body-button ${props.theme}`}>
-                <button onClick={e => props.setDetail(item)} className={`itemcard--button ${props.theme}`}>Details</button>
+                <button onClick={e => props.setDetail(item)} className={`itemcard--button ${props.theme}`}>Detalles</button>
             </div>
         </div>
     )
