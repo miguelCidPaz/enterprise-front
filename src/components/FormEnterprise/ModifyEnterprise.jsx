@@ -31,11 +31,12 @@ export default function Modifyenterprise(props) {
 
     const navigate = useNavigate();
     //let dataInsert = {iduser: user }
+
     const onSubmit = async (resultForm) => {
 
         await axios({
             method: 'put',
-            url: 'http://localhost:3000/v1/companies/modCompany',
+            url: `http://localhost:3000/v1/companies/mod/${companyToModify.idcompany}`,
             headers: {
                 'Access-Control-Allow-Origin': '*',
                 'Accept': 'application/json',
@@ -57,24 +58,20 @@ export default function Modifyenterprise(props) {
             }
         }).then((res) => {
             if (res.status === 201) {
+                alert('Compañía modificada con éxito')
                 navigate('/Profile');
             }
         })
     };
 
-    //crear condicional para que los inputs muestren los datos antiguos en caso de que no se modifique ningún input
-    function handleChange(e){
-        e.preventDefault();
-    }
-    
-
+ 
     return (
         <div className='form--main'>
             <form className='form--login form--tobottom' onSubmit={handleSubmit(onSubmit)} >
                 <h3>Modificar {companyToModify.name_description}</h3>
                 <div className='section--inputs'>
                 <label>Nombre</label>
-                <input className='form--input' onChange={handleChange} placeholder={companyToModify.name_description} type="text" {
+                <input className='form--input'  placeholder={companyToModify.name_description} type="text" {
                     ...register("Nombre",
                         {
                             required: { value: true, message: 'Campo requerido' },

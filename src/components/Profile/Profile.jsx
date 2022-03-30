@@ -52,7 +52,7 @@ const Profile = () => {
     }
     return (
         <section className='profile--main'>
-           {detail !== undefined  ? <DetailCard item={detail} setDetail={setDetail} groupItems={items} isProfile={isProfile}/>
+           {detail !== undefined  ? <DetailCard item={detail} setDetail={setDetail} groupItems={items} />
             : viewItems ? <div className='profile--main-enterprises'> {/* esto se renderiza al clickar en ver tus empresas */}
                 <div className="profile--main-center">
                     <NavLink to={`/FormEnterprise/${id}`} className='profile--button-create-company'>+{/*  botòn de crear nueva empresa */}
