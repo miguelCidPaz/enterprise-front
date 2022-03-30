@@ -8,16 +8,13 @@ const BodyDetail = (props) => {
     const [viewDelete, setViewDelete] = useState(props.propierty || false);
     const [isProfile, setProfile] = useState(false)
    
-    console.log(props)
     let loggedUser;
     if (session) {
         const loggedUserJSON = window.localStorage.getItem('userlogged');
         loggedUser= JSON.parse(loggedUserJSON);
     }
 
-    console.log(props.item)
     function StorageCompany(){
-        //hay que ver aquí como almacenar correctamente la fecha. Más información en https://stackoverflow.com/questions/29629458/saving-and-retrieving-date-from-local-storage
         window.localStorage.setItem('companyToModify',JSON.stringify(props.item))
     }
  
