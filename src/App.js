@@ -9,6 +9,7 @@ import Profile from "./components/Profile/Profile";
 import { ProviderLogin } from "./components/Login/ProviderLogin";
 import FormLogin from "./components/PurchaseForm/PurchaseForm";
 import Modifyenterprise from "./components/FormEnterprise/ModifyEnterprise";
+import SearchPage from './components/SearchPage/SearchPage'
 
 const App = () => {
   const [theme, setTheme] = useState('dark');
@@ -35,6 +36,7 @@ const App = () => {
     <div className={`general--frame ${theme}`}>
       <ProviderLogin>
         <BodyHeader theme={theme} turnLight={turnLight} />
+        
         <Routes>
           <Route path='/' element={<LandPage theme={theme} />} />
           <Route path='/ranking' element={<Ranking theme={theme} />} />
@@ -44,7 +46,9 @@ const App = () => {
           <Route path='/Modifyenterprise/:idUser' element={<Modifyenterprise theme={theme} />} />
           <Route path='/Purchase/:idCompany' element={<FormLogin theme={theme} />} />
           <Route path='*' element={<LandPage theme={theme} />} />
+          <Route path='search/:enterpriseName' element={<SearchPage theme={theme}/>}/>
         </Routes>
+       
       </ProviderLogin>
     </div>
   );

@@ -1,19 +1,34 @@
 import { useParams } from "react-router-dom"
 import { useState } from "react"
-import { useEffect } from "react"
+import { useEffect,useContext } from "react"
 import axios from "axios"
 import './style.scss';
 import ItemCard from "../ItemCard/ItemCard";
 import DetailCard from "../DetailCard/DetailCard";
+import { UserContext } from '../Login/ProviderLogin';
 
 
 const SearchPage = (props) => {
+    const { session } = useContext(UserContext);
     let {enterpriseName} = useParams()
     const [enterprise,setEnterprise] = useState([])
     const [detail, setDetail] = useState(undefined);
-    const [globalItems,setGlobalItems] = useState([])
+    /* const [globalItems,setGlobalItems] = useState([]) */
+    let loggedUser;
+    useEffect(()=> {
+        if (session) {
+        const loggedUserJSON = window.localStorage.getItem('userlogged');
+        loggedUser= JSON.parse(loggedUserJSON);
+        console.log(loggedUser)
+    }
+    },[])
     
-    const updateitems = async (a) => {
+    const page = 'searchPage'
+    
+    useEffect(()=> {
+        recoverCompanies()
+    })
+    /* const updateitems = async (a) => {
         await setGlobalItems([...a])
     }
     let items;
@@ -21,8 +36,8 @@ const SearchPage = (props) => {
         const globalItemsJSON = window.localStorage.getItem('globalItems')
         items = JSON.parse(globalItemsJSON)
         await updateitems(items);
-       /*  await recoverCompanies() */
-    },[])
+       /*  await recoverCompanies() 
+    },[]) */
 
     const recoverCompanies = async () => {
         await axios({
@@ -40,8 +55,9 @@ const SearchPage = (props) => {
             }
         })
     }
+
     
-    return (<div className="results--main">{detail !== undefined ? <DetailCard item={detail} setDetail={setDetail} groupItems={items} />
+    return (<div className="results--main">{detail !== undefined ? <DetailCard item={detail} setDetail={setDetail} page={page} />
     : <div className="tableitems--interior-body-results">
         
            {enterprise.map((e, i) =>  <ItemCard
