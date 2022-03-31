@@ -42,7 +42,7 @@ export default function Modifyenterprise(props) {
                 iduser: id,
                 name_description: resultForm.Nombre? resultForm.Nombre: companyToModify.name_description,
                 sector: resultForm.Sector? resultForm.Sector : companyToModify.sector,
-                creation_date: resultForm.FechaDeCreacion? resultForm.FechaDeCreacion : companyToModify.creation_date,
+                creation_date: companyToModify.creation_date,
                 logo: resultForm.Logotipo? resultForm.Logotipo : companyToModify.logo,
                 webpage: resultForm.PaginaWeb? resultForm.PaginaWeb : companyToModify.webpage,
                 phone_number: resultForm.NumerodeTelefono? resultForm.NumerodeTelefono : companyToModify.phone_number,
