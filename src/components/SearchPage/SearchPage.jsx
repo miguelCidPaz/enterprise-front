@@ -27,7 +27,7 @@ const SearchPage = (props) => {
     
     useEffect(()=> {
         recoverCompanies()
-    })
+    },[])
     /* const updateitems = async (a) => {
         await setGlobalItems([...a])
     }
