@@ -36,8 +36,8 @@ const BodyDetail = (props) => {
             </div>
             <div className="details--container-buttons">
                 <a target="_blank" href={props.item.social_media} className="details--link">+info</a>
-                {loggedUser.id !== props.item.iduser ? <NavLink to={`/Purchase/${props.item.idcompany}`} className="details--button details--button-link">Comprar</NavLink> 
-                : <NavLink onClick={StorageCompany} to={`/ModifyEnterprise/${props.item.idcompany}`} className="details--button details--button-link" >Modificar</NavLink>} 
+                {loggedUser? (loggedUser.id !== props.item.iduser ? <NavLink to={`/Purchase/${props.item.idcompany}`} className="details--button details--button-link">Comprar</NavLink> 
+                : <NavLink onClick={StorageCompany} to={`/ModifyEnterprise/${props.item.idcompany}`} className="details--button details--button-link" >Modificar</NavLink>) : null} 
                 {props.viewSecondary
                     ? <button onClick={e => props.selectNewPrincipalItem(props.item)} className="details--button">Escoger este</button>
                     : <button onClick={e => props.setViewSelect(!props.viewSelect)} className="details--button">Comparar</button>}
