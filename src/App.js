@@ -8,15 +8,12 @@ import { Route, Routes } from "react-router-dom";
 import Profile from "./components/Profile/Profile";
 import { ProviderLogin } from "./components/Login/ProviderLogin";
 import FormLogin from "./components/PurchaseForm/PurchaseForm";
-import SearchPage from "./components/SearchPage/SearchPage";
-
-
+import Modifyenterprise from "./components/FormEnterprise/ModifyEnterprise";
+import SearchPage from './components/SearchPage/SearchPage'
 
 const App = () => {
   const [theme, setTheme] = useState('dark');
   
-  
-
   useEffect(() => {
     const loggedUserThemeJSON = window.localStorage.getItem('theme');
     if (loggedUserThemeJSON) {
@@ -46,6 +43,7 @@ const App = () => {
           <Route path='/login' element={<Login theme={theme} />} />
           <Route path='/profile' element={<Profile theme={theme} />} />
           <Route path='/FormEnterprise/:idUser' element={<FormEnterprise theme={theme} />} />
+          <Route path='/Modifyenterprise/:idUser' element={<Modifyenterprise theme={theme} />} />
           <Route path='/Purchase/:idCompany' element={<FormLogin theme={theme} />} />
           <Route path='*' element={<LandPage theme={theme} />} />
           <Route path='search/:enterpriseName' element={<SearchPage theme={theme}/>}/>

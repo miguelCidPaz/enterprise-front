@@ -11,6 +11,9 @@ const Profile = () => {
     const [items, setItems] = useState(undefined);
     const { session, id, name, email, connectSession } = useContext(UserContext);
     const [detail, setDetail] = useState(undefined);
+    const [isProfile, setProfile] = useState(true)
+
+    
    /*  este contexto guarda además  de los datos del usuario un boolean para ver si está conectado y una función para setear ese estado */
     useEffect(() => {
         recoverCompanies();
@@ -47,24 +50,20 @@ const Profile = () => {
         window.localStorage.removeItem('theme');
         window.localStorage.removeItem('order');
     }
-<<<<<<< HEAD
-    console.log(items);
-=======
->>>>>>> 6ccd820f44b86df807c44e161e7ddf4e465e452b
     return (
         <section className='profile--main'>
-            {viewItems ? <div className='profile--main-enterprises'> {/* viewItems allow user to view their companies*/}
+           {detail !== undefined  ? <DetailCard item={detail} setDetail={setDetail} groupItems={items} />
+            : viewItems ? <div className='profile--main-enterprises'> {/* esto se renderiza al clickar en ver tus empresas */}
                 <div className="profile--main-center">
                     <NavLink to={`/FormEnterprise/${id}`} className='profile--button-create-company'>+{/*  botòn de crear nueva empresa */}
                         <div className='profile--modal-help'><p>Crear nueva empresa</p></div>
                     </NavLink> 
                     <button className='profile--button-left profile--button-center' onClick={e => setViewItems(!viewItems)}>
                         Volver a perfil </button>
-                     {/* si la petición ha devuelto empresas las renderizamos  */}
-                    {detail !== undefined ? <DetailCard item={detail} setDetail={setDetail} groupItems={items} />
-                       : (items !== undefined && items !== null ? items.map((e, i) => {
-                        return <ItemCard item={e} key={i} index={i} setDetail ={setDetail}  />}) : 
-                        <div className='no-companies-message itemcard--main'><p className="profile--label center">Todavía no posees empresa alguna</p></div>)}
+                    {items !== undefined && items !== null ? items.map((e, i) => { /* si la petición ha devuelto empresas las renderizamos */
+                        return <ItemCard item={e} key={i} index={i} setDetail={setDetail} /> 
+                        /* aqui tendríamos que crear un pop-up de detalles nuevo, el del ranking no vale porque tiene comprar y comparar*/
+                    }) : null}
                 </div> {/* a partir de aquí renderiza al hacer login */}
             </div> : <div className={viewItems ? 'profile--main-container profile--main-container-toright' : 'profile--main-container'}>
                 <div className='profile--slot'>

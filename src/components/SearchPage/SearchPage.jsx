@@ -13,17 +13,22 @@ const SearchPage = (props) => {
     let {enterpriseName} = useParams()
     const [enterprise,setEnterprise] = useState([])
     const [detail, setDetail] = useState(undefined);
-    const [globalItems,setGlobalItems] = useState([])
+    /* const [globalItems,setGlobalItems] = useState([]) */
     let loggedUser;
-    if (session) {
+    useEffect(()=> {
+        if (session) {
         const loggedUserJSON = window.localStorage.getItem('userlogged');
         loggedUser= JSON.parse(loggedUserJSON);
         console.log(loggedUser)
     }
+    },[])
+    
     const page = 'searchPage'
     
-    
-    const updateitems = async (a) => {
+    useEffect(()=> {
+        recoverCompanies()
+    })
+    /* const updateitems = async (a) => {
         await setGlobalItems([...a])
     }
     let items;
@@ -31,8 +36,8 @@ const SearchPage = (props) => {
         const globalItemsJSON = window.localStorage.getItem('globalItems')
         items = JSON.parse(globalItemsJSON)
         await updateitems(items);
-       /*  await recoverCompanies() */
-    },[])
+       /*  await recoverCompanies() 
+    },[]) */
 
     const recoverCompanies = async () => {
         await axios({
@@ -50,8 +55,9 @@ const SearchPage = (props) => {
             }
         })
     }
+
     
-    return (<div className="results--main">{detail !== undefined ? <DetailCard item={detail} setDetail={setDetail} groupItems={items} />
+    return (<div className="results--main">{detail !== undefined ? <DetailCard item={detail} setDetail={setDetail} page={page} />
     : <div className="tableitems--interior-body-results">
         
            {enterprise.map((e, i) =>  <ItemCard
