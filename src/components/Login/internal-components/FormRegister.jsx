@@ -18,12 +18,15 @@ export default function FormRegister(props) {
     const navigate = useNavigate();
     const password = useRef({}); // to compare and confirm the password
     password.current = watch("password", "");
-    let userData = { username: '', password: '', email: '' };
+    let userData = { username: '',name:'', avatar: '', credit:0, password: '', email: '' };
     const onSubmit = async (data) => {
         userData.username = data.username;
+        userData.avatar = data.avatar;
+        userData.name = data.name;
+        userData.credit = data.credit;
         userData.password = md5(data.password);
         userData.email = data.email
-
+        console.log(userData);
         await axios({
             method: 'post',
             url: 'http://localhost:3000/v1/users/create',
@@ -35,7 +38,10 @@ export default function FormRegister(props) {
             data: {
                 username: userData.username,
                 email: userData.email,
-                userpass: userData.password
+                userpass: userData.password,
+                name_description: userData.name,
+                avatar: userData.avatar,
+                founds: userData.credit
             }
         }).then((res) => {
             if (res.status === 201) {
@@ -58,6 +64,23 @@ export default function FormRegister(props) {
                     {
                         required: { value: true, message: 'Campo requerido' },
                         maxLength: { value: 80, message: 'Tamaño maximo 80' }
+                    })} />
+            <input spellCheck="false" className='form--input' type="text" placeholder="Name" {
+                ...register("name",
+                    {
+                        required: { value: true, message: 'Campo requerido' },
+                        maxLength: { value: 80, message: 'Tamaño maximo 80' }
+                    })} />
+            <input spellCheck="false" className='form--input' type="text" placeholder="Avatar" {
+                ...register("avatar",
+                    {
+                        maxLength: { value: 80, message: 'Tamaño maximo 80' }
+                    })} />
+            <input spellCheck="false" className='form--input' type="number" placeholder="Credit" {
+                ...register("credit",
+                    {
+                        required: { value: true, message: 'Campo requerido' },
+                        maxLength: { value: 80, message: 'Tamaño maximo 20' }
                     })} />
             {errors.username && <div className='login--message-errors'><p >{errors.username.message}</p></div>}
             {/* Email */}
