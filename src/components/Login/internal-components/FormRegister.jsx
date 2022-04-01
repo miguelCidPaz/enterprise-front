@@ -26,7 +26,6 @@ export default function FormRegister(props) {
         userData.credit = data.credit;
         userData.password = md5(data.password);
         userData.email = data.email
-        console.log(userData);
         await axios({
             method: 'post',
             url: 'http://localhost:3000/v1/users/create',
@@ -45,7 +44,7 @@ export default function FormRegister(props) {
             }
         }).then((res) => {
             if (res.status === 201) {
-                if (connectSession(true, res.data.iduser, res.data.userName, res.data.userEmail)) {
+                if (connectSession(true, res.data.iduser, res.data.userName, res.data.userEmail, res.data.founds)) {
                     navigate("/Profile");
                 }
             } else {
@@ -59,13 +58,13 @@ export default function FormRegister(props) {
     return (<div className='form--main'>
         <form className='form--login' onSubmit={handleSubmit(onSubmit)} >
             {/* User Name */}
-            <input spellCheck="false" className='form--input' type="text" placeholder="Username" {
+            <input spellCheck="false" className='form--input' type="text" placeholder="Nombre de usuario" {
                 ...register("username",
                     {
                         required: { value: true, message: 'Campo requerido' },
                         maxLength: { value: 80, message: 'Tamaño maximo 80' }
                     })} />
-            <input spellCheck="false" className='form--input' type="text" placeholder="Name" {
+            <input spellCheck="false" className='form--input' type="text" placeholder="Nombre" {
                 ...register("name",
                     {
                         required: { value: true, message: 'Campo requerido' },
@@ -76,7 +75,7 @@ export default function FormRegister(props) {
                     {
                         maxLength: { value: 80, message: 'Tamaño maximo 80' }
                     })} />
-            <input spellCheck="false" className='form--input' type="number" placeholder="Credit" {
+            <input spellCheck="false" className='form--input' type="number" placeholder="Crédito" {
                 ...register("credit",
                     {
                         required: { value: true, message: 'Campo requerido' },
@@ -84,7 +83,7 @@ export default function FormRegister(props) {
                     })} />
             {errors.username && <div className='login--message-errors'><p >{errors.username.message}</p></div>}
             {/* Email */}
-            <input spellCheck="false" className='form--input' type="text" placeholder="Email@gmail.com" {
+            <input spellCheck="false" className='form--input' type="text" placeholder="Email" {
                 ...register("email",
                     {
                         required: { value: true, message: 'Campo requerido' },
@@ -92,7 +91,7 @@ export default function FormRegister(props) {
                     })} />
             {errors.email && <div className='login--message-errors'><p >{errors.email.message}</p></div>}
             {/* Password */}
-            <input spellCheck="false" className='form--input' type="password" placeholder="Password" {
+            <input spellCheck="false" className='form--input' type="password" placeholder="Contraseña" {
                 ...register("password",
                     {
                         required: { value: true, message: 'Campo requerido' },
@@ -102,7 +101,7 @@ export default function FormRegister(props) {
             {errors.password && <div className='login--message-errors'><p >{errors.password.message}</p></div>}
             {/* Password Repeat*/}
 
-            <input spellCheck="false" className='form--input' type="password" placeholder="Password_Repeat" {
+            <input spellCheck="false" className='form--input' type="password" placeholder="Repite contraseña" {
                 ...register("passwordRepeat",
                     {
                         required: { value: true, message: 'Campo requerido' },
