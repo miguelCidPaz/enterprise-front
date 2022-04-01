@@ -63,12 +63,16 @@ const Profile = () => {
                     {items !== undefined && items !== null ? items.map((e, i) => { /* si la petición ha devuelto empresas las renderizamos */
                         return <ItemCard item={e} key={i} index={i} setDetail={setDetail} /> 
                         /* aqui tendríamos que crear un pop-up de detalles nuevo, el del ranking no vale porque tiene comprar y comparar*/
-                    }) : null}
+                    }) : 
+                    <div className='no-companies-message itemcard--main'>
+                        <p className="profile--label center">Todavía no posees empresa alguna</p>
+                    </div>}
                 </div> {/* a partir de aquí renderiza al hacer login */}
             </div> : <div className={viewItems ? 'profile--main-container profile--main-container-toright' : 'profile--main-container'}>
                 <div className='profile--slot'>
                     <p className='profile--label'>Tu Nombre: </p>
                     <p className='profile--text'>{session ? name : undefined}</p>
+
                 </div>
                 <div className='profile--slot'>
                     <p className='profile--label'>Tu Email: </p>
