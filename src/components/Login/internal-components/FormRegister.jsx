@@ -26,7 +26,7 @@ export default function FormRegister(props) {
 
         await axios({
             method: 'post',
-            url: 'http://localhost:3000/v1/users/create',
+            url: 'https://enterprisecompany-server.herokuapp.com/v1/users/create',
             headers: {
                 'Access-Control-Allow-Origin': '*',
                 'Accept': 'application/json',
