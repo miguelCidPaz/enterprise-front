@@ -70,12 +70,11 @@ export default function Modifyenterprise(props) {
                 <input className='form--input'  placeholder={companyToModify.name_description} type="text" {
                     ...register("Nombre",
                         {
-                            /* required: { value: true, message: 'Campo requerido' }, */
                             maxLength: { value: 80, message: 'Tamaño maximo 80' }
                         })} />
                 {errors.Nombre && <p className='login--message-errors'>{errors.Nombre.message}</p>}
                 <label>Sector</label>
-                <select className='form--input' value={companyToModify.sector} {
+                <select className='form--input' placerholder={companyToModify.sector} {
                     ...register("Sector", {
                         required: false,
                         maxLength: { value: 100, message: 'Tamaño maximo 100' }
