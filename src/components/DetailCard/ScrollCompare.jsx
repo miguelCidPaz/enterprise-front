@@ -4,7 +4,6 @@ import ItemCard from "../ItemCard/ItemCard"
 const ScrollCompare = (props) => {
     const [index, setIndex] = useState(0)
     const [itemGroup, setItemGroup] = useState(props.groupItems)
-  
     return (
         <div>
             <div className="details--main-compare">

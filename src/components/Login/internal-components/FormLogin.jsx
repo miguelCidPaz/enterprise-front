@@ -36,8 +36,9 @@ export default function FormLogin(props) {
             },
         }).then((res) => {
             if (res.status === 200 && res.data.username) {
-                    connectSession(true, res.data.id, res.data.username, res.data.email); 
-                    window.localStorage.setItem('userlogged',JSON.stringify({session:true, id:res.data.id, username:res.data.username, email:res.data.email}));  
+                console.log(res.data);
+                    connectSession(true, res.data.id, res.data.username, res.data.email, res.data.founds); 
+                    window.localStorage.setItem('userlogged',JSON.stringify({session:true, id:res.data.id, username:res.data.username, email:res.data.email, founds:res.data.founds}));  
                     navigate("/Profile");
                 }
             else if (res.status === 200) {
