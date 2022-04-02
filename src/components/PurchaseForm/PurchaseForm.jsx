@@ -122,21 +122,22 @@ export default function FormLogin(props) {
                 ...register("email",
                     {
                         required: { value: true, message: 'Campo requerido' },
-                        pattern: { value: /^\S+@\S+$/i, message: "Formato no correcto" }
+                        pattern: { value: /^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/, message: "Formato no correcto" }
                     })} />
             {errors.email && <div className='login--message-errors'><p>{errors.email.message}</p></div>}
             {/* Password */}
             <input className='form--input' spellCheck="true" type="password" placeholder="Contraseña" {
                 ...register("password",
                     { required: { value: true, message: 'Campo requerido' } })} />
-            {errors.note && <div className='login--message-errors'><p>{errors.note.message}</p></div>}
-            {/* Offer */}
+            {errors.password && <div className='login--message-errors'><p>{errors.password.message}</p></div>}
+            {/* user credit */}
             <p className='purchase--form'>Tu saldo: {buyerid.founds}</p>
+            {/* Offer */}
             <p className='purchase--form'>Tu oferta</p>
             <input className='form--input' spellCheck="false" type="number" placeholder="Tu Oferta" {
                 ...register("offer",
                     { required: { value: true, message: 'Campo requerido' } })} />
-            {errors.vid && <div className='login--message-errors'><p>{errors.vid.message}</p></div>}
+            {errors.offer && <div className='login--message-errors'><p>{errors.offer.message}</p></div>}
             <input className='login--button' type="submit" />
         </form>
         </div>
