@@ -1,5 +1,5 @@
 import './styles.scss';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../Login/ProviderLogin';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -17,6 +17,7 @@ import axios from 'axios';
 
 
 export default function Modifyenterprise(props) {
+    const [openmodal, setOpenmodal] = useState(false);
     const companyToModifyJSON = window.localStorage.getItem('companyToModify')
     let companyToModify = JSON.parse(companyToModifyJSON);
 
@@ -25,11 +26,11 @@ export default function Modifyenterprise(props) {
     dateString = dateString.toLocaleDateString();
 
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { session, id, name, email, connectSession } = useContext(UserContext);
-
+    const {id} = useContext(UserContext);
     const navigate = useNavigate();
     const onSubmit = async (resultForm) => {
-
+        console.log(resultForm)
+        
         await axios({
             method: 'put',
             url: `http://localhost:3000/v1/companies/mod/${companyToModify.idcompany}`,
@@ -53,15 +54,14 @@ export default function Modifyenterprise(props) {
                 images: resultForm.Imagen? resultForm.Imagen : companyToModify.images
             }
         }).then((res) => {
-            if (res.status === 201) {
-                alert('Compañía modificada con éxito')
-                navigate('/Profile');
+            if (res.status === 200) {
+                setOpenmodal(true);
             }
         })
+        
     };
-
- 
     return (
+        <>
         <div className='form--main'>
             <form className='form--login form--tobottom' onSubmit={handleSubmit(onSubmit)} >
                 <h3 className='purchase--form'>Modificar datos de empresa {companyToModify.name_description}</h3>
@@ -127,5 +127,12 @@ export default function Modifyenterprise(props) {
                 <input className='login--button' type="submit" />
             </form>
         </div>
+        {openmodal && <div className='modal'>
+            <p>Compañía {companyToModify.name_description} modificada</p>
+            <button type='button' onClick={()=> navigate('/Profile')}>Aceptar</button>
+            </div>}
+        </>
+        
+        
     );
 }

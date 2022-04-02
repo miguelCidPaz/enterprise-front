@@ -145,5 +145,5 @@ export default function FormLogin(props) {
             {accepted? <p>Oferta Aceptada</p> : <p>Oferta Rechazada</p>}
             <button type='button' onClick={()=> setOpenmodal(false)}>Aceptar</button>
         </div>}</>
-    );
+ );
 }
