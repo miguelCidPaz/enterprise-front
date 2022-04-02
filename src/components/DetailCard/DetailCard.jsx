@@ -8,12 +8,14 @@ const DetailCard = (props) => {
     const [secondaryItem, setSecondaryItem] = useState(undefined);
     const [viewSelect, setViewSelect] = useState(false)
     const [viewSecondary, setViewSecondary] = useState(false);
+    const [page,setPage] = useState(props.page)
 
     const changeSecondaryItem = (item) => {
         setSecondaryItem(item)
         setViewSecondary(!viewSecondary)
         setViewSelect(!viewSelect)
     }
+    console.log(page)
 
     const selectNewPrincipalItem = (item) => {
         setFirstItem(item)
@@ -33,6 +35,7 @@ const DetailCard = (props) => {
                     viewSelect={viewSelect}
                     viewSecondary={viewSecondary}
                     selectNewPrincipalItem={selectNewPrincipalItem}
+                    page={page}
                 />
 
                 {viewSelect ?
@@ -52,11 +55,6 @@ const DetailCard = (props) => {
                     />
                     : null}
             </div>
-
-
-
-
-
         </section>
     )
 }

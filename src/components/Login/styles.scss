@@ -21,6 +21,7 @@
     align-items: center;
     gap: 20px;
 
+    
     @media (max-height:700px) {
         padding-top: 100px;
     }
@@ -38,6 +39,15 @@
     width: 100%;
     height: 30vh;
     gap: 10px;
+
+    h3 , p {
+        color: var(--secondary);
+        font-size:1.8rem;
+    }
+    p {
+        font-size: 1.2rem;
+        font-weight:bold;
+    }
 }
 
 .form--input{
@@ -126,11 +136,11 @@
     
 }
 
-.login--message-errors{
+.login--message-errors, .form--error-modal {
     text-transform: uppercase;
     background-color: red;
     color: white;
-    height: 3vh;
+    height: fit-content;
     width: 25%;
     text-align: center;
     padding-top: 5px;
@@ -147,5 +157,32 @@
 
     @media (max-width:496px) {
         font-size: 15px;
+    }
+}
+
+.form--error-modal{
+    position: absolute;
+    display:grid;
+    place-items: center;
+    row-gap:1rem;
+    inset:auto;
+    z-index: 2;
+    padding: 1rem 0.2rem;
+    font-weight: bold;
+}
+
+.form--error-modal-button {
+    padding:.3rem .5rem;
+    border-radius: 5px;
+    color: var(--background-color);
+    background-color: var(--text);
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover{
+        width:25%;
+        background-color: var(--primary); 
+        box-shadow: 0 0 25px inset var(--primary-deg-1);
+        color: var(--background-color);
     }
 }
